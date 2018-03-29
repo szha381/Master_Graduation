@@ -1,0 +1,38 @@
+This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2017.11.13)  29 MAR 2018 14:27
+entering extended mode
+**./seuthesix.tex
+(seuthesix.tex
+LaTeX2e <2017-04-15>
+Babel <3.15> and hyphenation patterns for 75 language(s) loaded.
+(seuthesix.cls
+Document Class: seuthesix 2016/03/20 1.0.1 The LaTeX template for academic degr
+ee thesis of Southeast University
+Document Class `seuthesix' 1.0.1 by James Fan (2016/03/20)
+[seuthesix]: Load seuthesix.cfg successfully!
+(seuthesix.cfg
+File: seuthesix.cfg 2016/03/20 1.0.1 seuthesix configuration file
+)
+
+! LaTeX Error: File `ctexrep.cls' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: cls)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.49 \RequirePackage
+                    [titles]{tocloft}^^M
+*** (cannot \read from terminal in nonstop modes)
+
+ 
+Here is how much of TeX's memory you used:
+ 82 strings out of 427839
+ 1032 string characters out of 3150836
+ 60990 words of memory out of 3000000
+ 4130 multiletter control sequences out of 15000+200000
+ 3640 words of font info for 14 fonts, out of 3000000 for 9000
+ 1328 hyphenation exceptions out of 8191
+ 20i,0n,19p,187b,18s stack positions out of 5000i,500n,10000p,200000b,50000s
+No pages of output.

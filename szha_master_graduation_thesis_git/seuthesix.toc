@@ -1,0 +1,30 @@
+\contentsline {chapter}{摘\hskip 1em\relax 要}{II}{section*.1}
+\contentsline {chapter}{Abstract}{II}{section*.3}
+\contentsline {chapter}{插图目录}{VII}{section*.6}
+\contentsline {chapter}{表格目录}{VIII}{section*.8}
+\contentsline {chapter}{算法目录}{X}{section*.10}
+\contentsline {chapter}{术语与数学符号约定}{XII}{section*.12}
+\contentsline {chapter}{\numberline {第一章\hspace {.3em}}绪论}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}版权声明}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}版本历史}{1}{section.1.2}
+\contentsline {chapter}{\numberline {第二章\hspace {.3em}}下载和安装}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}下载}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}安装}{3}{section.2.2}
+\contentsline {chapter}{\numberline {第三章\hspace {.3em}}使用说明}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}模板整体框架}{6}{section.3.1}
+\contentsline {section}{\numberline {3.2}详细说明}{8}{section.3.2}
+\contentsline {chapter}{\numberline {第四章\hspace {.3em}}注意事项}{13}{chapter.4}
+\contentsline {section}{\numberline {4.1}文献引用}{13}{section.4.1}
+\contentsline {section}{\numberline {4.2}参考文献格式}{13}{section.4.2}
+\contentsline {section}{\numberline {4.3}图表格式处理}{13}{section.4.3}
+\contentsline {section}{\numberline {4.4}算法格式处理}{14}{section.4.4}
+\contentsline {section}{\numberline {4.5}术语生成}{14}{section.4.5}
+\contentsline {chapter}{\numberline {第五章\hspace {.3em}}\texttt {seuthesix.bst}参考文献格式}{17}{chapter.5}
+\contentsline {section}{\numberline {5.1}简介}{17}{section.5.1}
+\contentsline {section}{\numberline {5.2}支持的Entry type}{17}{section.5.2}
+\contentsline {section}{\numberline {5.3}各 entry type 所支持的field}{17}{section.5.3}
+\contentsline {chapter}{\numberline {第六章\hspace {.3em}}全文总结}{21}{chapter.6}
+\contentsline {chapter}{致 谢}{22}{section*.16}
+\contentsline {chapter}{参考文献}{24}{section*.18}
+\contentsline {chapter}{\numberline {附录 A\hspace {.3em}}东南大学研究生学位论文的格式规定}{25}{appendix.A}
+\contentsline {chapter}{作者简介}{38}{section*.19}

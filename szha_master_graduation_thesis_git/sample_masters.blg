@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: sample_masters.aux
+The style file: seuthesix.bst
+empty is an unknown function---line 457 of file seuthesix.bst
+缺少月份 is an unknown function---line 458 of file seuthesix.bst
+Database file #1: seuthesix.bib
+Warning--entry type for "ELFEEKB" isn't style-file defined
+--line 144 of file seuthesix.bib
+Warning--entry type for "FNEDLSBKB" isn't style-file defined
+--line 177 of file seuthesix.bib
+Warning--empty journal in tong2006fast
+You've used 50 entries,
+            2344 wiz_defined-function locations,
+            881 strings with 13946 characters,
+and the built_in function-call counts, 12879 in all, are:
+= -- 1295
+> -- 605
+< -- 0
++ -- 203
+- -- 153
+* -- 731
+:= -- 2021
+add.period$ -- 214
+call.type$ -- 50
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 51
+duplicate$ -- 377
+empty$ -- 1056
+format.name$ -- 153
+if$ -- 3040
+int.to.chr$ -- 0
+int.to.str$ -- 50
+missing$ -- 375
+newline$ -- 317
+num.names$ -- 50
+pop$ -- 95
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 156
+stack$ -- 0
+substring$ -- 1088
+swap$ -- 0
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 139
+width$ -- 52
+write$ -- 606
+(There were 2 error messages)
