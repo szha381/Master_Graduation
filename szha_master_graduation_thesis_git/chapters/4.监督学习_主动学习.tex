@@ -1,0 +1,308 @@
+\chapter{基于主动学习的实体链接模型训练}\label{chapter:al_sup}
+本章以监督学习模型处理实体链接任务，研究主动学习方法在减少标注训练样本数量上的作用。本章首先介绍基于监督学习的实体链接方法，包括模型使用的特征以及模型对实体链接任务的处理方法。接着，本章介绍如何将主动学习方法应用于实体链接任务，并对初始样本选择方法和迭代样本选择方法做了改进。最后给出了实验结果和实验分析。
+
+\section{基于监督学习的实体链接方法}
+用监督学习方法处理实体链接任务主要分为两个步骤，第一步是特征提取，第二步是利用模型对输入特征向量进行处理，并输出预测的目标实体。
+\subsection{实体链接特征}\label{section:superised_feature}
+在给定指称项$m$和指称项对应的候选实体集$E_m=\{e_1,e_2,...,e_n\}$后，计算模型的输入特征:
+
+\begin{enumerate}
+	\renewcommand{\labelenumi}{(\theenumi)}
+	\item {候选实体$e_i$在知识库中的先验概率，$PriorInKB(m,e_i)$，该特征的定义如公式\ref{eq:popinkb}所示。
+		
+		\begin{equation}\label{eq:popinkb}
+		PriorInKB(m,e_i)=\frac{count(e_i)}{\sum_{e_i\in E_m} {count(e_k)}}
+		\end{equation}
+		
+		其中，$count(e)$表示实体$e$在知识库中作为锚文本出现的次数。
+	}
+	\item {指称项上下文与候选实体对应词条摘要的文 本相似度，$ContextSimilarity(m,e_i)$，该特征的定义如公式\ref{eq:contex_similarity}所示。
+		
+		\begin{equation}\label{eq:contex_similarity}
+		ContextSimilarity(m,e_i)=\frac{coocurence(m,e_i)}{length(m)}
+		\end{equation}
+		
+		其中，$coocurence(m,e_i)$表示指称项$m$上下文和候选实体$e_i$对应知识库中摘要文本相同的单词数，$length(m)$表示指称项$m$的上下文长度。
+	}
+	\item {带标注样本集中，候选实体$e_i$的流行度，$PopInCorpus(e_i)$，该特征会随着人工标注的进行而产生变化。该特征的定义如公式\ref{eq:pop_in_corpus}所示。
+		
+		\begin{equation}\label{eq:pop_in_corpus}
+		PopInCorpus(e_i)=\frac{\sum_{anno \in Corpus} {I(anno.e,e_i)}}{sizeof(Corpus)}
+		\end{equation}
+		
+		其中，$anno$表示已标注语料中的一条标注记录，$anno.e$表示标注记录的目标实体。$I(e_i,e_j)$是示值函数，实体$e_i$和实体$e_j$相同则为1，否则为0。$sizeof(Corpus)$表示已标注指称项个数。
+	}
+	\item{带标注样本集中，候选实体$e_i$作为指称项$m$的目标实体的先验概率，$Prior(m,e_i)$，同上，该特征也会随着标注的进行而产生变化。该特征的定义如公式\ref{eq:prior}所示。
+		
+		\begin{equation}\label{eq:prior}
+		Prior(m,e_i)=\frac{\sum_{anno \in Corpus} {I(anno.e,e_i)\times I(anno.m,m)}}{\sum_{anno \in Corpus} {I(anno.m,m)}}
+		\end{equation}
+		
+		其中，$anno.e$的定义同上。$anno.m$表示标注记录$anno$的指称项。
+	}
+	\item 指称项名字和候选实体标题的编辑距离，$EDSimarity(m,e_i)$。该特征的定义如公式\ref{eq:ed_simarity}所示。
+	
+	\begin{equation}\label{eq:ed_simarity}
+	EDSimarity(m,e_i)=
+	\left\{
+	\begin{array}{rcl}
+	1       &      & {|length(m)-length(e_i)|=ED(m,e_i)}\\
+	0    &      & {\text{其它}}
+	\end{array} \right.
+	\end{equation}
+	
+	编辑距离$ED(\cdot,\cdot)$是指两个字符串进行转换时，需要的字符级最少操作次数。编辑距离相似度能够检测指称项和候选实体之间的别名、缩略名等关系。
+\end{enumerate}
+
+\subsection{目标实体预测}
+在使用监督学习模型$C$处理实体链接任务时，首先需要训练模型$C$。训练样本由带标注的指称项集合构成，例如，带标注的指称$m$包含$n$个候选实体，指称$m$的目标实体是$e^*$，任意一个候选实体$e_i$和指称项$m$组成一 个样本对$\left\langle m,e_i\right\rangle $，若$e_i$是目标实体$e^*$，样本对标记为正例，否则标记为反例。用所有带标注的样本对训练得到模型$C$。
+
+训练得到模型$C$后，对于未标注指称$m$及其候选实体集$E_m$，根据上一节的计算方法获得所有候选实体和指称项组成的样本对的特征向量，模型$C$根据输入的特征向量，计算每个候选实体是目标实体的概率$P_C(e_i|m)$。该预测概率的计算方式和模型的选择相关，例如选择支持向量机模型，可以用样本点距离分类超平面的距离估计正确分类的概率\cite{李航2012统计学习方法}；选择人工神经网络模型，可以对输出层每个节点的权值做$softmax$处理，以此获得每个分类标签的分类预测概率\cite{ravuri2016comparative}，在此不再一一例举其它模型的预测概率估计方法。取概率最高的候选实体作为指称项$m$的预测实体，如公式\ref{eq:hat_cancidate}所示。
+
+\begin{equation}\label{eq:hat_cancidate}
+\hat{e}=\argmax_{e_i\in E_m} P_C(e_i|m)
+\end{equation}
+
+然后将该预测实体被正确划分的概率作为指称$m$被正确链接的概率，如公式\ref{eq:predict_prob}所示。
+
+\begin{equation}\label{eq:predict_prob}
+P_C(\hat{e}|m)=\max_{e_i\in E_m}P_C(e_i|m)
+\end{equation}
+
+\section{实体链接的主动学习算法}
+为了减少人工标注的工作量，本文采用基于池的主动学习方法(Pool-based Active Learning)选择实体链接的待标注指称项。主动学习流程图如图\ref{fig:al_overview}所示。
+
+\begin{figure}[!htb]
+	\centering\includegraphics[height=7cm]{resource/al_overview}
+	\caption{主动学习流程概览}
+	\label{fig:al_overview}
+\end{figure}
+
+在每轮迭代训练中，主动学习器能够选出信息量最大的未标注样本集交由人工标注。已有的主动学习\cite{settles2012active}流程如算法\ref{algorithm_AL}所示。在给定未标注训练样本集后， 主动学习进程分为两个阶段，第一阶段的工作是选择初始训练样本集并以此训练初始分类器，第二阶段的工作是选择最佳标注样本并以此迭代训练模型。
+
+\floatname{algorithm}{算法}
+\renewcommand{\algorithmicrequire}{\textbf{输入:}} % Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{输出:}} % Use Output in the format of Algorithm
+\begin{algorithm}[!htb]
+	\caption{基于主动学习的实体链接任务训练进程}
+	\label{algorithm_AL}
+	\begin{algorithmic}[1] %这个1 表示每一行都显示数字
+		\REQUIRE ~ %算法的输入参数：Input
+		未标注的指称样本集$ \mathcal{U}=\{m^{(u)} \}_{u=1}^U $
+		\ENSURE ~ %算法的输出：Output
+		实体链接分类器$C$
+		\STATE 从未标注训练集$\mathcal{U}$中选择并标注初始训练样本集$\mathcal{L}_0$\label{al_sup_line1}
+		\STATE 利用初始训练样本集$\mathcal{L}_{0}$训练得到弱分类器$C=train(\mathcal{L}_{0})$\label{al_sup_line2}
+		\REPEAT \label{al_sup_line3}
+		\STATE 从$\mathcal{U}$中找出$k$个信息量最大的样本组成样本集$ \mathcal{U}_{selected} = \{m^{(u)} \}_{u=1}^{k} $\label{al_sup_line4}
+		\STATE 对$ \mathcal{U}_{selected}$中的指称进行人工标注得到$ \mathcal{L}_{selected} = \{\left\langle m,e\right\rangle^{(l)} \}_{l=1}^{k} $
+		\STATE $ \mathcal{U} = \mathcal{U} \setminus \mathcal{U}_{selected} $
+		\STATE $ \mathcal{L}_{t+1} = \mathcal{L}_{t} \cup \mathcal{L}_{selected} $
+		\STATE $C=train(\mathcal{L}_{t+1})$
+		\UNTIL {达到预期精度或样本集已全部标注} \label{al_sup_line9}
+		\RETURN $C$
+	\end{algorithmic}
+\end{algorithm}
+
+算法第\ref{al_sup_line1}-\ref{al_sup_line2} 行对应主动学习进程的第一个阶段，已有的做法是在未标注样本集$\mathcal{U}$中随机选择待标注样本$\mathcal{U}_{selected}$，然后对这些未标注样本进行人工标注，通过这种方式得到初始带标注样本集$\mathcal{L}_0$，然后用$\mathcal{L}_0$训练得到初始实体链接模型$C$。由于当初始带标注样本集合较小时，通过随机选择的方式获得的子样本集可能无法很好地代表整个样本集。因此，本文对初始训练样本选择方法做了改进，提出基于指称项流行度的初始样本选择方法。
+
+算法第\ref{al_sup_line3}-\ref{al_sup_line9} 行对应主动学习的第二个阶段，其中对于算法第\ref{al_sup_line4}行 信息量度量方法的选择，已有的做法是将样本分类结果的不确定度大小作为信息量的衡量标准，第$t$轮迭代中选出的样本会被加入到带标注样本集$\mathcal{L}_t$中，然后用$\mathcal{L}_t$重新训练模型。在实体链接任务中，仅将不确定度作为选择待标注样本的依据，可能会导致选择过多的离群样本点，不利于模型的训练。因此，本文对迭代训练样本选择方法做了改进，提出综合分类不确定度和指称项流行度的迭代训练样本选择方法。
+
+\section{改进的初始训练样本选择方法}\label{section:al_init_gen}
+本节首先对改进的初始训练样本选择方法进行了详细说明，然后给出了该方法对应的算法描述。
+
+\subsection{初始训练样本选择方法}
+在主动学习的初始阶段，需要产生一个初始样本集用于训练初始模型。已有的主动学习方法采用随机选择的方式产生初始训练样本集，由于训练样本集相对较小，随机选择的方式很难保证初始样本集的代表性。但是，训练一个性能较好的初始模型对提高主动学习收敛速度非常重要。因此，本文对已有的基于随机选择的初始样本集生成方法做了改进。
+
+为了提高实体链接初始模型的性能，本文提出基于流行度的初始样本选择方法(Sampling by Popularity, SBP)。指称项的流行度按照相同名字的指称项在语料库中出现的频率计算。例如，语料库中包含$n$个指称项，名字为“Jordan”的指称项出现了$m$次，则名字为“Jordan”的所有指称项的流行度为$m/n$。该样本选择方法首先对指称项按照指称项名字分类，计算指称项流行度，然后对指称项流行度高的样本做标注，加入初始训练样本集。该方法的目的是在初始样本选择阶段，尽量选择出现频率较高的指称项，以此保证初始样本集的代表性，从而提高在初始样本集较小的情况下，尽可能提高初始模型的性能。
+
+\subsection{初始训练样本选择算法}
+算法\ref{algorithm_init}是对基于流行度的初始样本选择方法的算法描述。初始训练样本的选择分为两个步骤，第一步是不同指称项流行度的统计；第二步是根据指称项流行度选择初始训练样本。
+
+算法第\ref{al_init_line1}-\ref{al_init_line2}行对未标注样本集按指称项名字进行分类，例如所有指称名字为“Jordan”的训练样本都会被划分到集合$\Psi_{Jordan}$中。然后根据集合中的样本数量计算各个指称项在训练集中的流行度，指称项名字相同的样本具有相同的流行度。
+
+算法第\ref{al_init_line3}-\ref{al_init_line7}行对指称项流行度做排序，并在流行度最高的$k$个样本集中分别随机选择一个或多个\footnote{当指称名字数量小于$k$时，需要在一个类簇中选择多个样本，保证最终获得$k$个样本。}样本，经过人工标注后加入初始训练样本集。这样做的目的在于避免初始训练样本集中的样本指称项名字重复度过高，同时保证尽量选择流行度高的指称项样本，从而提高初始训练样本集的代表性。
+
+\floatname{algorithm}{算法}
+\renewcommand{\algorithmicrequire}{\textbf{输入:}} % Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{输出:}} % Use Output in the format of Algorithm
+\begin{algorithm}[!htb]
+	\caption{基于流行度的初始样本集选择算法}
+	\label{algorithm_init}
+	\begin{algorithmic}[1] %这个1 表示每一行都显示数字
+		\REQUIRE ~ %算法的输入参数：Input
+		未标注的实体链接样本集$ \mathcal{U}=\{m^{(u)} \}_{u=1}^U $，初始训练集样本个数$k$
+		\ENSURE ~ %算法的输出：Output
+		初始样本集$\mathcal{L}$
+		\STATE 对未标注训练样本按照指称名字$name$分组，指称名字为$name$的样本被分到集合$\Psi_{name}$中\label{al_init_line1}
+		\STATE 计算名字为$name$的指称的流行度$\Phi_{name}=\frac{|(\Psi_{name})|}{U}$\label{al_init_line2}
+		\STATE 对不同指称的流行度排序，取流行度最高的$k$个指称的名字\label{al_init_line3}
+		
+		$\mathcal{S}=\{name_1,name_2,...,name_k\}$\label{al_init_line4}
+		\FOR {each $name$ in $\mathcal{S}$}
+		\STATE 从集合$\Psi_{name}$中随机取一个或多个样本并对其人工标注得到带标注的样本对$L=\left\langle m,e\right\rangle$\label{al_init_line5}
+		\STATE $\mathcal{L}=\mathcal{L} \cup \{L\}$
+		\ENDFOR\label{al_init_line7}
+		\RETURN $\mathcal{L}$
+	\end{algorithmic}
+\end{algorithm}
+
+\section{改进的迭代训练样本选择方法}\label{section:al_iter_train}
+本节首先对改进的迭代训练样本选择方法进行了详细说明，然后给出了该方法对应的算法描述。
+
+\subsection{迭代训练样本选择方法}
+在初始训练集上训练得到初始模型后，需要迭代选择信息量最大的未标注样本做标注，然后对模型做重新训练。在已有的主动学习迭代训练样本选择过程中，通常将不确定度最大的样本作为信息量最大的样本，这些样本会交由人工标注并加入下一轮迭代训练，通过这种方式迭代逼近真实模型。本文采用间隔（Margin）度量未标注样本的不确定度。
+
+如公式\ref{eq:margin_confidence}所示 ，$e^{*1}$和$e^{*2}$分别表示在当前模型$C$中，给定指称项$m$，对应置信度最高的和次高的候选实体，以这两个候选实体的置信度差的绝对值作为指称$m$链接到正确实体的置信度。
+
+\begin{align}\label{eq:margin_confidence}
+\begin{aligned}
+Confidence(m)&=P_C(e^{*1})-P_C(e^{*2})\\
+\text{其中，\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}&\text{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
+e^{*1}&=\argmax_{E_i\in E_m}P_C(e_i|m)\\
+e^{*2}&=\argmax_{E_i\in E_m \setminus \{e^{*1}\}} P_C(e_i|m)
+\end{aligned}
+\end{align}
+
+易知，$Confidence(m)$越小，表示模型$C$越难正确地从候选实体$e^{*1}$和候选实体$e^{*2}$中区分出目标实体，因此，指称项$m$被正确链接的置信度越小，指称项被正确链接的不确定度越大。指称项链接的不确定度如公式(\ref{eq:margin_uncertainty})所示。
+
+\begin{equation}\label{eq:margin_uncertainty}
+Uncertainty(m)=1-Confidence(m)\\
+\end{equation}
+
+在本文的实体链接任务中，如果采用仅基于不确定度的样本选择方法来选择待标注样本，则会存在两个缺陷。第一，存在一些不确定度较大，但是在所有样本中处于边缘位置的样本，这些离群样本点不具有代表性，相反还可能会对模型的训练产生负作用，在样本选择过程中，应该尽量避免这类样本点；第二，本文实体链接模型的输入特征向量包含已标注语料中候选实体流行度（$PopInCopus(e_i)$）和已标注语料中候选实体先验概率（$Prior(e_i|m)$）这两个特征维度，这两个特征都是在已标注样本集上通过统计得到的，因此，带标注的样本分布越离散，带标注样本集中包含的指称项和实体越多，那么上述两个特征维度的统计量越具有代表性。从这个角度看基于不确定度的样本选择算法对这两个特征的计算可能会产生负面影响。因此主动学习的样本选择策略需要在不确定度和多样性之间取一个权衡。为了解决这个问题，本文提出综合不确定度和流行度的样本选择方法（Sampling by Uncertainty and Popularity, SUP）。
+
+\subsection{综合不确定度和流行度的样本选择算法}
+接下来给出综合不确定度和流行度的样本选择方法的算法描述。SUP算法是对不确定度和多样性的折衷，如算法\ref{algorithm_iter}所示。
+
+\begin{algorithm}[htb]
+	\caption{综合不确定度和流行度样本集选择算法}
+	\label{algorithm_iter}
+	\begin{algorithmic}[1] %这个1 表示每一行都显示数字
+		\REQUIRE ~ %算法的输入参数：Input
+		未标注的实体链接样本集$ \mathcal{U}=\{m^{(u)} \}_{u=1}^U $\\
+		\quad \quad 选择标注的样本个数$k$
+		\ENSURE ~ %算法的输出：Output
+		本轮选择标注的训练样本集$ \mathcal{L} $\\
+		\STATE $ \mathcal{L} = \{\} $
+		\STATE 用K-means聚类法将未标注训练样本集按照指称的流行度划分为$k$类，$Clusters=\{\Psi_1,\Psi_2,...,\Psi_k\}$\label{al_iter_line2}
+		\FOR {each $\Psi_i$ in $Clusters$}
+		\STATE $m^{*}=\argmax_{m \in \Psi_i} Uncertainty(m)$\label{al_iter_line4}
+		\STATE 对$m^{*}$人工标注，得到$\left\langle m^{*},e\right\rangle$
+		\STATE $\mathcal{L}=\mathcal{L} \cup \{\left\langle m,e\right\rangle\}$
+		\ENDFOR
+		\RETURN $ \mathcal{L} $
+	\end{algorithmic}
+\end{algorithm}
+
+算法第\ref{al_iter_line2}行将所有未标注样本集中的指称项按照指称项流行度进行聚类，完成聚类后，同一个类簇的样本流行度相近。
+
+算法第\ref{al_iter_line4}行从各个流行度的类簇中分别选出不确定度最大的样本交由人工标注，这里不确定度的计算方式依然是模型预测的最优候选实体和次优候选实体置信度的间隔。该样本选择算法能够保证各个指称项流行度区间的样本都有均等机会被选中标注，同时又能保证在每个类簇中被选中标注的样本都是这个类簇中不确定度最大的样本，在兼顾所选样本集多样性的同时保证了不确定度。
+
+\section{实验结果与分析}
+本节介绍主动学习方法在实体链接模型训练中的实验，说明实验环境、实验所用数据集、评价指标以及实验配置，最后给出了实验结果数据，并对实验结果进行了分析。
+
+\subsection{实验环境}\label{section:dev_env}
+硬件环境：
+
+\begin{itemize}
+	\item CPU: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+	\item Memory: 4$\times$8GB DDR3 1333 ECC
+\end{itemize}
+
+软件环境：
+
+\begin{itemize}
+	\item CentOS Linux release 7.3.1611 (Core)
+	\item IntelliJ IDEA 2016.3
+	\item Java 1.8
+	\item MySQL 5.6
+\end{itemize}
+
+开源工具：
+
+\begin{itemize}
+	\item LibSVM\footnote{用于实现支持向量机。}
+	\item Weka 3.6\footnote{用于配合LibSVM实现支持向量机训练。}
+	\item Stanford NLP\footnote{用于实现英文分词及词干抽取。}
+\end{itemize}
+
+\subsection{实验数据集}\label{section:dataset}
+本文使用的数据集是在\textit{CoNLL'03}的基础上做了实体链接标注的\textit{Aida}数据集。数据集包含 1393 篇文章和28815个可用指称项。本文取20000个指称项作为训练集，其余的指称项作为测试集。
+
+\subsection{评价指标}
+本章研究主动学习在实体链接模型训练中的作用，并验证本文提出的基于流行度的初始样本选择方法以及综合不确定度和流行度的迭代训练样本选择方法对减少人工标注样本工作量的效果。实际上数据集中的指称项都已经标注好对应的目标实体，但是在模型训练过程中，本文不直接使用 Aida 数据集的标注结果，只有通过主动学习方法选择的样本的标注结果才会被使用，以此来模拟人工标注的过程。本章实验分为以下两个方面:
+
+(1) 以随机选择方法为基线方法，评价基于流行度的初始样本选择方法在标注相同数量样本的前 下，对初始模型性能提升的效果。
+
+(2) 以随机选择法为基线方法，评价基于不确定度的样本选择方法以及综合不确定度和流行度的样本选择方法对模型训练收敛速度的提升效果。
+
+本文对各种样本选择方法好坏的评价指标为主动学习过程中，由主动学习器选择的训练样本所训练得到的模型在测试集里的性能表现，性能表现体现在测试集上实体链接的正确率，计算方法如公式\ref{eq:sup_al_p}所示。
+
+\begin{equation}\label{eq:sup_al_p}
+\text{准确率}(P)=\frac{\text{测试集中被正确链接的指称项个数}}{\text{测试集中所有指称项个数}}\times 100\%
+\end{equation}
+
+\subsection{模型选择}
+本章使用监督学习模型处理实体链接任务，并将该任务作为分类问题来处理。在常用的机器学习分类器中，SVM模型\cite{li2016linking}是目前分类效果较好的模型，其可以通过核函数（本文使用径向基函数（Radial Base Function, RBF））将非线性可分的输入空间的特征映射到高维线性可分的空间的特征，以此学习非线性可分模型。此外，样本点距离分类超平面的远近可以作为分类置信度的依据，而主动学习过程中，分类置信度恰好是样本选择策略的考虑因素之一。
+
+综上，本文在实验阶段使用 SVM 模型作为监督学习模型的代表，处理实体链接任务并研究主动学习方法在该任务上发挥的作用。
+
+\subsection{初始训练样本选择方法实验}
+为了验证基于指称项流行度的初始训练样本选择方法对提高初始模型性能的效果，在实验环节，分别通过基于随机选择方法(Random)和基于流行度选择方法(SBP)得到初始样本集，对比在不同初始训练样本集大小的情况下，由初始样本集训练得到的初始模型的性能。
+
+实验中，初始样本集大小的设置从 2000 开始，依次以 2000 递增，最大的初始样本集包含 18000 个训练样本。从图\ref{fig:al_sup_init_result}可以看出，在初始样本集较小的时候，基于指称项流行度的样本选择方法比随机样本选择方法在初始模型的性能上有显著的提升，在初始样本集大小为 2000 的时候，性能提升了 10.1\%，在初始样本集大小为 4000 的时候，性能提升了 5.3\%。当初始样本集大小继续增加时，性能提升值逐渐减小，甚至在一些情况下提升值为负。总体来看，当初始样本集较大时，两种初始训练样本选择方法性能差别不大。
+
+\begin{figure}[!htb]
+	\centering\includegraphics[height=8cm]{resource/surpvised_res1}
+	\caption{初始训练样本选择实验结果}
+	\label{fig:al_sup_init_result}
+\end{figure}
+
+该实验表明，在初始样本集较小的时候，由于样本分布的不均匀特性，随机选择的方法很难选择出能代表整个数据集的样本子集。在实际应用中，用于训练初始模型的初始训练样本集通常较小，使用基于指称项流行度的初始样本选择方法，能有效提升初始模型性能，加快模型在后续训练过程的收敛速度。
+
+\subsection{迭代训练样本选择的实验}
+为了验证主动学习方法中不同的样本选择策略对实体链接模型训练的收敛速度的影响，本文在实验环节，对五种不同组合的样本选择策略进行了比较。五种组合如下所示:
+
+(1) Random，初始训练样本和后续迭代训练样本选择都采用随机选择方法，作为基线方法。
+
+(2) Random+Uncertainty，初始训练样本采用随机选择方法，后续迭代训练样本采用基于不确定度的选择方法。
+
+(3) Random+SUP，初始样本采用随机选择方法，后续迭代训练样本采用综合不确定度和流行度的选择方法。
+
+(4) SBP+Uncertainty，初始样本采用基于流行度的选择方法，后续迭代训练样本采用基于不确定度的选择方法。
+
+(5) SBP+SUP，初始样本采用基于流行度的选择方法，后续迭代训练样本采用综合不确定度和流行度的选择方法。
+
+\begin{figure}[!htb]
+	\centering\includegraphics[height=8cm]{resource/surpvised_res2}
+	\caption{迭代训练样本选择实验结果}
+	\label{fig:al_sup_iter_result}
+\end{figure}
+
+从图\ref{fig:al_sup_iter_result}展示的实验结果可以看出，相比随机选择的基线方法，其它四种基于主动学习的样本选择策略对加快模型训练的收敛速度都有显著的提高。证明主动学习方法在实体链接任务中，对减少人工标注样本的工作量确实是有显著效果的。另外，观察曲线走势，综合不确定度和流行度的样本选择方法要优于基于不确定度的样本选择方法，这也验证了基于不确定度的样本选择方法并不能找到最具信息量的样本集，主动学习样本选择过程中需要兼顾不确定度和多样性。
+
+为了量化各种主动学习样本选择策略的表现，采用基于$deficiency$值\cite{schein2007active}的度量方式进行评价，如公式\ref{eq:deficiency}所示。
+
+\begin{equation}\label{eq:deficiency}
+Def_n(AL,REF)=\frac{\sum_{t=1}^{n}(acc_n(REF)-acc_t(AL))}{\sum_{t=1}^{n}(acc_n(REF)-acc_t(REF))} \\
+\end{equation}
+
+其中，$acc_n(REF)$和$acc_n(AL)$分别表示第$t$轮迭代训练基线方法和主动学习方法训练的模型在测试集上的准确率。主动学习器性能越好，等式分母中$acc_t (AL)$值越大，则等式计算值越小。因此，$Def_n(AL,REF)$越小，主动学习效果越好。
+
+\begin{table}[!htb]
+	\caption{主动学习策略结果评价\label{tab:supervised_result2}}
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Random & Random+Uncertainty & Random+SUP & SBP+Uncertainty & SBP+SUP\\
+		\hline
+		1.000 & 0.552 & 0.369 & 0.274 & \textbf{0.190}\\ 
+		\hline
+	\end{tabular}
+\end{table}
+
+表\ref{tab:supervised_result2}是对主动学习效果的定量分析，无论基于随机的初始样本选择还是基于流行度的初始样本选择，在后续迭代训练中采用基于不确定度和流行度的样本选择算法都能比基于不确定度的样本选择算法得到更快的训练收敛速度。并且采用基于流行度的初始训练样本选择配合综合不确定度和流行度的迭代训练样本选择的策略，$deficiency$值是最低的，性能表现最优。
+
+\section{本章小结}
+本章针对实体链接问题，基于主动学习方法，研究了减小人工标注工作量的方法。并且在已有主动学习方法的基础上，针对实体链接任务提出了基于流行度的初始样本选择算法、综合不确定度和流行度的迭代训练样本选择算法。实验结果表明，主动学习方法可以有效地降低实体链接训练集的标注数据，并保持较高的泛化能力。在初始样本集生成阶段，本文提出的选择算法相比随机选择的基线算法初始分类器性能 升了 10.1\%。在主动学习迭代训练阶段，本文 提出的选择算法相比基于不确定度的选择算法$deficiency$值降低了 16.1\%。

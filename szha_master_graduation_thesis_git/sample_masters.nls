@@ -1,0 +1,17 @@
+\begin{thenomenclature} 
+
+ \nomgroup{A}
+
+  \item [{AL}]\begingroup Active Learning\nomeqref {1.0}\nompageref{3}
+  \item [{EL}]\begingroup Entity Linking\nomeqref {1.0}\nompageref{3}
+  \item [{EP}]\begingroup Evidence Propagation\nomeqref {1.0}
+		\nompageref{3}
+  \item [{NER}]\begingroup Named Entity Recognition\nomeqref {1.0}
+		\nompageref{3}
+  \item [{RW}]\begingroup Random Walk\nomeqref {1.0}\nompageref{3}
+  \item [{SBP}]\begingroup Sampling by Popularity\nomeqref {1.0}
+		\nompageref{3}
+  \item [{SUP}]\begingroup Sampling by Uncertainty and Popularity\nomeqref {1.0}
+		\nompageref{3}
+
+\end{thenomenclature}

@@ -1,0 +1,7 @@
+\nomenclatureentry{aEL@[{EL}]\begingroup Entity Linking\nomeqref {1.0}|nompageref}{3}
+\nomenclatureentry{aNER@[{NER}]\begingroup Named Entity Recognition\nomeqref {1.0}|nompageref}{3}
+\nomenclatureentry{aAL@[{AL}]\begingroup Active Learning\nomeqref {1.0}|nompageref}{3}
+\nomenclatureentry{aSBP@[{SBP}]\begingroup Sampling by Popularity\nomeqref {1.0}|nompageref}{3}
+\nomenclatureentry{aSUP@[{SUP}]\begingroup Sampling by Uncertainty and Popularity\nomeqref {1.0}|nompageref}{3}
+\nomenclatureentry{aRW@[{RW}]\begingroup Random Walk\nomeqref {1.0}|nompageref}{3}
+\nomenclatureentry{aEP@[{EP}]\begingroup Evidence Propagation\nomeqref {1.0}|nompageref}{3}
