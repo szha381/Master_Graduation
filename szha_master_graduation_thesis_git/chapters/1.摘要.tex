@@ -1,13 +1,11 @@
-\begin{abstract}{实体链接，主动学习，语料构建}
-	实体链接是将文本中包含的命名实体指称链接到知识库对应实体条目的任务。经过近十年的发展，监督学习方法和无监督学习方法都在实体链接任务中得到了广泛的应用。然而，关于如何快速训练实体链接模型和构建高质量实体链接语料库的工作相对较少。主动学习能够根据学习进程，选择最佳样本交由人工标注，在减少训练样本数量的同时，保持或提高模型性能。因此本文主要研究基于主动学习的实体链接方法。
+\begin{abstract}{地理高考，知识库问答，双向长短期记忆网络，注意力机制}
+	在人工智能领域，自动解答高考题是一项很具挑战性的任务。与一般事实性问答的问题不同，高考题带有很强的选拔性。其问题考察形式多变，其答案求解往往不能一步得到，通常需要做进一步的知识推理。在辅助解答高考地理题时，目前面临两个问题：第一是缺乏高度结构化的地理核心知识库。高考地理题的考点专业性很强，考点知识大都来自地理教科书章节知识，然而地理教科书是以文本文档的形式存在，无法准确表示出地理知识点之间的语义层次关系，因而也不适合当作计算机解答高考地理题的核心知识库。第二是地理问题表达形式多样，导致问题理解困难。地理问题中往往包含大量的无效信息，这些信息极易淹没问题核心考点信息，因而很难从大量干扰信息中精准地找出问题考点。针对以上问题，本文作了如下工作：
 	
-	本文分析了实体链接任务的特点，基于主动学习，对实体链接任务中模型训练和语料构建的方法做了相关研究，主要工作包括：
+	（1）为解决高度结构化的地理核心知识库缺乏问题，本文构建了中文地理本体(Chinese Geographic Ontology, CGeoOnt)知识库(Knowledge Base, KB)。该本体知识库以人教版高中地理教科书为知识源，使用万维网本体语言(Web Ontology Language, OWL)为知识表示语言，以课本章节为知识体系，人工总结其核心地理概念、地理关系、地理考点，并将其表示为本体形式。同时，本文将构建的CGeoOnt与本体知识库Clinga进行本体融合，得到一个更大规模的中文地理本体知识库。
 	
-	（1）针对基于监督学习的实体链接模型，本文通过主动学习减少人工标注样本的数量，并提出基于流行度的初始样本选择方法以及基于综合不确定度和流行度的迭代训练样本选择方法。在初始训练样本选择阶段，保证了初始训练样本的代表性。在后续迭代训练阶段，兼顾了被选择样本的不确定度和代表性。
+	（2）为解决地理问题问法多样导致其难以理解问题，本文使用基于神经注意力机制的知识库问答模型。该模型以双向长短期记忆网络为基础问答模型，结合注意力机制对答案进行表示，答案中每个词的向量生成，均结合其对问题各词的注意力权重分配，使答案可以更好的对齐问题中关键信息，减弱无效信息的干扰，因此更易区分正确答案和错误答案。实验表明，该问答模型对于辅助解答地理高考题具有很好的应用价值。
 	
-	（2）针对基于无监督学习的实体链接银标准语料构建任务，为提高标注质量，本文提出了基于主动学习和无监督学习的样本标注方法。该方法能够选择未标注样本中信息量较大的若干样本交由人工标注，已标注指称项通过证据传播提高语料整体的标注正确率。
-	
-	实验表明，使用基于流行度的初始样本选择方法以及基于综合不确定度和流行度的迭代训练样本选择方法对加快实体链接模型训练的收敛速度有显著的效果；使用基于主动学习和无监督学习的样本标注方法在标注较少指称项的前提下可以有效提升银标准语料的标注正确率。
+	（3）为解决中文地理问答模型在训练和测试中数据集缺失问题，本文从互联网收集了一个问法多样的中文地理问题集。本文使用百度问题推荐以及百度搜索API，以本体知识库高频核心知识三元组为数据源，依次访问到二十万个Web地理问题，然后半自动加人工挑选出其中的有效问题，形成最终数据集。
 \end{abstract}
 \begin{englishabstract}{Entity Linking, Active Learning, Corpus Construction}
 	Entity linking is the task of determining the identity of entities mentioned in text. Supervised learning approaches and unsupervised learning approaches have been widely used in entity linking task in the past decade. However, only a few studies have been reported on accelerating model training and improving corpus construction. Active learning can contribute to interactively obtain optimum samples and provide them for annotators to conduct manual annotation according to the learning process. Meanwhile, it can reduce the quantity of the training samples as well as keep or improve model performance.
@@ -16,7 +14,7 @@
 	
 	The main contributions of this thesis include two aspects as follow:
 	
-	(1) In consideration of supervised learning model of entity linking, this thesis reduces human annotating effort by using active learning, and proposes two approaches. One is an initial sample selection approach based on popularity, as known as sampling by popularity (SBP) . The other is an iterative training sample selection approach based on comprehensive uncertainty and popularity, as known as sampling by uncertainty and popularity (SUP) . This way ensures representative of initial training sample in the initial sample selection stage and considers both uncertainty and representative of selected samples in the following stage of iterative sample training.
+	(1) In consideration of supervised learning model of entity linking, this thesis reduces human annotating effort by using active learning, and proposes two approaches. One is an initial sample selection approach based on popularity, as known as sampling by popularity (SBP). The other is an iterative training sample selection approach based on comprehensive uncertainty and popularity, as known as sampling by uncertainty and popularity (SUP) . This way ensures representative of initial training sample in the initial sample selection stage and considers both uncertainty and representative of selected samples in the following stage of iterative sample training.
 	
 	(2) To construct entity linking corpus, this thesis proposes an annotating approach based on active learning and unsupervised learning for improving annotation quality. In this way, the most informative samples of unlabeled mentions can be found for annotators to annotate while the precision rate of the whole corpus can be improved by propagating the evidence of labeled mentions.
 	
