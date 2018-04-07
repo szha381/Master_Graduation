@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  2 APR 2018 22:58
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  7 APR 2018 22:42
 entering extended mode
 **./sample_masters.tex
 (sample_masters.tex
@@ -2165,6 +2165,8 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 ]
 (chapters/2.绪论.tex
 第一章
+File: resource/ex_multi_choice_ques.pdf Graphic file (type pdf)
+<use resource/ex_multi_choice_ques.pdf>
 [1
 
 
@@ -2289,10 +2291,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 78.
  ) 
 Here is how much of TeX's memory you used:
- 31752 strings out of 427836
- 612921 string characters out of 3151724
- 678575 words of memory out of 3000000
- 35334 multiletter control sequences out of 15000+200000
+ 31820 strings out of 427836
+ 617278 string characters out of 3151724
+ 678618 words of memory out of 3000000
+ 35401 multiletter control sequences out of 15000+200000
  549987 words of font info for 145 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  63i,18n,70p,10476b,660s stack positions out of 5000i,500n,10000p,200000b,50000s
