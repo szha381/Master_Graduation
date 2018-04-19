@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  19 APR 2018 00:24
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  19 APR 2018 23:30
 entering extended mode
 **./sample_masters.tex
 (sample_masters.tex
@@ -1698,7 +1698,11 @@ Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
 \multirow@dima=\skip118
 \bigstrutjot=\dimen263
 )
-(sample_masters.aux)
+(sample_masters.aux
+
+LaTeX Warning: Label `fig:graduation' multiply defined.
+
+)
 \openout1 = `sample_masters.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
@@ -1727,7 +1731,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
- ABD: EverySelectfont initializing macros
+
+ABD: EverySelectfont initializing macros
 LaTeX Info: Redefining \selectfont on input line 4.
 .................................................
 . fontspec info: "setup-math"
@@ -2184,43 +2189,44 @@ imesNewRoman(0)/m/n/12.045 (Datatype-
 [5] [6] [7]
 File: resource/onto_method_compare.pdf Graphic file (type pdf)
 <use resource/onto_method_compare.pdf>
- [8] [9] [10]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11]
+ [8] [9] [10] [11]
 File: resource/el_example.pdf Graphic file (type pdf)
 <use resource/el_example.pdf>
-
-[12] [13] [14] [15] [16] [17] [18] [19] [20]) (chapters/4.监督学习_主动学习.tex
-[21]
+ [12] [13] [14] [15] [16] [17] [18] [19] [20])
+(chapters/4.监督学习_主动学习.tex [21]
 第三章
+File: resource/graduation.pdf Graphic file (type pdf)
+<use resource/graduation.pdf>
 [22
 
 ] [23]
+File: resource/graduation.pdf Graphic file (type pdf)
+<use resource/graduation.pdf>
+ [24]
 File: resource/al_overview.pdf Graphic file (type pdf)
 <use resource/al_overview.pdf>
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 87.
- [24] [25] [26] [27] [28] [29]
+put line 111.
+ [25] [26] [27] [28] [29] [30]
 File: resource/surpvised_res1.pdf Graphic file (type pdf)
 <use resource/surpvised_res1.pdf>
- [30]
+ [31]
 File: resource/surpvised_res2.pdf Graphic file (type pdf)
 <use resource/surpvised_res2.pdf>
- [31]) (chapters/5.无监督学习_主动学习.tex
-[32]
+ [32])
+(chapters/5.无监督学习_主动学习.tex [33]
 第四章
 File: resource/jordan_abst.jpeg Graphic file (type bmp)
 <resource/jordan_abst.jpeg>
-[33
+[34
 
-] [34]
+] [35]
 File: resource/EL_Graph.pdf Graphic file (type pdf)
 <use resource/EL_Graph.pdf>
- [35] [36] [37] [38] [39] [40]
+ [36] [37] [38] [39] [40] [41]
 File: resource/EL_Graph_modify.pdf Graphic file (type pdf)
 <use resource/EL_Graph_modify.pdf>
- [41] [42]
+ [42] [43]
 File: resource/anno_result.pdf Graphic file (type pdf)
 <use resource/anno_result.pdf>
 
@@ -2228,11 +2234,11 @@ Overfull \hbox (1.667pt too wide) in paragraph at lines 426--427
  [][] 
  []
 
-[43]) (chapters/6.总结与展望.tex [44]
+[44]) (chapters/6.总结与展望.tex [45]
 第五章
-[45
+[46
 
-]) [46] [47
+]) [47] [48
 
 
 ] (sample_masters.bbl
@@ -2277,7 +2283,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--25
  [][] []
  []
 
-[48
+[49
 
 
 ]
@@ -2286,14 +2292,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 110--115
 o Sierra, Rivera, Rafael
  []
 
-[49] [50] [51]) [52] [53
+[50] [51] [52]) [53] [54
 
 
 ]
 File: figures/back-cover.png Graphic file (type bmp)
 <figures/back-cover.png>
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 78.
- [54
+ [55
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 78.
@@ -2304,15 +2310,18 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 78.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 78.
  ) 
 Here is how much of TeX's memory you used:
- 31925 strings out of 427836
- 624027 string characters out of 3151724
- 678465 words of memory out of 3000000
- 35505 multiletter control sequences out of 15000+200000
+ 31969 strings out of 427836
+ 626786 string characters out of 3151724
+ 679469 words of memory out of 3000000
+ 35548 multiletter control sequences out of 15000+200000
  549987 words of font info for 145 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  63i,18n,70p,10476b,660s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on sample_masters.pdf (68 pages).
+Output written on sample_masters.pdf (69 pages).

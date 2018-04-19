@@ -19,7 +19,7 @@
 \contentsline {section}{\numberline {2.5}实体链接任务}{12}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}任务描述}{12}{subsection.2.5.1}
 \contentsline {subsection}{\numberline {2.5.2}候选实体生成}{13}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}候选实体排序}{14}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.3}候选实体排序}{15}{subsection.2.5.3}
 \contentsline {subsubsection}{\numberline {2.5.3.1}二分类法}{15}{subsubsection.2.5.3.1}
 \contentsline {subsubsection}{\numberline {2.5.3.2}排序学习法}{15}{subsubsection.2.5.3.2}
 \contentsline {subsubsection}{\numberline {2.5.3.3}基于图的协同推断}{17}{subsubsection.2.5.3.3}
@@ -30,48 +30,48 @@
 \contentsline {subsection}{\numberline {2.6.3}主动学习在其它机器学习任务中的应用}{21}{subsection.2.6.3}
 \contentsline {subsection}{\numberline {2.6.4}已有方法和本文工作的联系与区别}{21}{subsection.2.6.4}
 \contentsline {section}{\numberline {2.7}本章小结}{21}{section.2.7}
-\contentsline {chapter}{\numberline {第三章\hspace {.3em}}基于主动学习的实体链接模型训练}{22}{chapter.3}
-\contentsline {section}{\numberline {3.1}基于监督学习的实体链接方法}{22}{section.3.1}
+\contentsline {chapter}{\numberline {第三章\hspace {.3em}}基于本体的地理知识问答}{22}{chapter.3}
+\contentsline {section}{\numberline {3.1}论文任务}{22}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}实体链接特征}{22}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}目标实体预测}{23}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}实体链接的主动学习算法}{24}{section.3.2}
-\contentsline {section}{\numberline {3.3}改进的初始训练样本选择方法}{25}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}初始训练样本选择方法}{25}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}初始训练样本选择算法}{26}{subsection.3.3.2}
-\contentsline {section}{\numberline {3.4}改进的迭代训练样本选择方法}{26}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}迭代训练样本选择方法}{26}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}综合不确定度和流行度的样本选择算法}{27}{subsection.3.4.2}
-\contentsline {section}{\numberline {3.5}实验结果与分析}{28}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}实验环境}{28}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}实验数据集}{29}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}评价指标}{29}{subsection.3.5.3}
-\contentsline {subsection}{\numberline {3.5.4}模型选择}{30}{subsection.3.5.4}
-\contentsline {subsection}{\numberline {3.5.5}初始训练样本选择方法实验}{30}{subsection.3.5.5}
-\contentsline {subsection}{\numberline {3.5.6}迭代训练样本选择的实验}{30}{subsection.3.5.6}
-\contentsline {section}{\numberline {3.6}本章小结}{32}{section.3.6}
-\contentsline {chapter}{\numberline {第四章\hspace {.3em}}基于主动学习的实体链接语料构建}{33}{chapter.4}
-\contentsline {section}{\numberline {4.1}基于图的协同推断}{33}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}实体-实体相似度}{33}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}指称项-实体相似度}{34}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}构建协同推断图}{35}{subsection.4.1.3}
-\contentsline {subsection}{\numberline {4.1.4}协同推断方法}{36}{subsection.4.1.4}
-\contentsline {section}{\numberline {4.2}银标准语料构建方法}{38}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}待标注指称项选择方法}{38}{subsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.1.1}顺序指称项选择法}{38}{subsubsection.4.2.1.1}
-\contentsline {subsubsection}{\numberline {4.2.1.2}最大不确定度的指称项选择法}{38}{subsubsection.4.2.1.2}
-\contentsline {subsubsection}{\numberline {4.2.1.3}基于同名指称项的最大标注回报选择法}{39}{subsubsection.4.2.1.3}
-\contentsline {subsubsection}{\numberline {4.2.1.4}基于相似指称项的最大标注回报选择法}{40}{subsubsection.4.2.1.4}
-\contentsline {subsection}{\numberline {4.2.2}已标注指称项证据传播方法}{40}{subsection.4.2.2}
-\contentsline {subsubsection}{\numberline {4.2.2.1}图的迭代推断}{41}{subsubsection.4.2.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2.2}标注证据传播}{42}{subsubsection.4.2.2.2}
-\contentsline {section}{\numberline {4.3}实验结果与分析}{42}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}实验环境}{42}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}实验数据集}{42}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}实验设置}{43}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}实验结果与分析}{43}{subsection.4.3.4}
-\contentsline {section}{\numberline {4.4}本章小结}{44}{section.4.4}
-\contentsline {chapter}{\numberline {第五章\hspace {.3em}}总结与展望}{45}{chapter.5}
-\contentsline {section}{\numberline {5.1}总结}{45}{section.5.1}
-\contentsline {section}{\numberline {5.2}未来展望}{45}{section.5.2}
-\contentsline {chapter}{致 谢}{47}{section*.23}
-\contentsline {chapter}{参考文献}{48}{section*.25}
+\contentsline {subsection}{\numberline {3.1.2}目标实体预测}{24}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}实体链接的主动学习算法}{25}{section.3.2}
+\contentsline {section}{\numberline {3.3}改进的初始训练样本选择方法}{26}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}初始训练样本选择方法}{26}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}初始训练样本选择算法}{27}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}改进的迭代训练样本选择方法}{28}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}迭代训练样本选择方法}{28}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}综合不确定度和流行度的样本选择算法}{29}{subsection.3.4.2}
+\contentsline {section}{\numberline {3.5}实验结果与分析}{29}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}实验环境}{29}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}实验数据集}{30}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}评价指标}{30}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}模型选择}{31}{subsection.3.5.4}
+\contentsline {subsection}{\numberline {3.5.5}初始训练样本选择方法实验}{31}{subsection.3.5.5}
+\contentsline {subsection}{\numberline {3.5.6}迭代训练样本选择的实验}{31}{subsection.3.5.6}
+\contentsline {section}{\numberline {3.6}本章小结}{33}{section.3.6}
+\contentsline {chapter}{\numberline {第四章\hspace {.3em}}基于主动学习的实体链接语料构建}{34}{chapter.4}
+\contentsline {section}{\numberline {4.1}基于图的协同推断}{34}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}实体-实体相似度}{34}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}指称项-实体相似度}{35}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}构建协同推断图}{36}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}协同推断方法}{37}{subsection.4.1.4}
+\contentsline {section}{\numberline {4.2}银标准语料构建方法}{39}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}待标注指称项选择方法}{39}{subsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.1.1}顺序指称项选择法}{39}{subsubsection.4.2.1.1}
+\contentsline {subsubsection}{\numberline {4.2.1.2}最大不确定度的指称项选择法}{39}{subsubsection.4.2.1.2}
+\contentsline {subsubsection}{\numberline {4.2.1.3}基于同名指称项的最大标注回报选择法}{40}{subsubsection.4.2.1.3}
+\contentsline {subsubsection}{\numberline {4.2.1.4}基于相似指称项的最大标注回报选择法}{41}{subsubsection.4.2.1.4}
+\contentsline {subsection}{\numberline {4.2.2}已标注指称项证据传播方法}{41}{subsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.2.1}图的迭代推断}{42}{subsubsection.4.2.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2.2}标注证据传播}{43}{subsubsection.4.2.2.2}
+\contentsline {section}{\numberline {4.3}实验结果与分析}{43}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}实验环境}{43}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}实验数据集}{43}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}实验设置}{44}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}实验结果与分析}{44}{subsection.4.3.4}
+\contentsline {section}{\numberline {4.4}本章小结}{45}{section.4.4}
+\contentsline {chapter}{\numberline {第五章\hspace {.3em}}总结与展望}{46}{chapter.5}
+\contentsline {section}{\numberline {5.1}总结}{46}{section.5.1}
+\contentsline {section}{\numberline {5.2}未来展望}{46}{section.5.2}
+\contentsline {chapter}{致 谢}{48}{section*.25}
+\contentsline {chapter}{参考文献}{49}{section*.27}
