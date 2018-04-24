@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  23 APR 2018 23:00
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  24 APR 2018 22:51
 entering extended mode
 **./sample_masters.tex
 (sample_masters.tex
@@ -2195,35 +2195,89 @@ File: resource/el_example.pdf Graphic file (type pdf)
 ]
 File: resource/graduation.pdf Graphic file (type pdf)
 <use resource/graduation.pdf>
- [23] [24] [25] [26]
+ [23] [24] [25]
+Overfull \hbox (7.26993pt too wide) in paragraph at lines 109--110
+[]\TU/SimSun(1)/m/n/12.045 类 的 构 建 需 要 声 明 其 类 型 是 \TU/TimesNewRoman(0)/m/n/12.
+045 OWL \TU/SimSun(1)/m/n/12.045 中 的 类，|  并 且 需 要 定 义 其 唯 一 的 名 称 \TU/TimesNewR
+oman(0)/m/n/12.045 skos:prefLabel\TU/SimSun(1)/m/n/12.045 ，|
+ []
+
+Missing character: There is no ̈ in font cmmi12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--125
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--145
+
+ []
+
+[26]
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--198
+
+ []
+
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 213--215
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--242
+
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 251--253
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 264--266
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 282--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 285--288
+
+ []
+
+[29] [30]
 File: resource/al_overview.pdf Graphic file (type pdf)
 <use resource/al_overview.pdf>
- [27]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 187.
- [28]
-Underfull \vbox (badness 2460) has occurred while \output is active []
-
- [29]
-[30] [31] [32] [33]
+put line 372.
+ [31] [32] [33] [34] [35] [36] [37]
 File: resource/surpvised_res1.pdf Graphic file (type pdf)
 <use resource/surpvised_res1.pdf>
- [34]
+ [38]
 File: resource/surpvised_res2.pdf Graphic file (type pdf)
 <use resource/surpvised_res2.pdf>
- [35]) (chapters/5.无监督学习_主动学习.tex [36]
+ [39])
+(chapters/5.无监督学习_主动学习.tex [40]
 第四章
 File: resource/jordan_abst.jpeg Graphic file (type bmp)
 <resource/jordan_abst.jpeg>
-[37
+[41
 
-] [38]
+] [42]
 File: resource/EL_Graph.pdf Graphic file (type pdf)
 <use resource/EL_Graph.pdf>
- [39] [40] [41] [42] [43] [44]
+ [43] [44] [45] [46] [47] [48]
 File: resource/EL_Graph_modify.pdf Graphic file (type pdf)
 <use resource/EL_Graph_modify.pdf>
- [45] [46]
+ [49] [50]
 File: resource/anno_result.pdf Graphic file (type pdf)
 <use resource/anno_result.pdf>
 
@@ -2231,11 +2285,11 @@ Overfull \hbox (1.667pt too wide) in paragraph at lines 426--427
  [][] 
  []
 
-[47]) (chapters/6.总结与展望.tex [48]
+[51]) (chapters/6.总结与展望.tex [52]
 第五章
-[49
+[53
 
-]) [50] [51
+]) [54] [55
 
 
 ] (sample_masters.bbl
@@ -2280,7 +2334,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--25
  [][] []
  []
 
-[52
+[56
 
 
 ]
@@ -2289,14 +2343,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 110--115
 o Sierra, Rivera, Rafael
  []
 
-[53] [54] [55]) [56] [57
+[57] [58] [59]) [60] [61
 
 
 ]
 File: figures/back-cover.png Graphic file (type bmp)
 <figures/back-cover.png>
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 78.
- [58
+ [62
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 78.
@@ -2310,12 +2364,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 78.
  ) 
 Here is how much of TeX's memory you used:
- 32016 strings out of 427836
- 629851 string characters out of 3151724
+ 32029 strings out of 427836
+ 630728 string characters out of 3151724
  678854 words of memory out of 3000000
- 35595 multiletter control sequences out of 15000+200000
+ 35608 multiletter control sequences out of 15000+200000
  549987 words of font info for 145 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  63i,18n,70p,10476b,662s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on sample_masters.pdf (72 pages).
+Output written on sample_masters.pdf (76 pages).

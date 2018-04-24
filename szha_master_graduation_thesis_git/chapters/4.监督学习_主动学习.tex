@@ -102,6 +102,191 @@
 \end{itemize}
 
 \subsubsection{地理本体基本元素定义}
+本文地理本体构建遵循自下而上的原则，按照书本知识的组织顺序构建本体，不一次性的定义其领域所有术语，而采取根据每章、每节中的考点知识构建，考点知识的确定参照10年的北京市地理高考题以及书中重点强调的考点。下面分别介绍类、属性、个体和本文特殊地理元素的具体构建。
+
+（1）类的构建
+
+类的构建需要声明其类型是OWL中的类，并且需要定义其唯一的名称skos:prefLabel，而且该类若有别名则需定义别名skos:altLabel，该类的父类(\text{subClassOf})若有则需要定义出。类相关的定义或者评论可以通过skos:definition和skos:comment定义出，并且若该类所对应的课文章节主题和知识点为重要考点，也应该定义出。如下举例为本文对概念类“天体”的三元组知识表示，知识三元组中的主语、谓语、宾语之间以空格表示：
+
+gso:C\_行星\quad rdf:type\quad owl:Class\quad .
+
+gso:C\_行星\quad skos:prefLabel\quad "行星"$^{\land\land}$xs:string\quad .
+
+gso:C\_行星\quad rdfs:subClassOf\quad gso:C\_天体\quad .
+
+gso:C\_行星\quad skos:definition\quad "在椭圆轨道上，环绕恒星运行、近似球状的天体，其质量比恒呈小，本身是不发光的\"$^{\land\land}$xs:string\quad .
+
+gso:C\_行星\quad gsb:relatedToKPoint\quad gsb:M\_太阳对地球的影响\quad .
+
+gso:C\_行星\quad gsb:relatedToKPoint\quad gsb:M\_宇宙中的地球\quad .
+
+gso:C\_行星\quad gsb:relatedToTopic\quad gsb:M\_行星地球 .
+\\
+
+（2）属性的构建 
+
+本文的属性包括普通的属性和本文特殊定义的属性，此节只讲述普通属性的构建，特殊定义的属性到第四节“地理特殊定义元素”介绍。本文普通属性的构建前提得明确区分对象属性owl:ObjectProperty和数据类型属性owl:DatatypeProperty，属性的性质（如对称性、传递性等）需要定义出来，便于根据属性进行相关推理。同时，对于对象属性，本文需描述属性的定义域rdfs:domain和值域rdfs:range，不好区分情形下使用总类owl:Thing描述；对于数据类型属性，数据类型的单位必须定义，如下分别为对象属性“垂直”和数据属性“宽度值”的表示：
+
+对象属性：垂直
+
+gso:P\_o\_垂直\quad rdf:type\quad owl:ObjectProperty\quad .（对象属性）
+
+gso:P\_o\_垂直\quad skos:prefLabel\quad "垂直"$^{\land\land}$xs:string\quad .（属性名称）
+
+gso:P\_o\_垂直\quad rdfs:domain\quad owl:Thing\quad .\quad （定义域为所有对象）
+
+gso:P\_o\_垂直\quad rdfs:range\quad owl:Thing\quad .\quad （值域为所有对象）
+
+gso:P\_o\_垂直\quad a\quad owl:SymmetricProperty\quad .\quad \quad （对称性）
+
+gsr:R\_水平气压梯度力\quad gso:P\_o\_垂直\quad gsr:R\_等压线\quad .（属性连接的两个对象）
+
+gso:P\_o\_垂直\quad gsb:relatedToKPoint\quad gsb:M\_大气的水平运动-风\quad .（属性涉及到的考点知识）\\
+
+数据属性：宽度值
+
+gso:P\_d\_宽度值\quad rdf:type\quad owl:DatatypeProperty\quad .（数据属性）
+
+gso:P\_d\_宽度值\quad skos:prefLabel\quad "宽度值"$^{\land\land}$xs:string\quad .（属性名称）
+
+gso:P\_d\_宽度值\quad gso:physicalQuantity\quad "宽度"$^{\land\land}$xs:string\quad .（属性单位名称）
+
+gso:P\_d\_宽度值\quad gso:unit\quad "米"$^{\land\land}$xs:string\quad .（属性单位类型）
+
+gso:P\_d\_宽度值\quad rdfs:domain\quad owl:Thing\quad .（定义域为所有对象）
+
+gso:P\_d\_宽度值\quad rdfs:range\quad xs:double\quad .（值域为双精度数值）
+
+gso:P\_d\_宽度值\quad rdfs:comment\quad "描述某物a的宽度为某个值"$^{\land\land}$xs:string\quad .（属性的一般性评论）
+
+gsr:R\_南极附近海上最大的冰山\quad gso:P\_d\_宽度值\quad \quad "97000.0"$^{\land\land}$xs:double\quad .（属性描述的个体知识）
+
+gso:P\_d\_宽度值\quad gsb:relatedToKPoint\quad gsb:M\_水资源与人类社会\quad .（属性相关的知识考点）
+
+gso:P\_d\_宽度值\quad gsb:relatedToTopic\quad gsb:M\_水资源的合理利用\quad .（属性相关的知识考点章节）  \\
+
+（3）个体的构建
+
+个体的构建只包含标注章节中包含高考地理考点的专业术语，其它非考点术语忽略不予标注。本文个体构建遵循最重要的一个原则就是每个个体必须申明其类别，而且其类别允许为多个，这一点也符合现实世界的表示。如下为术语个体“地球”的知识表示：
+
+gsr:R\_地球\quad skos:prefLabel\quad "地球"$^{\land\land}$xs:string\quad .\quad （个体名称）
+
+gsr:R\_地球\quad rdf:type\quad gso:C\_行星\quad .（个体的类别，此处地球有三个标签类别）
+
+gsr:R\_地球\quad rdf:type\quad gso:C\_物体\quad .（个体的类别）
+
+gsr:R\_地球\quad rdf:type\quad gso:Location\quad .（个体的类别）
+
+gsr:R\_地球\quad gso:P\_d\_性质\quad "适合生物生存的大气条件"$^{\land\land}$xs:string\quad .（个体数据-字符串属性,描述的事实是：地球拥有适合生物生存的大气条件的性质）
+
+gsr:R\_地球\quad gso:P\_d\_轨道偏心率\quad "0"$^{\land\land}$xs:string\quad .（个体数据-字符串属性）
+
+gsr:R\_地球\quad gso:P\_d\_计时方法\quad "分区计时"$^{\land\land}$xs:string\quad .（个体数据-字符串属性）
+
+gsr:R\_地球\quad gso:P\_d\_时区数量\quad "24"$^{\land\land}$xs:integer\quad .（个体数据-整型属性）
+
+gsr:R\_地球\quad gso:P\_d\_平均密度\quad "5"$^{\land\land}$xs:string\quad .（个体数据-字符串属性）
+
+gsr:R\_地球\quad gso:P\_o\_公转对象\quad gsr:R\_太阳\quad .（个体的对象属性）
+
+gsr:R\_地球\quad gso:P\_o\_天然卫星\quad gsr:R\_月球\quad .（个体的对象属性）
+
+gsr:R\_地球\quad gso:P\_o\_拥有\quad gsr:R\_液态水\quad .（个体的对象属性）
+
+gsr:R\_地球\quad gso:P\_o\_南部\quad gsr:R\_南半球\quad .（个体的对象属性）
+\\
+
+（4）地理本体特色元素
+
+$\P$静态属性
+		
+静态属性，本文前缀表示为gss，是为增强地理知识的表达能力而设定的，需与普通属性gso相区别。静态属性严格上并不满足OWL的属性规范，因为OWL的属性连接的可以是两个个体或者一个个体一个数据类型数据，而本文的静态属性描述的是类的属性特征。静态属性重要的特性是静态属性所描述的类所包含的所有个体均具有该静态属性特征，这一点类似于个体继承类的特征。由于静态属性是对一类个体的描述，本文可以允许其不申明定义域rdfs:domain和值域rdfs:range，但是该静态属性仍然区分是对象属性owl:ObjectProperty还是数据类型属性owl:DatatypeProperty，如下对类“暖流”定义了一个静态属性“作用”。
+
+gss:P\_d\_作用\quad rdf:type \quad owl:DatatypeProperty\quad .（gss申明静态数据类型属性）
+
+gso:C\_暖流\quad gss:P\_d\_作用\quad "对沿岸气候增温增湿"$^{\land\land}$xs:string\quad .
+
+gsr:R\_北大西洋暖流\quad rdf:type\quad gso:C\_暖流.（申明暖流的个体-北大西洋暖流）
+\\
+则表明：北大西洋暖流同样具有暖流的静态属性特性，也即：
+
+gsr:R\_北大西洋暖流\quad gso:P\_d\_作用\quad "对沿岸气候增温增湿"$^{\land\land}$xs:string\quad .
+	\\
+	
+$\P$封闭集
+
+封闭集用符号gso:isClosed表示，包括类和属性的封闭集。类的封闭集表示某个类的实例可以全部列举出，属性的封闭集表示某个个体在该属性上取值是封闭的，即包含有限的取值且可以穷举出来。
+
+	$\bullet$类封闭集知识举例：地球的极点包括南极点、北极点
+
+gsr:R\_北极点\quad a\quad gso:C\_地球极点\quad .
+
+gsr:R\_南极点\quad a\quad gso:C\_地球极点\quad .
+
+gso:C\_地球极点\quad gso:isClosed\quad "true"$^{\land\land}$xs:boolean\quad .
+
+地球极点类在封闭集gso:isClosed属性上取值为true，说明地球极点的取值实例个体已经完整了，只有南极点和北极点。
+
+$\bullet$属性封闭集知识举例：太阳大气层由里到外可分为光球、色球、日冕三层。
+
+gsr:R\_太阳大气层\quad gso:P\_o\_包含\quad gsr:R\_光球\quad ;
+
+gsr:R\_太阳大气层\quad gso:P\_o\_包含\quad gsr:R\_色球\quad ;
+
+gsr:R\_太阳大气层\quad gso:P\_o\_包含\quad gsr:R\_日冕\quad .
+
+gso:P\_o\_包含\quad gso:isClosedAt\quad gsr:R\_太阳大气层\quad.
+
+该知识表示“包含”属性在个体“太阳大气层”上处于封闭状态，说明太阳大气层只包括光球、色球和日冕三层。
+	\\
+
+$\P$地理数值类型
+
+常见的数值类型属性的取值都较为明确，如使用整型xs:integer，双精度浮点型xs:double来表示。然而，在地理学科中，大多数出现的数值都不是精确值，往往是某种程度上的近似值。下面介绍本文几种类型的近似值处理介绍：
+
+$\bullet$约取值
+
+约取值的主要描述特征为“某某约为多少”，此种情况本文视作精确值处理，如知识：太阳表面的温度大约为6000K，直接取6000K作为温度数值,表示如下：
+
+gsr:R\_太阳\quad gso:P\_d\_表面温度\quad "6000"$^{\land\land}$xs:decimal .
+\\
+
+$\bullet$表示“几”
+
+对于地理知识源中包含“几”的数值描述，本文使用两种方法进行标注，第一种是查阅相关的权威资料，了解其具体的值；第二种是在无法通过其它辅助资料查询到相关精确数值时，使用1~9加上单位的范围值表示。如下两种举例：
+
+地理知识：色球厚度约为几千千米，实际上通过查阅维基百科可以发现，“色球厚度大约是2,000公里”，因此可以表示如下：
+
+gsr:R\_色球\quad gso:P\_d\_厚度\quad “2e6”$^{\land\land}$xs:double\quad .
+
+如果无法查阅其他资料得到准确值，则采取范围区间值来表示，如下：
+
+gsr:R\_色球\quad gso:P\_d\_厚度\quad "(1e6, 9e6)"$^{\land\land}$\quad xs:impreciseInterval\quad .
+\\
+
+$\bullet$范围值
+
+本文标注过程中主要遇到三种范围值的表述，第一种为取值唯一，但不精确，第二种为条件缺省时导致的取值不确定，第三种为无法精确到确定的取值区间。
+
+第一种范围值使用不精确的区间值xs:impreciseInterval表示，以圆周率举例，圆周率的值为3.1415926~3.1415927范围之间。或者再如地理知识：崇明岛全岛的面积为1200多平方千米，可以表示如下：
+
+gsr:R\_崇明岛\quad gso:P\_d\_面积值\quad "(1.201e9, 1.299e9)"$^{\land\land}$xs:impreciseInterval\quad .
+
+第二种范围值使用不明确的区间值xs:unclearInterval表示，如日地距离的取值，（时间不同时，日地距离亦不同），某省某刻的温度（具体的地点不同时，温度也不同）。这样的例子当补充了具体的条件，如具体时间、具体地点后就有可能转换为精确值。本文把此种复杂的条件限制使用最低到最高的区间值来表示，如下表示地球大气上界的高度不同时间的范围值：
+
+gsr:R\_地球大气上界\quad gso:P\_d\_高度\quad "(2e6,  3e6)"$^{\land\land}$xs:unclearInterval\quad .
+
+第三种使用不能被精确为确定值的区间xs:scopeInterval表示，如没有最大值的开区间，以地理知识为例：亚热带季风气候年降水量在800mm以上，范围值只有下界值，没有上界值，因此此种形式本文使用开区间表示，如下：
+
+
+gsr:R\_亚热带季风气候\quad gso:P\_d\_年降水量\quad "[0.8, )"$^{\land\land}$xs:scopeInterval\quad .
+\\
+
+$\bullet$地理区域及位置的表示
+dfssdf
+\\
+
+$\bullet$过程的表示
 
 \subsection{实体链接特征}\label{section:superised_feature}
 在给定指称项$m$和指称项对应的候选实体集$E_m=\{e_1,e_2,...,e_n\}$后，计算模型的输入特征:
