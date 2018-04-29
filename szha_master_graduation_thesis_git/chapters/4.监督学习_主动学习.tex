@@ -34,7 +34,7 @@
 \end{figure}
 
 \section{地理本体知识库构建}
-地理本体知识库构建内容分三个部分来介绍，先介绍地理本体CGeoOnt的构建，然后介绍本体Clinga与本体CGeoOnt融合，最后介绍本体词典生成方法。
+地理本体知识库构建内容分三个部分来介绍，先介绍地理本体CGeoOnt(chinese geographic ontology)的构建，然后介绍本体Clinga(chinese linked geographical dataset)与本体CGeoOnt融合，最后介绍本体词典生成方法。
 
 \subsection{地理本体CGeoOnt构建}\label{section:CGeoOnt_build}
 本文本体构建方法借鉴了斯坦福七步法的流程思想，但是与斯坦福的七步法有一些区别，如本文没有可以复用的本体，并且一次性列出本体的重要术语明显可操作性不强。因此，根据本文地理本体构建特点，主要分四个步骤进行构建工作,分别如下：
@@ -282,13 +282,384 @@ gsr:R\_地球大气上界\quad gso:P\_d\_高度\quad "(2e6,  3e6)"$^{\land\land}
 gsr:R\_亚热带季风气候\quad gso:P\_d\_年降水量\quad "[0.8, )"$^{\land\land}$xs:scopeInterval\quad .
 \\
 
-$\bullet$地理区域及位置的表示
-dfssdf
+$\bullet$地理区域表示
+
+地理区域主要指存在于空间中且可以准确定位的空间位置。地理中常常考察地理地点之间的位置关系（接壤、方向、包含等），因此对于地理重要地点的位置表示，需要准确细致的刻画。本文将空间所有事物定义为一个大类，记作gso:SpatialThing，将可以空间定位的地点定义为空间事物类的子类，记作gso:Location。如下先介绍空间位置关系，后介绍利用空间关系来表示空间位置。
+
+空间关系：
+
+空间关系用于描述两个可定位地点位置的相对方位关系，从某种程度上来看它也是一种对象属性，表达两个空间位置的关系。本文定义的位置关系都符合地理领域的方位表达方式，本文以常见的方位关系“位于”、“中部”来说明。“位于”表示一个位置在另一个位置上，属于一直包含的关系。“中部”表示对一个位置的方向约束，如中国中部等。如下为具体的地理知识表示：“基拉韦厄火山位于北太平洋中部的夏威夷群岛上”，本文需要准确表示出“位于”关系，北太平洋中部和被太平洋的方位“中部”关系
+
+gsr:R\_基拉韦厄火山\quad rdf:type\quad  gso:Location\quad  .
+
+gsr:R\_夏威夷群岛\quad rdf:type\quad  gso:Location\quad  .
+
+gsr:R\_北太平洋\quad rdf:type\quad  gso:Location\quad  .
+
+gsr:R\_北太平洋中部\quad rdf:type\quad  gso:SpatialThing\quad  .
+
+gsr:R\_基拉韦厄火山\quad  gso:P\_o\_位于\quad  gsr:R\_夏威夷群岛\quad  .
+
+gsr:R\_夏威夷群岛\quad  gso:P\_o\_位于\quad  gsr:R\_北太平洋中部\quad  .
+
+gsr:R\_北太平洋\quad  gso:P\_o\_中部\quad  gsr:R\_北太平洋中部\quad  .
 \\
 
-$\bullet$过程的表示
+空间位置：
 
-\subsection{实体链接特征}\label{section:superised_feature}
+对于空间位置，尤其是需要通过复杂空间关系来表示的空间位置，先得将其声明为gso:SpatialThing的实例，然后通过空间关系属性（谓词），建立与其他空间位置的关系，最后通过与其它位置构成的关系来整体表示该空间位置。如地理知识：“亚热带季风气候分布地区为我国秦岭-淮河以南、朝鲜半岛南部、日本群岛南部”，该知识中包含的“秦岭-淮河以南”、“朝鲜半岛南部”和“日本群岛南部”这三个带有方向限定的位置，需以本文定义的空间关系“南方”、“南部”并结合具体位置来联合表示，比如“秦岭-淮河以南”需要定义为“秦岭-淮河”的空间关系“南方”，具体表示如下：
+
+gsr:R\_秦岭-淮河\quad rdf:type\quad gso:Location\quad .
+
+gsr:R\_日本群岛\quad rdf:type\quad gso:Location\quad .
+
+gsr:R\_朝鲜半岛\quad rdf:type\quad gso:Location\quad .
+
+gsr:R\_秦岭-淮河以南\quad rdf:type\quad gso:SpatialThing\quad .
+
+gsr:R\_日本群岛南部\quad rdf:type\quad gso:SpatialThing\quad .
+
+gsr:R\_朝鲜半岛南部\quad rdf:type\quad gso:SpatialThing\quad .
+
+gsr:R\_秦岭-淮河\quad gso:P\_o\_南方\quad gsr:R\_秦岭-淮河以南\quad .
+
+gsr:R\_日本群岛\quad gso:P\_o\_南部\quad gsr:R\_日本群岛南部\quad .
+
+gsr:R\_朝鲜半岛\quad gso:P\_o\_南部\quad gsr:R\_朝鲜半岛南部\quad .
+
+gsr:R\_亚热带季风气候\quad gso:P\_o\_分布地区\quad gsr:R\_秦岭-淮河以南\quad ,\quad 
+
+gsr:R\_亚热带季风气候\quad gso:P\_o\_分布地区\quad gsr:R\_日本群岛南部\quad ,\quad 
+
+gsr:R\_亚热带季风气候\quad gso:P\_o\_分布地区\quad gsr:R\_朝鲜半岛南部\quad .
+\\
+再如“接壤”位置之间的表示，如知识：“亚欧板块和太平洋板块的交界处地震多发
+”，需要表现“亚欧板块”与“太平洋板块”的"相接"也即“接壤”关系。
+
+gsr:R\_亚欧板块\quad rdf:type \quad gso:Location\quad .
+
+gsr:R\_太平洋板块\quad rdf:type \quad gso:Location\quad .
+
+gsr:R\_亚欧板块\quad gso:P\_o\_相接\quad gsr:R\_太平洋板块\quad .
+
+gsr:R\_亚欧板块和太平洋板块的交界处\quad rdf:type \quad gso:SpatialThing\quad ;\quad 
+
+gsr:R\_亚欧板块和太平洋板块交界处\quad gso:P\_o\_相接\quad gsr:R\_亚欧板块\quad ;
+
+gsr:R\_亚欧板块和太平洋板块交界处\quad gso:P\_o\_相接\quad gsr:R\_太平洋板块\quad ;
+
+gsr:R\_亚欧板块和太平洋板块交界处\quad gso:P\_d\_地震发生率\quad "多"^^xs:string .
+\\
+
+$\bullet$过程表示
+
+本文过程是指地理中一些现象在一系列条件下通过一系列步骤而形成的总称，常常有顺序过程和循环过程。本文将过程定义为一个大类gso:Process，然后顺序过程gso:SequentialProcess和循环过程CircularProcess分别申明为其子类。对于顺序过程或者循环过程，都需要严格的定义其形成所需要的步骤，以及每个步骤上面的步骤条件。具体定义如下：\\
+先申明类:
+
+gso:Process\quad rdf:type\quad owl:Class\quad .\quad （过程类）
+
+gso:CircularProcess\quad rdfs:subClassOf\quad gso:Process\quad .（循环型过程类）
+
+gso:SequentialProcess\quad rdfs:subClassOf\quad gso:Process\quad .\quad （顺序型过程类）
+
+gso:StepOfProcess\quad rdf:type\quad owl:Class\quad .（过程的步骤类）
+\\
+再申明条件、步骤属性:
+
+gso:condition4Step\quad rdf:type\quad owl:DatatypeProperty\quad .\quad （步骤条件，值为字符串）
+
+gso:condition4Step\quad rdfs:domain\quad gso:StepOfProcess\quad .
+
+gso:stepDesc\quad rdf:type\quad owl:DatatypeProperty\quad .\quad （步骤文字描述，取值为字符串）
+
+gso:stepDesc\quad rdfs:domain\quad gso:StepOfProcess\quad .
+
+gso:stepNum\quad rdf:type\quad owl:DatatypeProperty\quad .\quad （步骤的序号，第几个步骤，取值为正整数）
+
+gso:stepNum\quad rdfs:domain\quad gso:StepOfProcess .
+
+如下复杂地理过程知识的具体表示：“冷锋过境前，会受单一暖气团的控制，温暖晴朗。当冷气团主动移动向暖气团时，较重的冷气团会插入暖气团下面，使暖气团被迫的抬升。暖气团在抬升的过程中逐渐的冷却，其中水汽易凝结成云。如果暖空气中含有大量水汽，那么可能会导致雨雪天气。冷锋移动速度较快，常常带来较强的风。冷锋过境后，冷气团替代原来暖气团的位置，气压升高，气温降低，湿度骤降，天气则转好。”
+
+上述叙述的是地理现象“冷锋过境”的形成过程，如下具体表示：\\
+先申明“过程”和“步骤”：
+
+gsr:R\_冷锋过境过程\quad rdf:type\quad \quad gso:SequentialProcess\quad .
+
+gsr:R\_冷锋过境过程\quad gso:numberOfSteps\quad "3"$^{\land\land}$xs:positiveInteger\quad .
+
+gsr:R\_冷锋过境步骤\_1\quad rdf:type\quad \quad gso:StepOfProcess\quad .
+
+gsr:R\_冷锋过境步骤\_2\quad rdf:type\quad \quad gso:StepOfProcess\quad .
+
+gsr:R\_冷锋过境步骤\_3\quad rdf:type\quad \quad gso:StepOfProcess\quad .
+
+gsr:R\_冷锋过境过程\quad gso:includesStep\quad gsr:R\_冷锋过境步骤\_1\quad ,\quad 
+
+gsr:R\_冷锋过境过程\quad gso:includesStep\quad gsr:R\_冷锋过境步骤\_2\quad ,\quad 
+
+gsr:R\_冷锋过境过程\quad gso:includesStep\quad gsr:R\_冷锋过境步骤\_3\quad .
+\\
+再申明“步骤”的文字描述gso:stepDesc和条件gso:condition4Step：
+
+gsr:R\_冷锋过境步骤\_1\quad gso:stepNum\quad "1"$^{\land\land}$xs:positiveInteger\quad ;
+
+gso:stepDesc\quad "当冷气团主动移向暖气团时，较重的冷气团插入暖气团下面，使暖气团被迫抬升。"$^{\land\land}$xs:string\quad .
+
+gsr:R\_冷锋过境步骤\_2\quad gso:stepNum\quad "2"$^{\land\land}$xs:positiveInteger\quad ;
+
+gsr:R\_冷锋过境步骤\_2\quad gso:stepDesc\quad "暖气团在抬升过程中逐渐冷却，其中水汽容易凝结成云。"$^{\land\land}$xs:string\quad .
+
+gsr:R\_冷锋过境步骤\_3\quad gso:stepNum\quad "3"$^{\land\land}$xs:positiveInteger\quad ;
+
+gsr:R\_冷锋过境步骤\_3\quad gso:condition4Step\quad "暖空气中含有大量水汽。"$^{\land\land}$xs:string\quad ;
+
+gsr:R\_冷锋过境步骤\_3\quad gso:stepDesc\quad "如果暖空气中含有大量的水汽，那么可能会带来雨雪天气。"$^{\land\land}$xs:string\quad .
+
+此“冷锋过境”过程中实际上也包含了不同时段的“天气变化”，因此“冷锋过境中的天气变化”也需要表示为一个顺序过程，这样在考察“冷锋过境”与天气变化的关系是，可以运用此结构化的知识表示。具体表示如下：
+\\
+申明“冷锋过境中的天气变化”为顺序过程:
+
+gsr:R\_冷锋过境中的天气变化\quad rdf:type \quad gso:SequentialProcess\quad ;
+
+gsr:R\_冷锋过境中的天气变化\quad gso:numberOfSteps\quad "3"$^{\land\land}$xs:positiveInteger\quad .
+
+gsr:R\_冷锋过境中天气变化的步骤\_1\quad rdf:type \quad gso:StepOfProcess\quad .
+
+gsr:R\_冷锋过境中天气变化的步骤\_2\quad rdf:type \quad gso:StepOfProcess\quad .
+
+gsr:R\_冷锋过境中天气变化的步骤\_3\quad rdf:type \quad gso:StepOfProcess\quad .
+
+gsr:R\_冷锋过境过程中的天气变化\quad gso:includesStep\quad gsr:R\_冷锋过境中天气变化的步骤\_1\quad ,\quad 
+
+gsr:R\_冷锋过境过程中的天气变化\quad gso:includesStep\quad gsr:R\_冷锋过境中天气变化的步骤\_2\quad ,\quad 
+
+gsr:R\_冷锋过境过程中的天气变化\quad gso:includesStep\quad gsr:R\_冷锋过境中天气变化的步骤\_3\quad .
+\\
+申明“冷锋过境中的天气变化”的每个步骤的内容和条件:
+
+gsr:R\_冷锋过境中天气变化的步骤\_1\quad gso:stepNum\quad "1"$^{\land\land}$xs:positiveInteger\quad ;
+
+gsr:R\_冷锋过境中天气变化的步骤\_1\quad gso:condition4Step\quad "过境前"$^{\land\land}$xs:string\quad ;
+
+gsr:R\_冷锋过境中天气变化的步骤\_1\quad gso:stepDesc\quad "过境前，单一暖气团控制，温暖晴朗。"$^{\land\land}$xs:string\quad .
+
+gsr:R\_冷锋过境中天气变化的步骤\_2\quad gso:stepNum\quad "2"$^{\land\land}$xs:positiveInteger\quad ;
+
+gsr:R\_冷锋过境中天气变化的步骤\_2\quad gso:condition4Step\quad "过境时"$^{\land\land}$xs:string\quad ;
+
+gsr:R\_冷锋过境中天气变化的步骤\_2\quad gso:stepDesc\quad "过境时，常有阴天、下雨、刮风、降温等天气现象。"$^{\land\land}$xs:string\quad .
+
+gsr:R\_冷锋过境中天气变化的步骤\_3\quad gso:stepNum\quad "3"$^{\land\land}$xs:positiveInteger\quad ;
+
+gsr:R\_冷锋过境中天气变化的步骤\_3\quad gso:condition4Step\quad "过境后"$^{\land\land}$xs:string\quad ;
+
+gsr:R\_冷锋过境中天气变化的步骤\_3\quad gso:stepDesc\quad "过境后，气强和湿度骤降，天气转睛。"$^{\land\land}$xs:string\quad .
+
+\subsection{地理本体融合}
+本文地理核心知识库由构建的两个本体融合而成。这两个本体分别是本文手工构建的CGeoOnt和863项目组基于百度百科自动构建的本体Clinga。本节先介绍Clinga的相关情况，后介绍两个地理本体的融合方法。
+
+\subsubsection{本体Clinga}
+
+本体Clinga\footnote{http://ws.nju.edu.cn/clinga/}为863项目组Hu【26】等人根据百度百科自动抽取构建的中文地理链接数据集（Chinese linked geographical dataset）。Clinga的本体Schema为Hu等人人工根据地理领域特点来定义，他们将地理分为自然地理和人文地理两个大类，然后在这两个大类下再依次细分为多个小类，最后形成Clinga的schema，具体如摘要图\ref{fig:clinga}所示。通过定义好的本体schema对自动抽取到的百度百科概念做分类，只选取满足定义好的本体schema类别的实体，最后对每个百科概念页面结构化成三元组形式，最终得到包含624,391个实体概念、130个类别、73,326,425个三元组的本体。Clinga中知识的组织形式为主、谓、宾，即（ s, p, o）三元组。例如（ A6906464, 公转对象,A6768329）表示“地球绕着太阳公转”， A6906464和 A6768329 分别对应地球、太阳在知识库中的存储ID，“公转对象”表示地球和太阳的一种属性关系。
+
+\begin{figure}[!htb]
+	\centering\includegraphics[height=5cm]{resource/clinga}
+	\caption{Clinga本体层次结构定义摘要}
+	\label{fig:clinga}
+\end{figure}
+
+图\ref{fig:clinga}仅仅为Clinga本体结构的一个摘要，有向图的跟节点为总大类地理，然后箭头被指向的是其两个子类自然地理和人文地理，然后依次为这两个子类的定义，依次类推，实际图中的类共有130个，其中的35个叶子类为GeoNames\footnote{http://www.geonames.org/}中没有的类，更具体的情况请参加Hu等人的工作。
+
+\subsubsection{地理本体融合方法}
+Clinga 与 CGeoOnt 的 Schema 定义存在一定差异，本文需要将这两个本体进行融合得到一个更综合的地理知识库。本文构建的CGeoOnt 包含类和属性3,000 余个，相关 RDF 三元组 25,000 余条，概念类的定义粒度相比Clinga来说比较细。由于CGeoOnt 本体相对量较小，本文采取将本体CGeoOnt的Schema映射到Clinga的Schema上，具体操作流程如下：
+
+（ 1） Clinga 中实体只保留其在百度百科 infobox 域中信息三元组，去掉其 section 文本三元组。
+
+（ 2） 运用启发式规则，根据 CGeoOnt 中实体的名称将其类别映射到 Clinga 中的类别。如， CGeoOnt中“黄山”会被映射到 Clinga 中的类 “山”。
+
+（ 3） 人工校验（ 2） 中映射结果。
+
+（ 4）得到最终本体知识库三元组 4,850,435 条。
+
+\subsection{地理本体词典生成}
+本文需要根据构建的地理知识库生成地理概念词典，这些概念包含知识库中的实体和类及两者的同义词。生成的地理本体词典主要用于判断某个命名实体是否属于本文地理知识库的范畴，以便提供相关候选实体的知识库信息，同时也为了查询同一个实体的不同别名。
+
+地理本体词典的生成主要工作为抽取地理概念的同义词，由于本文的知识库有两部分数据来源，分别是本体Clinga和本体CGeoOnt。Clinga中的概念抽取自百度百科，因此可以通过规则模板来抽取某个概念的同义词，本文统计发现属性名为中文名、英文名、外文名、原名、别名、中文名称、其他名称、别称和又叫的均可以当作概念的同义词。由于百科知识组织的主观性强，有的实体在表示时后面常常跟有括号，如“地球 别名 盖亚(Gaia)”，针对此种情况需要将别名值中带有括号的部分也抽取出来，并作为该概念的同义词，如此处的Gaia也作为地球的同义词。CGeoOnt中的同义词已经被标注人员标注出，只需要抽取概念的skos:altLabel属性就可以找出该概念的同义词。通过上述，方法，本文得到共包含75,1103个概念同义词词典。
+
+\section{基于注意力机制的地理知识库问答}
+基于注意力机制的中文地理知识库问答指根据本文构建的中文地理知识库，运用基于注意力机制的双向循环神经网络问答模型，对用户提出的地理问题，从知识库搜索出问题答案三元组的总过程。该系统问答流程如图\ref{fig:qa_overview}，图\ref{fig:qa_overview}表示的是地理问题“2016年北京处暑节气是什么时间”被回答的流程。首先任务是识别该地理问题中的主题实体，也就是问题是围绕哪个实体概念在提问的，如此问题中考察的是“北京的处暑节气时间”，是考察跟“北京”相关的事实性知识，因此“北京”为主题实体。然后，根据主题实体“北京”从本文构建的知识库中查询出与“北京”直接相连的所有实体作为候选实体，此处为首尔和华盛顿。最后使用双向循环神经网络对此问题和候选答案三元组-北京、首尔、华盛顿的三元组进行词向量表示，取问题与候选答案三元组相似度最大的作为该问题的答案。
+
+总结本文知识库问答任务分为如下四步进行：
+
+\begin{figure}[!htb]
+	\centering\includegraphics[height=7cm]{resource/qa_overview}
+	\caption{基于注意力机制的地理知识库问答流程}
+	\label{fig:qa_overview}
+\end{figure}
+
+（ 1）识别地理问题中涉及的主题实体，根据主题实体生成候选实体集。
+
+（2）根据候选实体集查询知识库，返回候选实体三元组。
+
+（ 3）使用双向 LSTM 神经网络编码问题（问题词序列表示成词向量），使用基于注意力机制的双向 LSTM编码候选答案三元组。
+
+（ 4）计算问题与每个候选答案三元组的余弦相似度值，返回余弦值最大的三元组作为最终答案（有时返回多个最终答案， 详见 3.4）。
+
+\subsection{地理知识库问答实现方法}
+此部分首先介绍候选答案实体三元组的生成方法，然后介绍本文表示问题、答案的基本模型 LSTM，再到其变种双向 LSTM 和结合注意力机制的双向LSTM 模型，最后介绍模型的训练方法和问答最终答案的选择策略。
+
+\subsubsection{候选答案实体三元组生成}
+生成候选实体三元组需要识别问题中的主题实体，主题实体也应当存在于本文所使用的知识库中，如果知识库中不存在此主题实体，则问题回答失败。
+
+本文根据知识库构建实体概念词典以及实体概念别名词典，确定知识库能够回答的实体问题范围。候选答案实体三元组生成的关键是识别出问题中的主题实体，如下（1）-—）主题实体识别流程，（4）-（5）步为根据主题实体生成候选答案实体三元组：
+
+（1）使用分词工具jieba\footnote{https://pypi.org/project/jieba/}将问题进行分词，生成句子的词序列。
+
+（2）对词序列进行命名实体识别（Named Entity Recognition, NER）、词性标注（Part  of  Speech, POS）, 识别其中的命名实体、名词以及名词词组，本文成为候选主题实体集。
+
+（3）遍历（2）步中生成的候选主题实体集，查询该候选实体是否在本文本体词典中，若存在，则该实体视作主题实体；若为本体词典中词的字串（不包含相等的情况），亦将该实体视作主题实体；若所有候选主题实体都不存在于本体词典中，则本问题没有主题实体，此题目超出本文知识库的回答范围。
+
+（4）从本文地理知识库中获取跟主题实体一跳1-hop\footnote{1-hop表示跟实体距离为1的实体，距离即相连的关系边}和二跳2-hop的实体集合作为候选答案实体集。
+
+（5）最后，从知识库查询出候选答案实体集每个实体的三元组信息，构成目标候选答案实体三元组集合。
+
+
+\subsubsection{3.1.2\quad 地理问题、候选答案表示}
+本节讲述如何将地理问题和候选答案这样的文本序列表示成词向量（word embedding）形式。本文表示地理和候选答案的基础模型为循环神经网络（ Recurrent Neural Networks,RNN)，本节介绍使用RNN的变种LSTM模型来表示地理问题和答案，本文先介绍RNN表示序列数据的原理，后依次介绍使用基于基本的LSTM表示问题、答案，基于Bi-LSTM来表示问题答案和基于Attention的Bi-LSTM表示答案。
+\\
+
+$\P$ RNN表示序列数据原理
+
+RNN的网络结构如图\ref{fig:rnn_structure}所示，图的左边部分表示RNN的循环结构图，RNN的主体结构单元A处理来自当前时刻的输入$x_{i}$和上一时刻A输出的隐含状态。图的右边是左边图的展开形式。RNN中每一层不仅输出$h_{i}$到下一层，而且同时还输出一个隐含状态（hidden state），该隐含状态表示到当前层到前面所有层的保存信息，可以形象化地理解为当前到之前层的所有信息的综合记忆，下一层可以利用上一层输出的隐含状态信息。因此，RNN的这种网络特征结构也使得其非常时候处理前后有依赖关系的数据序列。
+
+\begin{figure}[!htb]
+	\centering\includegraphics[height=3cm]{resource/rnn_structure}
+	\caption{RNN网络结构}
+	\label{fig:rnn_structure}
+\end{figure}
+
+$\P$基于基本LSTM的表示
+
+在实际中，对于文本序列来说，循环神经网络较难捕捉两个时刻距离较大的文本元素（字或词）之间的依赖关系。LSTM 是 RNN 的变种之一，是一种常用的门控循环神经网络，可以解决 RNN 中的梯度消失、梯度爆炸问题。本文实现的 LSTM 为基于Graves[23]等人改进的 LSTM。给定输入问句，令其序列 \textbf{x}={x(1),x(2),…x(n)}其中 x(t)为问句中每个词的 d 维词向量表示，隐藏单元向量\textbf{$h_{t}$}遵循如下更新方式：
+
+$$
+i_t = \sigma(\textbf{W}_{ix}\textbf{x}(t) + \textbf{W}_{ih}\textbf{h}(t - 1) + \textbf{b}_i)
+\eqno(1)
+$$
+$$
+f_t = \sigma(\textbf{W}_{fx}\textbf{x}(t) + \textbf{W}_{fh}\textbf{h}(t - 1) + \textbf{b}_f)
+\eqno(2)
+$$
+$$
+o_t = \sigma(\textbf{W}_{ox}\textbf{x}(t) + \textbf{W}_{oh}\textbf{h}(t - 1) + \textbf{b}_o)
+\eqno(3)
+$$
+$$
+\tilde{C}_t = \tanh(\textbf{W}_{cx}\textbf{x}(t) + \textbf{W}_{ch}\textbf{h}(t - 1) + \textbf{b}_c)
+\eqno(4)
+$$
+$$
+C_t = i_t \odot \tilde{C}_t + f_t \odot C_{t-1}
+\eqno(5)
+$$
+$$
+\textbf{h}_t = o_t \odot \tanh (C_t)
+\eqno(6)
+$$
+
+此 LSTM结构通过三个门，输入门 i、输出门 o、遗忘门 f 和记忆单元 c 来控制该时刻前的历史信息是否被记忆、是否需要更新，从而更好的对历史信息进行保存，供下一时刻使用。公式中的$\textbf{W}_{ix}$、 $\textbf{W}_{ih}$、$\textbf{W}_{fx}$、$\textbf{W}_{fh}$、$\textbf{W}_{ox}$、$\textbf{W}_{oh}$、$\textbf{W}_{cx}$、$\textbf{W}_{ch}$、$\textbf{W}_{cx}$、$\textbf{W}_{ch}$、是可学习的权重参数，$\textbf{b}_i$、$\textbf{b}_f$、$\textbf{b}_o$、$\textbf{b}_c$是可学习的偏移参数，$\textbf{h}(t - 1)$为上一时刻的隐含状态输出值，函数σ为sigmoid激活函数，tanh为双曲正切函数作为激活函数，$\tilde{C}_t$表示长短期记忆中的候选记忆单元值，$C_t$为当前时刻的记忆单元值，$C_{t-1}$为当前时刻的记忆单元值，$\odot$为按元素乘法符。
+
+本文首先通过分词将问题转化为词序列，此处记作 $\textbf{q}$ = (x(1), x(2),…x(n)), x(i)表示问题词序列第 i个词， 然后查询词向量矩阵（初始为根据中文维基百科训练得到）获得每个词的初始词向量，最后将序列的词向量输入到上述 LSTM 模型，遵循其更新法进行训练，得到序列最终的词向量。
+\\
+
+$\P$基于Bi-LSTM的问题、答案表示
+
+单向 LSTM 模型只考虑当前输入之前的信息，没有考虑其之后输入的信息，往往一个词的含义需要综合考虑此词的前后两部分词信息。因此，本文使用 Bi-LSTM，综合考虑当前输入的前向和后向输出信息， 隐藏单元为前向$\overrightarrow{h_t}$、后向单元$ \overleftarrow{h_t}$相连接，如公式 7 所示：
+$$
+h_t = (\overrightarrow{h_t}, \overleftarrow{h_t})
+\eqno(7)
+$$
+因此，本文基于 LSTM 的问答模型可以表示为图\ref{fig:qa_bi_lstm}问答模型所示。 
+\begin{figure}[!htb]
+	\centering\includegraphics[height=8cm]{resource/qa_bi_lstm}
+	\caption{基于Bi-LSTM的问题、答案表示模型}
+	\label{fig:qa_bi_lstm}
+\end{figure}
+
+ 首先生成问题、答案词序列的初始词向量, 然后输入到 Bi-LSTM 网络进入训练，得到问题和答案的最终向量表示， 最后词向量做 max pooling 后通过余弦相似性计算问题、答案向量 矩阵的相关性。实验设置问题、答案的 Bi-LSTM 网 络共享参数， Feng[24]等人的研究表明两个网络共享 参数较两个网络拥有各自不同参数性能更优。
+ \\
+ 
+ $\P$基于注意力机制的答案表示
+ 
+与上述模型单独对问题和答案进行表示不同，此节使用一种基本的注意力机制模型，答案中每个词的向量生成均依赖问题，通过动态地将答案中更多的有效信息与问题对齐，可以更好的表示答案与问题之间的依赖关系。 此该注意力机制已在许多自
+然语言处理任务上取得不错效果，如机器翻译[25]、事实型问答[26]、句子摘要[20]等。
+
+图 4 为本文基于注意力机制的答案表示模型，模型使用词级别的注意力，如图中描述，在答案端Bi-LSTM 网络输出进入 max pooling 层之前，每个输出会乘以一个基于句子的 Attention 值。 时间 t 时刻， 令答案端的 Bi-LSTM 输出向量为 ，问题词向量为$\textbf{o}_q$，答案中每个词向量$\tilde{\textbf{h}}_{a}(t)$更新如下：
+$$
+\textbf{m}_{a,q}(t) = \tanh(\textbf{W}_{am}\textbf{h}_{a}(t) + \textbf{W}_{qm}\textbf{o}_q)
+\eqno(8)
+$$
+$$
+s_{a,q}(t) = softmax(\textbf{w}_{sm}\textbf{m}_{a,q}(t))
+%s_{a,q}(t) = softmax(\textbf{w}_{sm} \tanh(\textbf{W}_{am}\textbf{h}^{a}_t + \textbf{W}_{qm}\textbf{o}_q))
+\eqno(9)
+$$
+$$
+\tilde{\textbf{h}}_{a}(t) = \textbf{\textbf{h}}_{a}(t) s_{a,q}(t)
+\eqno(10)
+$$
+
+其中，$\textbf{W}_{am}$、$\textbf{W}_{qm}$为注意力机制参数矩阵，$\textbf{w}_{sm}$为注意力机制参数向量。从直观上看， 运用注意力机制表示答案相当于一定程度上将答案中与问题关键词相似的词增加权重，给无关词减少权重，使更易于区分正确答案和错误答案。
+
+\begin{figure}[!htb]
+	\centering\includegraphics[height=8cm]{resource/qa_attention}
+	\caption{基于Attention机制的问题、答案表示模型}
+	\label{fig:qa_attention}
+\end{figure}
+
+
+\subsubsection{模型训练}
+本文采取问答常见的问答对训练方式（Pairwise Training[27]），训练数据形式为（问题、正确答案、错误答案）。对于某个问题，本文选取一个正确答案作为正例，同时选取k个错误答案作为负例，负例的选择一部分来自主题实体的非答案三元组，另一部分随机从其他问题的正确答案中选取。损失函数使用铰链损失函数（hinge loss），如下：
+ $$
+\mathcal{L}(q, a_+, a_-) = max \{0, m - S(q, a_+) + S(q, a_-)\}
+\eqno(11)
+$$
+
+m为正确答案得分和错误得分差距，S(.)为余弦函数，$a_+$为问题的正确答案，$a_-$为问题的错误答案。目标函数为：
+
+$$
+\min \sum_q\frac{1}{|P_q|}\sum_{a_+ \in P_q}\sum_{a_- \in N_q} \mathcal{L}(q, a_+, a_-)
+\eqno(12)
+$$
+
+其中$|P_q|$为问题q的正确答案个数，$N_q$为问题q的k个错误答案集合。本文采取随机梯度下降（stochastic gradient descent,SGD）学习算法。
+
+
+\subsubsection{最终答案选取策略}
+在测试阶段，问答模型给所有候选答案打分排序，然后选择出得分最高答案三元组$S_{max}$，考虑到一个问题的正确答案可能不止一种，因此，本文设置答案阈值，此阈值取损失函数中的m，将得分与最高分相差不超过m的三元组也视作最终答案。如下：$\widehat{A_q}$为最终答案集合，$\hat{a}$为候选答案。
+$$
+S_{max} = \arg\max_{a \in C_q}{S(q,a)}
+\eqno(13)
+$$
+$$
+\widehat{A_q} = \{\hat{a}|S_{max} - S(q, \hat{a}) < m\}
+\eqno(14)
+$$
+
+\subsection{地理问答实验}
+为了评估实验模型，本文使用863项目组构建的基础知识库，同时为了解决目前中文地理领域问题缺乏的问题，本文又构建了较大规模的地理问题测试集，详细在本章数据集小结讲述。先介绍实验相关设置，然后介绍实验结果以及实验分析，最后介绍地理数据集的生成过程。
+\subsubsection{参数设置}
+实验词向量由word2vec[28]结合最新的中文维基百科语料训练得到，词向量维度为300。实验采取随机梯度下降优化策略，实验尝试过不同的m值，如0.1、0.2、0.3，最终选择0.1。学习率初始值为0.4，每10个epochs下降50$\%$，总共下降4次。剪枝参数max\_grad\_norm设为5，dropout取1.0。实验batch\_size取50，问题负例个数k取20，问题和答案的最大长度设置为50，超出最大长度内容舍弃，双向LSTM隐藏单元设为200。
+\subsection{结论}
+
+
+
+
+
+
+
+
+
 在给定指称项$m$和指称项对应的候选实体集$E_m=\{e_1,e_2,...,e_n\}$后，计算模型的输入特征:
 
 \begin{enumerate}
