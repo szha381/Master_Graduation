@@ -649,7 +649,43 @@ $$
 \subsection{地理问答实验}
 为了评估实验模型，本文使用863项目组构建的基础知识库，同时为了解决目前中文地理领域问题缺乏的问题，本文又构建了较大规模的地理问题测试集，详细在本章数据集小结讲述。先介绍实验相关设置，然后介绍实验结果以及实验分析，最后介绍地理数据集的生成过程。
 \subsubsection{参数设置}
-实验词向量由word2vec[28]结合最新的中文维基百科语料训练得到，词向量维度为300。实验采取随机梯度下降优化策略，实验尝试过不同的m值，如0.1、0.2、0.3，最终选择0.1。学习率初始值为0.4，每10个epochs下降50$\%$，总共下降4次。剪枝参数max\_grad\_norm设为5，dropout取1.0。实验batch\_size取50，问题负例个数k取20，问题和答案的最大长度设置为50，超出最大长度内容舍弃，双向LSTM隐藏单元设为200。
+实验词向量由word2vec[28]结合最新的中文维基百科语料训练得到，词向量维度为300。实验采取随机梯度下降优化策略，实验尝试过不同的m值，如0.1、0.2、0.3，最终选择0.1。学习率初始值为0.4，每10个epochs下降50$\%$，总共下降4次。剪枝参数max\_grad\_norm设为5，dropout取1.0。实验batch\_size取50，问题负例个数k取20，问题和答案的最大长度设置为50，超出最大长度内容舍弃，双向LSTM隐藏单元长度设为200。
+
+\subsubsection{评价指标}
+本文地理知识库问答实验采用知识库问答任务中常用的评价指标：平均倒数排序（Mean Reciprocal Rank，MRR ）、准确率Accuracy@N【段】。如下为两个指标的定义：
+
+$$
+MRR = \frac{1}{|Q|}\sum_{i=1}^{|Q|}\frac{1}{rank_i}
+\eqno(15)
+$$
+公式（15）中$|Q|$表示评估集中问题总数，$rank_i$表示当前问题的候选答案生成集中正确答案的位置，其中候选答案生成集是按照答案打分降序排序。若候选答案生成集中没有包括正确答案，则$rank_i$的值设为0。
+$$
+Accuracy@N = \frac{1}{|Q|}\sum_{i=1}^{|Q|}\delta(C_i, A_i)
+\eqno(16)
+$$
+公式（16）中$|Q|$表示评估集中问题总数，$\delta(C_i, A_i)$表示候选答案生成集中是否至少包含一个正确答案，若是，则$\delta(C_i, A_i)$值为1，否则，值为0。
+
+\subsubsection{实验结果}
+实验使用NLPCC2016中1000个问题和本文从互联网抓取的436个地理问题（问题持续人工筛选中）进行测试，分别对本文方法章节中模型进行实验，问答评价指标使用MRR和Accuracy@N，实验结果如表\ref{tab:qa_expriment}所示：
+%{lcl}
+\begin{table}[htbp] 
+	\centering
+	\caption{\label{tab:qa_expriment}地理问答实验结果} 
+	\begin{tabular}{lcl}
+		\toprule 
+		Method	&      MRR & Accuracy@N \\
+		\midrule 
+		LSTM & 0.809 & 0.847 \\ 
+		Bi-LSTM & 0.821 & 0.868 \\ 
+		\textbf{Bi-LSTM + Attention} & \textbf{0.834} & \textbf{0.872} \\ 
+		\bottomrule 
+	\end{tabular} 
+\end{table}
+
+\subsubsection{实验分析}
+由表中实验结果可知，Bi-LSTM相对单向LSTM的MRR、Accuracy@N分别提高了1.2$\%$、2.1$\%$，说明Bi-LSTM相比LSTM能表示问题能力更强。同时基于注意力机制的Bi-LSTM比单纯的Bi-LSTM两个指标分别提升1.3$\%$、0.4$\%$，加入Attention后问答MRR指标提升比较明显，说明本文注意力机制可以更准确的区分比较相似的答案。
+
+\subsubsection{地理问答数据集构建}
 \subsection{结论}
 
 
