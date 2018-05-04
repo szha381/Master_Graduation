@@ -1,363 +1,337 @@
 \begin{thebibliography}{10}
 
-\bibitem{IEFMPDD}
-Ghosh, Saptarshi and Ghosh, Kripabandhu.
-\newblock Overview of the FIRE 2016 Microblog track: Information Extraction
-  from Microblogs Posted during Disasters[C].
-\newblock 2016.
-\newblock 7--10.
+\bibitem{Fujita}
+Fujita, A., Kameda, A., Kawazoe, A., \& Miyao, Y.
+\newblock Overview of Todai Robot Project and Evaluation Framework of its NLP-based Problem Solving[C].World History.
+\newblock 2014.
+\newblock 36.
 
-\bibitem{MarkDredze}
-Dredze, Mark, McNamee, Paul, Rao, Delip, et~al.
-\newblock Entity disambiguation for knowledge base population[C].
-\newblock In: Proceedings of the 23rd International Conference on Computational
-  Linguistics.
-\newblock 2010.
-\newblock 277--285.
+\bibitem{Cheng}
+Cheng, G., Zhu, W., Wang, Z., Chen, J., \& Qu, Y.
+\newblock Taking Up the Gaokao Challenge: An Information Retrieval Approach. 
+\newblock In: IJCAI[C].
+\newblock 2016.
+\newblock 2479--2485.
+
+\bibitem{Hitzler}
+Pascal Hitzler, Markus Krotszsch, Sebastian Rudolph,\& York Sure
+\newblock Foundations Of Semantic Web Technologies[M].
+\newblock 2012.
+\newblock 12--40.
+
+\bibitem{Zettlemoyer}
+Zettlemoyer, L. S., \& Collins, M.
+\newblock Learning
+context-dependent mappings from sentences to logical form.
+\newblock In Proceedings of the Joint Conference of the 47th Annual
+Meeting of the ACL and the 4th International Joint Conference
+on Natural Language Processing of the AFNLP[C],
+\newblock 2009, 2:
+\newblock 976--984.
+
+\bibitem{Cai}
+Cai, Q., \& Yates, A.
+\newblock Large-scale semantic parsing via schema matching and lexicon extension. In Proceedings of the 51st Annual Meeting of the Association for Computational Linguistics, 2013, 1: 423--433
+
+
+\bibitem{BerantCA}
+Berant, J., Chou, A., Frostig, R., \& Liang, P.
+\newblock Semantic parsing on freebase from question-answer pairs. In Proceedings of the 2013 Conference on Empirical Methods in Natural Language Processing[C].
+\newblock 2013.
+\newblock 1533--1544.
+
+\bibitem{Dyer}
+Dyer, C., Ballesteros, M., Ling, W., Matthews, A.,\& Smith, N. A.
+\newblock Transition-based dependency parsing with stack long short-term memory.
+\newblock arXiv preprint arXiv:1505.08075.
+
+\bibitem{Yao}
+Yao, X., \& Van Durme, B.
+\newblock Information extraction over
+structured data: Question answering with freebase.
+In Proceedings of the 52nd Annual Meeting of the Association
+for Computational Linguistics[C], 
+\newblock 2014, 1:
+\newblock 956--966.
+
+\bibitem{Bordes1}
+Bordes, A., Chopra, S., \& Weston, J.
+\newblock Question answering with subgraph embeddings. In Proceedings of
+EMNLP[C].
+\newblock 2014.615--620
+
+\bibitem{Dong}
+Dong, L., Wei, F., Zhou, M., \& Xu, K.
+\newblock Question answering over freebase with multi-column convolutional neural networks[C].
+\newblock In Proceedings of the 53rd Annual Meeting of the Association for Computational Linguistics and the 7th International Joint Conference on Natural Language Processing[C], 
+\newblock 2015, 1:
+\newblock 260--269.
+
+\bibitem{Bordes2}
+Bordes, A., Usunier, N., Chopra, S., \& Weston, J.
+\newblock Large-scale simple question answering with memory networks. arXiv preprint arXiv:1506.02075.
+\newblock 2015.
+
+\bibitem{Wong}
+Wong, Y. W., \& Mooney, R.
+\newblock Learning synchronous grammars for semantic parsing with lambda calculus[C]. In Proceedings of the 45th Annual Meeting of the Association of
+Computational Linguistics.
+\newblock 2007. 960--967.
 
 \bibitem{Yih}
-Yih, Scott Wen-tau, Chang, Ming-Wei, He, Xiaodong, et~al.
-\newblock Semantic parsing via staged query graph generation: Question
-  answering with knowledge base[EB/OL].
-\newblock
-  \url{https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ACL15-STAGG.pdf}.
-\newblock 2015.
+Yih, S. W. T., Chang, M. W., He, X., \& Gao, J.
+\newblock Semantic parsing via staged query graph generation: Question answering with knowledge base[C].In Proceedings of the 53rd Annual Meeting of the Association for Computational Linguistics and the 7th International Joint Conference on Natural Language Processing.
+\newblock 2015. 1321-–1331.
 
-\bibitem{Xiaohua}
-Liu, Xiaohua, Li, Yitong, Wu, Haocheng, et~al.
-\newblock Entity Linking for Tweets.[C].
-\newblock In: ACL (1).
-\newblock 2013.
-\newblock 1304--1311.
-
-\bibitem{LLEWKB}
-Zheng, Zhicheng, Li, Fangtao, Huang, Minlie, et~al.
-\newblock Learning to link entities with knowledge base[C].
-\newblock In: Human Language Technologies: The 2010 Annual Conference of the
-  North American Chapter of the Association for Computational Linguistics.
-\newblock 2010.
-\newblock 483--491.
-
-\bibitem{ELNDSCM}
-Fu, JinLan, Qiu, Jie, Guo, Yunlong, et~al.
-\newblock Entity linking and name disambiguation using SVM in chinese
-  micro-blogs[C].
-\newblock In: Natural Computation (ICNC), 2015 11th International Conference
-  on.
-\newblock 2015.
-\newblock 468--472.
-
-\bibitem{ELKTULASR}
-Kim, Youngsik and Choi, Key-Sun.
-\newblock Entity Linking Korean Text: An Unsupervised Learning Approach using
-  Semantic Relations.[C].
-\newblock In: CoNLL.
-\newblock 2015.
-\newblock 132--141.
-
-\bibitem{UAKGQCL}
-Hakkani-T{\"u}r, Dilek, Heck, Larry, and Tur, Gokhan.
-\newblock Using a knowledge graph and query click logs for unsupervised
-  learning of relation detection[C].
-\newblock In: Acoustics, Speech and Signal Processing (ICASSP), 2013 IEEE
-  International Conference on.
-\newblock 2013.
-\newblock 8327--8331.
-
-\bibitem{ALMNERICT}
-Chen, Yukun, Lasko, Thomas~A, Mei, Qiaozhu, et~al.
-\newblock A study of active learning methods for named entity recognition in
-  clinical text[J].
-\newblock Journal of biomedical informatics, 2015, 58:11--18.
-
-\bibitem{SCALRHRTC}
-Cormack, Gordon~V and Grossman, Maura~R.
-\newblock Scalability of Continuous Active Learning for Reliable High-Recall
-  Text Classification[C].
-\newblock In: Proceedings of the 25th ACM International on Conference on
-  Information and Knowledge Management.
-\newblock 2016.
-\newblock 1039--1048.
-
-\bibitem{ALSWSDIM}
-Chen, Yukun, Cao, Hongxin, Mei, Qiaozhu, et~al.
-\newblock Applying active learning to supervised word sense disambiguation in
-  MEDLINE[J].
-\newblock Journal of the American Medical Informatics Association, 2013,
-  20(5):1001--1006.
-
-\bibitem{UALHGC}
-Hu, Weiming, Hu, Wei, Xie, Nianhua, et~al.
-\newblock Unsupervised active learning based on hierarchical graph-theoretic
-  clustering[J].
-\newblock IEEE Transactions on Systems, Man, and Cybernetics, Part B
-  (Cybernetics), 2009, 39(5):1147--1161.
-
-\bibitem{CLELBBTM}
-Zhang, Tao, Liu, Kang, Zhao, Jun, et~al.
-\newblock Cross Lingual Entity Linking with Bilingual Topic Model.[C].
-\newblock In: IJCAI.
-\newblock 2013.
-
-\bibitem{RWNERST}
-Strauss, Benjamin, Toma, Bethany~E, Ritter, Alan, et~al.
-\newblock Results of the wnut16 named entity recognition shared task[C].
-\newblock In: Proceedings of the 2nd Workshop on Noisy User-generated Text.
-\newblock 2016.
-\newblock 138--144.
-
-\bibitem{NEROEHRTCDA}
-Quimbaya, Alexandra~Pomares, M{\'u}nera, Alejandro~Sierra, Rivera, Rafael
-  Andr{\'e}s~Gonz{\'a}lez, et~al.
-\newblock Named Entity Recognition Over Electronic Health Records Through a
-  Combined Dictionary-based Approach[J].
-\newblock Procedia Computer Science, 2016, 100:55--61.
-
-\bibitem{RHENERCCBEL}
-Lu, Tingming, Zhu, Man, and Gao, Zhiqiang.
-\newblock Reducing Human Effort in Named Entity Corpus Construction Based on
-  Ensemble Learning and Annotation Categorization[C].
-\newblock In: International Conference on Computer Processing of Oriental
-  Languages.
-\newblock 2016.
-\newblock 263--274.
-
-\bibitem{EELWW}
-Hachey, Ben, Radford, Will, Nothman, Joel, et~al.
-\newblock Evaluating entity linking with Wikipedia[J].
-\newblock Artificial intelligence, 2013, 194:130--150.
-
-\bibitem{CELWTGBM}
-Han, Xianpei, Sun, Le, and Zhao, Jun.
-\newblock Collective entity linking in web text: a graph-based method[C].
-\newblock In: Proceedings of the 34th international ACM SIGIR conference on
-  Research and development in Information Retrieval.
-\newblock 2011.
-\newblock 765--774.
-
-\bibitem{ELFEEKB}
-Rao, Delip, McNamee, Paul, and Dredze, Mark.
-\newblock Entity linking: Finding extracted entities in a knowledge
-  base[EB/OL].
-\newblock 2013.
-
-\bibitem{ELKBITS}
-Shen, Wei, Wang, Jianyong, and Han, Jiawei.
-\newblock Entity linking with a knowledge base: Issues, techniques, and
-  solutions[J].
-\newblock IEEE Transactions on Knowledge and Data Engineering, 2015,
-  27(2):443--460.
-
-\bibitem{ELFT}
-Liu, Xiaohua, Li, Yitong, Wu, Haocheng, et~al.
-\newblock Entity Linking for Tweets.[C].
-\newblock In: ACL (1).
-\newblock 2013.
-\newblock 1304--1311.
-
-\bibitem{ELNDUSCM}
-Fu, JinLan, Qiu, Jie, Guo, Yunlong, et~al.
-\newblock Entity linking and name disambiguation using SVM in chinese
-  micro-blogs[C].
-\newblock In: Natural Computation (ICNC), 2015 11th International Conference
-  on.
-\newblock 2015.
-\newblock 468--472.
-
-\bibitem{FNEDLSBKB}
-Zhao, YaHui, Li, Haodi, Chen, Qingcai, et~al.
-\newblock ICRC-DSEDL: A Film Named Entity Discovery and Linking System Based on
-  Knowledge Bases[EB/OL].
-\newblock 2016.
-
-\bibitem{SRUR}
-Cossock, David and Zhang, Tong.
-\newblock Subset ranking using regression[C].
-\newblock In: International Conference on Computational Learning Theory.
-\newblock 2006.
-\newblock 605--619.
-
-\bibitem{AMIRSBOR}
-Yuan, Ke, Gao, Liangcai, Wang, Yuehan, et~al.
-\newblock A mathematical information retrieval system based on RankBoost[C].
-\newblock In: Digital Libraries (JCDL), 2016 IEEE/ACM Joint Conference on.
-\newblock 2016.
-\newblock 259--260.
-
-\bibitem{ESLRES}
-Chen, Jing, Xiong, Chenyan, and Callan, Jamie.
-\newblock An Empirical Study of Learning to Rank for Entity Search[C].
-\newblock In: Proceedings of the 39th International ACM SIGIR conference on
-  Research and Development in Information Retrieval.
-\newblock 2016.
-\newblock 737--740.
-
-\bibitem{ADRFPS}
-Song, Yang, Wang, Hongning, and He, Xiaodong.
-\newblock Adapting deep ranknet for personalized search[C].
-\newblock In: Proceedings of the 7th ACM international conference on Web search
-  and data mining.
+\bibitem{Kim}
+Kim, Y.
+\newblock  Convolutional neural networks for sentence classification. arXiv preprint arXiv:1408.5882.
 \newblock 2014.
-\newblock 83--92.
 
-\bibitem{xu2007adarank}
-Xu, Jun and Li, Hang.
-\newblock Adarank: a boosting algorithm for information retrieval[C].
-\newblock In: Proceedings of the 30th annual international ACM SIGIR conference
-  on Research and development in information retrieval.
-\newblock 2007.
-\newblock 391--398.
-
-\bibitem{yue2007support}
-Yue, Yisong, Finley, Thomas, Radlinski, Filip, et~al.
-\newblock A support vector method for optimizing average precision[C].
-\newblock In: Proceedings of the 30th annual international ACM SIGIR conference
-  on Research and development in information retrieval.
-\newblock 2007.
-\newblock 271--278.
-
-\bibitem{LTRFPATLA}
-Cao, Zhe, Qin, Tao, Liu, Tie-Yan, et~al.
-\newblock Learning to rank: from pairwise approach to listwise approach[C].
-\newblock In: Proceedings of the 24th international conference on Machine
-  learning.
-\newblock 2007.
-\newblock 129--136.
-
-\bibitem{burges2010ranknet}
-Burges, Christopher~JC.
-\newblock From ranknet to lambdarank to lambdamart: An overview[J].
-\newblock Learning, 2010, 11(23-581):81.
-
-\bibitem{tong2006fast}
-Hanghang, Tong, Christos, Faloutsos., and Jia-yu, Pan.
-\newblock Fast random walk with restart and its applications[J].
-\newblock 2006.
-
-\bibitem{hoffart2013discovering}
-Hoffart, Johannes.
-\newblock Discovering and disambiguating named entities in text[C].
-\newblock In: Proceedings of the 2013 SIGMOD/PODS Ph. D. symposium.
-\newblock 2013.
-\newblock 43--48.
-
-\bibitem{tjong2003introduction}
-Tjong Kim~Sang, Erik~F and De~Meulder, Fien.
-\newblock Introduction to the CoNLL-2003 shared task: Language-independent
-  named entity recognition[C].
-\newblock In: Proceedings of the seventh conference on Natural language
-  learning at HLT-NAACL 2003-Volume 4.
-\newblock 2003.
-\newblock 142--147.
-
-\bibitem{ji2010overview}
-Ji, Heng, Grishman, Ralph, Dang, Hoa~Trang, et~al.
-\newblock Overview of the TAC 2010 knowledge base population track[C].
-\newblock In: Third Text Analysis Conference (TAC 2010).
-\newblock 2010.
-\newblock 3--3.
-
-\bibitem{lewis1994heterogeneous}
-Lewis, David~D and Catlett, Jason.
-\newblock Heterogeneous uncertainty sampling for supervised learning[C].
-\newblock In: Proceedings of the eleventh international conference on machine
-  learning.
-\newblock 1994.
-\newblock 148--156.
-
-\bibitem{muslea2006active}
-Muslea, Ion, Minton, Steven, and Knoblock, Craig~A.
-\newblock Active learning with multiple views[J].
-\newblock Journal of Artificial Intelligence Research, 2006, 27:203--233.
-
-\bibitem{freund1997selective}
-Freund, Yoav, Seung, H~Sebastian, Shamir, Eli, et~al.
-\newblock Selective sampling using the query by committee algorithm[J].
-\newblock Machine learning, 1997, 28(2):133--168.
-
-\bibitem{chen2015study}
-Chen, Yukun, Lasko, Thomas~A, Mei, Qiaozhu, et~al.
-\newblock A study of active learning methods for named entity recognition in
-  clinical text[J].
-\newblock Journal of biomedical informatics, 2015, 58:11--18.
-
-\bibitem{cormack2016scalability}
-Cormack, Gordon~V and Grossman, Maura~R.
-\newblock Scalability of Continuous Active Learning for Reliable High-Recall
-  Text Classification[C].
-\newblock In: Proceedings of the 25th ACM International on Conference on
-  Information and Knowledge Management.
+\bibitem{Zhang}
+Zhang, Y., Liu, K., He, S., Ji, G., Liu, Z., Wu, H., \& Zhao, J.
+\newblock Question answering over knowledge base with neural attention combining global knowledge information. arXiv
+preprint arXiv:1606.00979.
 \newblock 2016.
-\newblock 1039--1048.
 
-\bibitem{alonso2015active}
-Alonso, H{\'e}ctor~Mart{\'\i}nez, Plank, Barbara, Johannsen, Anders, et~al.
-\newblock Active learning for sense annotation[C].
-\newblock In: Proceedings of the 20th Nordic Conference of Computational
-  Linguistics, NODALIDA 2015, May 11-13, 2015, Vilnius, Lithuania.
-\newblock 2015.
-\newblock 245--249.
+\bibitem{Corcho}
+Corcho, O., \& Gómez-Pérez, A.
+\newblock A roadmap to ontology specification languages. In International Conference on Knowledge Engineering and Knowledge Management[C].
+\newblock In: Springer, Berlin, Heidelberg. 
+\newblock 2000.
+\newblock 80--96.
 
-\bibitem{ayache2008video}
-Ayache, St{\'e}phane and Qu{\'e}not, Georges.
-\newblock Video corpus annotation using active learning[C].
-\newblock In: European Conference on Information Retrieval.
-\newblock 2008.
-\newblock 187--198.
-
-\bibitem{李航2012统计学习方法}
-李航.
-\newblock 统计学习方法[M].
-\newblock 清华大学出版社, 北京, 2012.
-\newblock 95--114.
-
-\bibitem{ravuri2016comparative}
-Ravuri, Suman and Stolcke, Andreas.
-\newblock A comparative study of recurrent neural network models for lexical
-  domain classification[C].
-\newblock In: Acoustics, Speech and Signal Processing (ICASSP), 2016 IEEE
-  International Conference on.
-\newblock 2016.
-\newblock 6075--6079.
-
-\bibitem{settles2012active}
-Settles, Burr.
-\newblock Active learning[J].
-\newblock Synthesis Lectures on Artificial Intelligence and Machine Learning,
-  2012, 6(1):1--114.
-
-\bibitem{li2016linking}
-Li, Huiying and Shi, Jing.
-\newblock Linking Named Entity in a Question with DBpedia Knowledge Base[C].
-\newblock In: Joint International Semantic Technology Conference.
-\newblock 2016.
-\newblock 263--270.
-
-\bibitem{schein2007active}
-Schein, Andrew~I and Ungar, Lyle~H.
-\newblock Active learning for logistic regression: an evaluation[J].
-\newblock Machine Learning, 2007, 68(3):235--265.
-
-\bibitem{张涛2015GraphEL}
-张涛, 刘康, and 赵军.
+\bibitem{xml}
+Bray, T., Paoli, J., Sperberg, C.
+\newblock Extensible Markup Language (XML) 1.0. W3C Recommendation. Feb 1998.
 \newblock
-  一种基于图模型的维基概念相似度计算方法及其在实体链接系统中的应用[J].
-\newblock 中文信息学报, 2015, 29(2):58--67.
+ \url{http://www.w3.org/TR/REC-xml}.
 
-\bibitem{pedersen2005name}
-Pedersen, Ted, Purandare, Amruta, and Kulkarni, Anagha.
-\newblock Name discrimination by clustering similar contexts[C].
-\newblock In: International Conference on Intelligent Text Processing and
-  Computational Linguistics.
+\bibitem{rdf}
+Lassila, O., Swick, R.
+\newblock Resource Description Framework (RDF) Model and Syntax Specification. W3C Recommendation. January, 99.
+\newblock
+ \url{http://www.w3.org/TR/PR-rdf-syntax}.
+
+\bibitem{rdfs}
+Brickley, D., Guha, R.V. 
+\newblock Resource Description Framework (RDF) Schema Specification. W3C Proposed Recommendation. March, 1999.
+\newblock
+\url{http://www.w3.org/TR/PR-rdf-schema}.
+
+\bibitem{gao}
+高志强，潘越，马力.
+\newblock 语义Web原理及应用[M].
+\newblock 机械工业出版社.
+\newblock 2009. 62--65.
+
+\bibitem{owl}
+Bao, j., Calvanese D., Bernardo, C. G., et~al.
+\newblock OWL 2 Web Ontology Language Document Overview (Second Edition).
+\newblock 2012.
+\newblock
+ \url{https://www.w3.org/TR/owl2-overview/}.
+
+\bibitem{yue}
+岳丽欣, 刘文云.
+\newblock 国内外领域本体构建方法的比较研究. 情报理论与实践[J].
+\newblock In: Natural Computation (ICNC), 2015 11th International Conference
+  on.
+\newblock 2016.
+\newblock 39(8), 119-125..
+
+\bibitem{IDEF5}
+\newblock Information Integration for Concurrent Engineering(IICE)[EB/OL].
+\newblock 2015.
+\newblock
+ \url{http://www.kbsi.com/projects/iice?highlight=WyJpZGVmNSJd}.
+
+\bibitem{skelton}
+USCHOLD M., GRUNINGER M.
+\newblock  Ontologies: principles, methods and applications[J].
+\newblock In: International Conference on Computational Learning Theory.
+\newblock Knowledge Engineering Review, 1996, 11(2):
+\newblock 14--17.
+
+\bibitem{TOVE}
+THAM K. D., FOX M. S., GRNINGER M. 
+\newblock A cost ontology for enterprise modeling department of industrial engineering[C]．
+\newblock Proceedings of third Workshop on Enabling Technologies: Infrastructure for Collaborative Enterprises, Morgantown, WVWorkshop on Enabling Technologies.
+\newblock 2014.
+\newblock 111--117.
+
+\bibitem{METHONTOLOGY}
+FERN{\'A}NDEZ M., G{\'O}MEZ-P{\'E}REZ, JURISTO N．
+\newblock METHONTOLOGY: from ontological art towards ontological engineering[J].
+\newblock Sprng Symposium on Ontological Engineering of AAAI.
+\newblock 1997, (5):
+\newblock 33--40.
+
+\bibitem{KACTUSK}
+Song, Yang, Wang, Hongning, and He, Xiaodong.
+\newblock The KACTUS booklet version 1. 0. esprit project 814 [EB/OL].
+\newblock 2015.
+\newblock
+\url{http://www.swi.psy.uva.nl/prjects/New KACTUS/Reports.html}.
+
+\bibitem{KACTUSK2}
+易利涛, 周肆清, 丁长松.
+\newblock 信息抽取中领域本体建模方法研究[J].
+\newblock 计算机技术与发展, 2011, (10):
+\newblock 23--27.
+
+\bibitem{SENSUS}
+胡伟 . 
+\newblock 本体构建 [EB/OL]． 
+\newblock 2014.
+\newblock
+\url{http://www.docin.com./p-964406138.html.}.
+
+\bibitem{seven}
+NOY, N. F., MC GUINNESS, D. L. 
+\newblock Ontology development 101: a guide to creating your first ontology[J].
+\newblock Knowledge Systems Laboratory, 2001, 
+\newblock 32(1).
+
+\bibitem{Lu}
+Lu, W., Cheng, J., Yang, Q. 
+\newblock Question answering system based on web[C].
+\newblock In: Proceedings of the 2012 fifth international conference on intelligent computation technology and automation. IEEE Computer Society.
+\newblock 2012. 573–-576 
+
+\bibitem{Bertola}
+Bertola, F., \& Patti, V.
+\newblock Ontology-based affective models to organize artworks in the social semantic web[J]. Information Processing \& Management, 2016, 52(1):
+\newblock 139--162.
+
+\bibitem{Abacha}
+Abacha, A. B., \& Zweigenbaum, P.
+\newblock MEANS: A medical question-answering system combining NLP techniques and semantic Web technologies[J]. Information Processing \& Management, 2015,51(5):
+\newblock 570--594.
+
+\bibitem{Pavli}
+Pavlić, M., Han, Z. D., \& Jakupović, A. 
+\newblock Question answering with a conceptual framework for knowledge-based system development “Node of Knowledge”[J]. Expert systems with applications, 2015, 42(12):
+\newblock 5264--5286.
+
+\bibitem{Dalmas}
+Dalmas, T., \& Webber, B.
+\newblock Answer comparison in automated question answering[J].
+\newblock  Journal of Applied Logic, 2007, 5(1):
+\newblock 104--120.
+
+\bibitem{Dragoni}
+Dragoni, M., da Costa Pereira, C., \& Tettamanzi, A. G.
+\newblock A conceptual representation of documents and queries for information retrieval systems by using light ontologies[J].
+\newblock Expert Systems with applications, 2012, 39(12),
+\newblock 10376--10388.
+
+\bibitem{Jagadish}
+Li, F., \& Jagadish, H. V. 
+\newblock NaLIR: an interactive natural language interface for querying relational databases[C].
+\newblock In Proceedings of the 2014 ACM SIGMOD international conference on Management of data. ACM.
+\newblock 2014. 709--712
+
+\bibitem{Zettlemoyer}
+Zettlemoyer, L. S., \& Collins, M.
+\newblock Learning to map sentences to logical form: Structured classification with probabilistic categorial grammars. arXiv preprint arXiv:1207.1420.2012.
+
+\bibitem{Wong}
+Wong, Y. W.  \& Mooney, R. J. 2007.
+\newblock Learning synchronous grammars for semantic parsing with lambda
+calculus[C].
+\newblock In Association for Computational Linguistics (ACL).
+\newblock 2007. 960–-967.
+
+\bibitem{Kwiatkowski}
+Kwiatkowski, J., ettlemoyer, L., Goldwater, S. \& Steedman, M.
+\newblock Inducing probabilistic CCG grammars from logical form with higher-order unification[C].
+\newblock In: In Empirical Methods in Natural Language Processing (EMNLP).
+\newblock 2010.
+\newblock 1223-–1233
+
+\bibitem{BerantCF}
+Berant, J., Chou, A., Frostig, R., \& Liang, P. 
+\newblock Semantic parsing on freebase from question-answer pairs[C].
+\newblock In: In Proceedings of the 2013 Conference on Empirical Methods in Natural Language Processing.
+\newblock 2013.
+\newblock 1533--1544.
+
+\bibitem{Yao}
+Yao, X., \& Van Durme, B.
+\newblock Information extraction over structured data: Question answering with freebase[C].
+\newblock In Proceedings of the 52nd Annual Meeting of the Association for Computational Linguistics, 2014, (1): 
+\newblock 956--966.
+
+\bibitem{Bordes3}
+Bordes, A., Weston, J., \& Usunier, N.
+\newblock Open question answering with weakly supervised embedding models[C].
+\newblock In Joint European Conference on Machine Learning and Knowledge Discovery in Databases.
+\newblock 2014. 165--180.
+
+\bibitem{Fader}
+Fader, A., Soderland, S., \& Etzioni, O.
+\newblock Identifying relations for open information extraction[C].
+\newblock In Proceedings of the conference on empirical methods in natural language processing. Association for Computational Linguistics.
+\newblock 2011.
+\newblock 1535--1545.
+
+\bibitem{Bahdanau}
+Bahdanau, D., Cho, K., \& Bengio, Y. 
+\newblock Neural machine translation by jointly learning to align and translate. arXiv preprint arXiv:1409.0473. 2014
+
+\bibitem{Luong}
+Luong, M. T., Pham, H., \& Manning, C. D.
+\newblock Effective approaches to attention-based neural machine translation. arXiv preprint arXiv:1508.04025. 2015.
+
+\bibitem{Rush}
+Rush, A. M., Chopra, S., \& Weston, J.
+\newblock A neural attention model for abstractive sentence summarization. arXiv preprint arXiv:1509.00685. 2015.
+
+\bibitem{Liu}
+Zhang, Y., Liu, K., He, S., Ji, G., Liu, Z., Wu, H., \& Zhao, J. 
+\newblock
+  Question answering over knowledge base with neural attention combining global knowledge information. arXiv preprint arXiv:1606.00979. 2016
+
+\bibitem{Tan}
+Tan, M., Santos, C. D., Xiang, B., \& Zhou, B.
+\newblock LSTM-based deep learning models for non-factoid answer selection. arXiv preprint arXiv:1511.04108. 2015.
+
+\bibitem{Hu}
+Hu, W., Li, H., Sun, Z., Qian, X., Xue, L., Cao, E., \& Qu, Y. 
+\newblock Clinga: bringing Chinese physical and human geography in Linked Open Data[C].
+\newblock In International Semantic Web Conference.Springer, Cham.
+\newblock 2016.
+\newblock 104--112.
+
+\bibitem{Graves}
+Graves, A., Mohamed, A., and Hinton, G..
+\newblock Speech recognition with deep recurrent neural networks[C].
+\newblock In IEEE International Conference on Acoustics, Speech and Signal
+Processing (ICASSP).
+\newblock 2013.
+\newblock 6645--6649.
+
+\bibitem{Burges}
+Burges, C., Shaked, T., Renshaw, E., Lazier, A., Deeds, M., Hamilton, N., \& Hullender, G.
+\newblock Learning to rank using gradient descent[C].
+\newblock In Proceedings of the 22nd international conference on Machine. ACM.
 \newblock 2005.
-\newblock 226--237.
+\newblock 89--96.
 
-\bibitem{hu2009understanding}
-Hu, Jian, Wang, Gang, Lochovsky, Fred, et~al.
-\newblock Understanding user's query intent with wikipedia[C].
-\newblock In: Proceedings of the 18th international conference on World wide
-  web.
-\newblock 2009.
-\newblock 471--480.
+\bibitem{Mikolov}
+Mikolov, T., Sutskever, I., Chen, K., Corrado, G. S., \& Dean, J.
+\newblock Distributed representations of words and phrases and their compositionality[C].
+\newblock In Advances in neural information processing systems.
+\newblock 2013.
+\newblock 3111--3119.
+
+\bibitem{Duan}
+Duan, N.
+\newblock Overview of the NLPCC-ICCPOL 2016 shared task: open domain chinese question answering[C].
+\newblock In Natural Language Understanding and Intelligent
+Applications. Springer, Cham.
+\newblock 2016.
+\newblock  942--948.
 
 \end{thebibliography}

@@ -1,6 +1,6 @@
 \contentsline {chapter}{摘\hskip 1em\relax 要}{I}{section*.1}
 \contentsline {chapter}{Abstract}{II}{section*.3}
-\contentsline {chapter}{术语与符号约定}{VI}{section*.6}
+\contentsline {chapter}{术语与符号约定}{V}{section*.6}
 \contentsline {chapter}{\numberline {第一章\hspace {.3em}}绪论}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}研究背景}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}研究内容}{2}{section.1.2}
@@ -15,73 +15,39 @@
 \contentsline {section}{\numberline {2.3}本体构建方法}{7}{section.2.3}
 \contentsline {section}{\numberline {2.4}问答方法研究}{8}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}基于语义解析的KBQA}{9}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}基于信息检索的KBQA}{9}{subsection.2.4.2}
-\contentsline {section}{\numberline {2.5}本章小结}{12}{section.2.5}
-\contentsline {chapter}{\numberline {第三章\hspace {.3em}}基于本体的地理知识问答}{13}{chapter.3}
-\contentsline {section}{\numberline {3.1}论文任务}{13}{section.3.1}
-\contentsline {section}{\numberline {3.2}系统结构图}{13}{section.3.2}
-\contentsline {section}{\numberline {3.3}地理本体知识库构建}{14}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}地理本体CGeoOnt构建}{14}{subsection.3.3.1}
-\contentsline {subsubsection}{地理知识源选取}{15}{subsubsection*.11}
-\contentsline {subsubsection}{地理知识体系定义}{15}{subsubsection*.12}
-\contentsline {subsubsection}{地理本体构建规范}{15}{subsubsection*.13}
-\contentsline {subsubsection}{地理本体基本元素定义}{17}{subsubsection*.14}
-\contentsline {subsection}{\numberline {3.3.2}地理本体融合}{24}{subsection.3.3.2}
-\contentsline {subsubsection}{本体Clinga}{24}{subsubsection*.15}
-\contentsline {subsubsection}{地理本体融合方法}{25}{subsubsection*.17}
-\contentsline {subsection}{\numberline {3.3.3}地理本体词典生成}{25}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}基于注意力机制的地理知识库问答}{26}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}地理知识库问答实现方法}{26}{subsection.3.4.1}
-\contentsline {subsubsection}{候选答案实体三元组生成}{27}{subsubsection*.19}
-\contentsline {subsubsection}{3.1.2\hskip 1em\relax 地理问题、候选答案表示}{28}{subsubsection*.20}
-\contentsline {subsubsection}{模型训练}{31}{subsubsection*.24}
-\contentsline {subsubsection}{最终答案选取策略}{31}{subsubsection*.25}
-\contentsline {subsection}{\numberline {3.4.2}地理问答实验}{31}{subsection.3.4.2}
-\contentsline {subsubsection}{参数设置}{31}{subsubsection*.26}
-\contentsline {subsubsection}{评价指标}{32}{subsubsection*.27}
-\contentsline {subsubsection}{实验结果}{32}{subsubsection*.28}
-\contentsline {subsubsection}{实验分析}{32}{subsubsection*.30}
-\contentsline {subsubsection}{地理问答数据集构建}{33}{subsubsection*.31}
-\contentsline {subsection}{\numberline {3.4.3}结论}{33}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}目标实体预测}{34}{subsection.3.4.4}
-\contentsline {section}{\numberline {3.5}实体链接的主动学习算法}{34}{section.3.5}
-\contentsline {section}{\numberline {3.6}改进的初始训练样本选择方法}{36}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}初始训练样本选择方法}{36}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}初始训练样本选择算法}{36}{subsection.3.6.2}
-\contentsline {section}{\numberline {3.7}改进的迭代训练样本选择方法}{37}{section.3.7}
-\contentsline {subsection}{\numberline {3.7.1}迭代训练样本选择方法}{37}{subsection.3.7.1}
-\contentsline {subsection}{\numberline {3.7.2}综合不确定度和流行度的样本选择算法}{38}{subsection.3.7.2}
-\contentsline {section}{\numberline {3.8}实验结果与分析}{39}{section.3.8}
-\contentsline {subsection}{\numberline {3.8.1}实验环境}{39}{subsection.3.8.1}
-\contentsline {subsection}{\numberline {3.8.2}实验数据集}{40}{subsection.3.8.2}
-\contentsline {subsection}{\numberline {3.8.3}评价指标}{40}{subsection.3.8.3}
-\contentsline {subsection}{\numberline {3.8.4}模型选择}{40}{subsection.3.8.4}
-\contentsline {subsection}{\numberline {3.8.5}初始训练样本选择方法实验}{40}{subsection.3.8.5}
-\contentsline {subsection}{\numberline {3.8.6}迭代训练样本选择的实验}{41}{subsection.3.8.6}
-\contentsline {section}{\numberline {3.9}本章小结}{43}{section.3.9}
-\contentsline {chapter}{\numberline {第四章\hspace {.3em}}基于主动学习的实体链接语料构建}{44}{chapter.4}
-\contentsline {section}{\numberline {4.1}基于图的协同推断}{44}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}实体-实体相似度}{44}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}指称项-实体相似度}{45}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}构建协同推断图}{46}{subsection.4.1.3}
-\contentsline {subsection}{\numberline {4.1.4}协同推断方法}{47}{subsection.4.1.4}
-\contentsline {section}{\numberline {4.2}银标准语料构建方法}{49}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}待标注指称项选择方法}{49}{subsection.4.2.1}
-\contentsline {subsubsection}{顺序指称项选择法}{49}{subsubsection*.40}
-\contentsline {subsubsection}{最大不确定度的指称项选择法}{49}{subsubsection*.41}
-\contentsline {subsubsection}{基于同名指称项的最大标注回报选择法}{50}{subsubsection*.42}
-\contentsline {subsubsection}{基于相似指称项的最大标注回报选择法}{51}{subsubsection*.43}
-\contentsline {subsection}{\numberline {4.2.2}已标注指称项证据传播方法}{51}{subsection.4.2.2}
-\contentsline {subsubsection}{图的迭代推断}{52}{subsubsection*.44}
-\contentsline {subsubsection}{标注证据传播}{53}{subsubsection*.46}
-\contentsline {section}{\numberline {4.3}实验结果与分析}{53}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}实验环境}{53}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}实验数据集}{53}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}实验设置}{54}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}实验结果与分析}{54}{subsection.4.3.4}
-\contentsline {section}{\numberline {4.4}本章小结}{55}{section.4.4}
-\contentsline {chapter}{\numberline {第五章\hspace {.3em}}总结与展望}{56}{chapter.5}
-\contentsline {section}{\numberline {5.1}总结}{56}{section.5.1}
-\contentsline {section}{\numberline {5.2}未来展望}{56}{section.5.2}
-\contentsline {chapter}{致 谢}{58}{section*.48}
-\contentsline {chapter}{参考文献}{59}{section*.50}
+\contentsline {subsection}{\numberline {2.4.2}基于信息检索的KBQA}{10}{subsection.2.4.2}
+\contentsline {section}{\numberline {2.5}本文工作特色}{13}{section.2.5}
+\contentsline {section}{\numberline {2.6}本章小结}{14}{section.2.6}
+\contentsline {chapter}{\numberline {第三章\hspace {.3em}}基于本体的地理知识问答}{15}{chapter.3}
+\contentsline {section}{\numberline {3.1}论文任务}{15}{section.3.1}
+\contentsline {section}{\numberline {3.2}系统结构图}{15}{section.3.2}
+\contentsline {section}{\numberline {3.3}地理本体知识库构建}{16}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}地理本体CGeoOnt构建}{16}{subsection.3.3.1}
+\contentsline {subsubsection}{地理知识源选取}{17}{subsubsection*.11}
+\contentsline {subsubsection}{地理知识体系定义}{17}{subsubsection*.12}
+\contentsline {subsubsection}{地理本体构建规范}{17}{subsubsection*.13}
+\contentsline {subsubsection}{地理本体基本元素定义}{19}{subsubsection*.14}
+\contentsline {subsection}{\numberline {3.3.2}地理本体融合}{26}{subsection.3.3.2}
+\contentsline {subsubsection}{本体Clinga}{26}{subsubsection*.15}
+\contentsline {subsubsection}{地理本体融合方法}{27}{subsubsection*.17}
+\contentsline {subsection}{\numberline {3.3.3}地理本体存储与检索}{27}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}地理本体词典生成}{28}{subsection.3.3.4}
+\contentsline {section}{\numberline {3.4}基于注意力机制的地理知识库问答}{28}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}地理知识库问答实现方法}{29}{subsection.3.4.1}
+\contentsline {subsubsection}{候选答案实体三元组生成}{29}{subsubsection*.19}
+\contentsline {subsubsection}{3.1.2\hskip 1em\relax 地理问题、候选答案表示}{30}{subsubsection*.20}
+\contentsline {subsubsection}{模型训练}{32}{subsubsection*.24}
+\contentsline {subsubsection}{最终答案选取策略}{33}{subsubsection*.25}
+\contentsline {subsection}{\numberline {3.4.2}地理问答实验}{33}{subsection.3.4.2}
+\contentsline {subsubsection}{参数设置}{34}{subsubsection*.26}
+\contentsline {subsubsection}{评价指标}{34}{subsubsection*.27}
+\contentsline {subsubsection}{实验结果}{34}{subsubsection*.28}
+\contentsline {subsubsection}{实验分析}{34}{subsubsection*.30}
+\contentsline {subsubsection}{地理问答数据集构建}{35}{subsubsection*.31}
+\contentsline {subsection}{\numberline {3.4.3}结论}{35}{subsection.3.4.3}
+\contentsline {section}{\numberline {3.5}本章小结}{35}{section.3.5}
+\contentsline {chapter}{\numberline {第四章\hspace {.3em}}总结与展望}{37}{chapter.4}
+\contentsline {section}{\numberline {4.1}总结}{37}{section.4.1}
+\contentsline {section}{\numberline {4.2}未来展望}{37}{section.4.2}
+\contentsline {chapter}{致 谢}{39}{section*.33}
+\contentsline {chapter}{参考文献}{40}{section*.35}

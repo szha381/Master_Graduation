@@ -48,7 +48,7 @@
 （4）地理本体基本元素定义。定义类、属性、关系，创建实例。
 
 \subsubsection{地理知识源选取}
-地理本体构建知识源来自专业的高中地理教材以及部分的高考试题。地理教材包括人教版高中地理必修一自然地理、必修二人文地理、必修三区域可持续发展、区域地理、选修三旅游地理、选修五自然灾害与防治、选修六环境保护这七本教材和一本高中地理知识清单。高中地理知识清单是专家对上述七本高中地理教材中核心考点的精确提炼以及每本书知识点的解题方法讲解。高考试题选取的是北京市近10年（2007年~2016年）的地理高考题，选取高考题作为知识源的目的是：标注人员可以根据高考题快速把握高考地理考点以及解决考点所需要的辅助知识，因此可以很有目的性的去教材中寻找需要标注的核心知识，避免标注大量对于解题无用的地理知识，大大提高了地理核心知识库构建的效率。本文地理资源均为电子资源，且格式为HTML的网页形式，里面包含文字叙述、图和表格。
+地理本体构建知识源来自专业的高中地理教材以及部分的高考试题。地理教材包括人教版高中地理必修一自然地理、必修二人文地理、必修三区域可持续发展、区域地理、选修三旅游地理、选修五自然灾害与防治、选修六环境保护这七本教材和一本高中地理知识清单。高中地理知识清单是专家对上述七本高中地理教材中核心考点的精确提炼以及每本书知识点的解题方法讲解。高考试题选取的是北京市近10年（2007--2016年）的地理高考题，选取高考题作为知识源的目的是：标注人员可以根据高考题快速把握高考地理考点以及解决考点所需要的辅助知识，因此可以很有目的性的去教材中寻找需要标注的核心知识，避免标注大量对于解题无用的地理知识，大大提高了地理核心知识库构建的效率。本文地理资源均为电子资源，且格式为HTML的网页形式，里面包含文字叙述、图和表格。
 
 \subsubsection{地理知识体系定义}
 地理知识体系的定义根据《高中地理知识清单（第3次修订）》
@@ -261,7 +261,7 @@ gsr:R\_色球\quad gso:P\_d\_厚度\quad “2e6”$^{\land\land}$xs:double\quad 
 
 如果无法查阅其他资料得到准确值，则采取范围区间值来表示，如下：
 
-gsr:R\_色球\quad gso:P\_d\_厚度\quad "(1e6, 9e6)"$^{\land\land}$\quad xs:impreciseInterval\quad .
+gsr:R\_色球\quad gso:P\_d\_厚度\quad "(1e6, 9e6)"$^{\land\land}$ xs:impreciseInterval\quad .
 \\
 
 $\bullet$范围值
@@ -348,7 +348,7 @@ gsr:R\_亚欧板块和太平洋板块交界处\quad gso:P\_o\_相接\quad gsr:R\
 
 gsr:R\_亚欧板块和太平洋板块交界处\quad gso:P\_o\_相接\quad gsr:R\_太平洋板块\quad ;
 
-gsr:R\_亚欧板块和太平洋板块交界处\quad gso:P\_d\_地震发生率\quad "多"^^xs:string .
+gsr:R\_亚欧板块和太平洋板块交界处\quad gso:P\_d\_地震发生率\quad "多"$^{\land\land}$xs:string .
 \\
 
 $\bullet$过程表示
@@ -460,7 +460,7 @@ gsr:R\_冷锋过境中天气变化的步骤\_3\quad gso:stepDesc\quad "过境后
 
 \subsubsection{本体Clinga}
 
-本体Clinga\footnote{http://ws.nju.edu.cn/clinga/}为863项目组Hu【26】等人根据百度百科自动抽取构建的中文地理链接数据集（Chinese linked geographical dataset）。Clinga的本体Schema为Hu等人人工根据地理领域特点来定义，他们将地理分为自然地理和人文地理两个大类，然后在这两个大类下再依次细分为多个小类，最后形成Clinga的schema，具体如摘要图\ref{fig:clinga}所示。通过定义好的本体schema对自动抽取到的百度百科概念做分类，只选取满足定义好的本体schema类别的实体，最后对每个百科概念页面结构化成三元组形式，最终得到包含624,391个实体概念、130个类别、73,326,425个三元组的本体。Clinga中知识的组织形式为主、谓、宾，即（ s, p, o）三元组。例如（ A6906464, 公转对象,A6768329）表示“地球绕着太阳公转”， A6906464和 A6768329 分别对应地球、太阳在知识库中的存储ID，“公转对象”表示地球和太阳的一种属性关系。
+本体Clinga\footnote{http://ws.nju.edu.cn/clinga/}为863项目组Hu\cite{Hu}等人根据百度百科自动抽取构建的中文地理链接数据集（Chinese linked geographical dataset）。Clinga的本体Schema为Hu等人人工根据地理领域特点来定义，他们将地理分为自然地理和人文地理两个大类，然后在这两个大类下再依次细分为多个小类，最后形成Clinga的schema，具体如摘要图\ref{fig:clinga}所示。通过定义好的本体schema对自动抽取到的百度百科概念做分类，只选取满足定义好的本体schema类别的实体，最后对每个百科概念页面结构化成三元组形式，最终得到包含624,391个实体概念、130个类别、73,326,425个三元组的本体。Clinga中知识的组织形式为主、谓、宾，即（ s, p, o）三元组。例如（ A6906464, 公转对象,A6768329）表示“地球绕着太阳公转”， A6906464和 A6768329 分别对应地球、太阳在知识库中的存储ID，“公转对象”表示地球和太阳的一种属性关系。
 
 \begin{figure}[!htb]
 	\centering\includegraphics[height=5cm]{resource/clinga}
@@ -480,6 +480,10 @@ Clinga 与 CGeoOnt 的 Schema 定义存在一定差异，本文需要将这两�
 （ 3） 人工校验（ 2） 中映射结果。
 
 （ 4）得到最终本体知识库三元组 4,850,435 条。
+
+\subsection{地理本体存储与检索}
+
+本文采用对象关系数据库OpenLink Virtuoso\footnote{https://virtuoso.openlinksw.com/}存储标注好的本体知识（三元组），由于OpenLink Virtuoso是一个可伸缩的高性能，兼容性强的对象关系数据库引擎，可以提供复杂的SQL、XML、RDF数据库管理功能，著名的开放域知识库freebase也采用此数据库存储，本文运用其存储RDF数据的功能，同时还使用SPARQL\footnote{https://www.w3.org/TR/rdf-sparql-query/}语句很方便的检索本体知识库中的概念和概念关系三元组信息数据。
 
 \subsection{地理本体词典生成}
 本文需要根据构建的地理知识库生成地理概念词典，这些概念包含知识库中的实体和类及两者的同义词。生成的地理本体词典主要用于判断某个命名实体是否属于本文地理知识库的范畴，以便提供相关候选实体的知识库信息，同时也为了查询同一个实体的不同别名。
@@ -511,7 +515,7 @@ Clinga 与 CGeoOnt 的 Schema 定义存在一定差异，本文需要将这两�
 \subsubsection{候选答案实体三元组生成}
 生成候选实体三元组需要识别问题中的主题实体，主题实体也应当存在于本文所使用的知识库中，如果知识库中不存在此主题实体，则问题回答失败。
 
-本文根据知识库构建实体概念词典以及实体概念别名词典，确定知识库能够回答的实体问题范围。候选答案实体三元组生成的关键是识别出问题中的主题实体，如下（1）-—）主题实体识别流程，（4）-（5）步为根据主题实体生成候选答案实体三元组：
+本文根据知识库构建实体概念词典以及实体概念别名词典，确定知识库能够回答的实体问题范围。候选答案实体三元组生成的关键是识别出问题中的主题实体，如下（1）-（3）主题实体识别流程，（4）-（5）步为根据主题实体生成候选答案实体三元组：
 
 （1）使用分词工具jieba\footnote{https://pypi.org/project/jieba/}将问题进行分词，生成句子的词序列。
 
@@ -540,7 +544,7 @@ RNN的网络结构如图\ref{fig:rnn_structure}所示，图的左边部分表示
 
 $\P$基于基本LSTM的表示
 
-在实际中，对于文本序列来说，循环神经网络较难捕捉两个时刻距离较大的文本元素（字或词）之间的依赖关系。LSTM 是 RNN 的变种之一，是一种常用的门控循环神经网络，可以解决 RNN 中的梯度消失、梯度爆炸问题。本文实现的 LSTM 为基于Graves[23]等人改进的 LSTM。给定输入问句，令其序列 \textbf{x}={x(1),x(2),…x(n)}其中 x(t)为问句中每个词的 d 维词向量表示，隐藏单元向量\textbf{$h_{t}$}遵循如下更新方式：
+在实际中，对于文本序列来说，循环神经网络较难捕捉两个时刻距离较大的文本元素（字或词）之间的依赖关系。LSTM 是 RNN 的变种之一，是一种常用的门控循环神经网络，可以解决 RNN 中的梯度消失、梯度爆炸问题。本文实现的 LSTM 为基于Graves\cite{Graves}[23]等人改进的 LSTM。给定输入问句，令其序列 \textbf{x}={x(1),x(2),…x(n)}其中 x(t)为问句中每个词的 d 维词向量表示，隐藏单元向量\textbf{$h_{t}$}遵循如下更新方式：
 
 $$
 i_t = \sigma(\textbf{W}_{ix}\textbf{x}(t) + \textbf{W}_{ih}\textbf{h}(t - 1) + \textbf{b}_i)
@@ -592,7 +596,7 @@ $$
  $\P$基于注意力机制的答案表示
  
 与上述模型单独对问题和答案进行表示不同，此节使用一种基本的注意力机制模型，答案中每个词的向量生成均依赖问题，通过动态地将答案中更多的有效信息与问题对齐，可以更好的表示答案与问题之间的依赖关系。 此该注意力机制已在许多自
-然语言处理任务上取得不错效果，如机器翻译[25]、事实型问答[26]、句子摘要[20]等。
+然语言处理任务上取得不错效果，如机器翻译、事实型问答、句子摘要等。
 
 图 4 为本文基于注意力机制的答案表示模型，模型使用词级别的注意力，如图中描述，在答案端Bi-LSTM 网络输出进入 max pooling 层之前，每个输出会乘以一个基于句子的 Attention 值。 时间 t 时刻， 令答案端的 Bi-LSTM 输出向量为 ，问题词向量为$\textbf{o}_q$，答案中每个词向量$\tilde{\textbf{h}}_{a}(t)$更新如下：
 $$
@@ -619,7 +623,7 @@ $$
 
 
 \subsubsection{模型训练}
-本文采取问答常见的问答对训练方式（Pairwise Training[27]），训练数据形式为（问题、正确答案、错误答案）。对于某个问题，本文选取一个正确答案作为正例，同时选取k个错误答案作为负例，负例的选择一部分来自主题实体的非答案三元组，另一部分随机从其他问题的正确答案中选取。损失函数使用铰链损失函数（hinge loss），如下：
+本文采取问答常见的问答对训练方式（Pairwise Training\cite{Burges}[27]），训练数据形式为（问题、正确答案、错误答案）。对于某个问题，本文选取一个正确答案作为正例，同时选取k个错误答案作为负例，负例的选择一部分来自主题实体的非答案三元组，另一部分随机从其他问题的正确答案中选取。损失函数使用铰链损失函数（hinge loss），如下：
  $$
 \mathcal{L}(q, a_+, a_-) = max \{0, m - S(q, a_+) + S(q, a_-)\}
 \eqno(11)
@@ -638,24 +642,24 @@ $$
 \subsubsection{最终答案选取策略}
 在测试阶段，问答模型给所有候选答案打分排序，然后选择出得分最高答案三元组$S_{max}$，考虑到一个问题的正确答案可能不止一种，因此，本文设置答案阈值，此阈值取损失函数中的m，将得分与最高分相差不超过m的三元组也视作最终答案。如下：$\widehat{A_q}$为最终答案集合，$\hat{a}$为候选答案。
 $$
-S_{max} = \arg\max_{a \in C_q}{S(q,a)}
+\mathcal{S}_{max} = \arg\max_{a \in C_q}{S(q,a)}
 \eqno(13)
 $$
 $$
-\widehat{A_q} = \{\hat{a}|S_{max} - S(q, \hat{a}) < m\}
+\widehat{A}_q = \{\hat{a}|S_{max} - S(q, \hat{a}) < m\}
 \eqno(14)
 $$
 
 \subsection{地理问答实验}
 为了评估实验模型，本文使用863项目组构建的基础知识库，同时为了解决目前中文地理领域问题缺乏的问题，本文又构建了较大规模的地理问题测试集，详细在本章数据集小结讲述。先介绍实验相关设置，然后介绍实验结果以及实验分析，最后介绍地理数据集的生成过程。
 \subsubsection{参数设置}
-实验词向量由word2vec[28]结合最新的中文维基百科语料训练得到，词向量维度为300。实验采取随机梯度下降优化策略，实验尝试过不同的m值，如0.1、0.2、0.3，最终选择0.1。学习率初始值为0.4，每10个epochs下降50$\%$，总共下降4次。剪枝参数max\_grad\_norm设为5，dropout取1.0。实验batch\_size取50，问题负例个数k取20，问题和答案的最大长度设置为50，超出最大长度内容舍弃，双向LSTM隐藏单元长度设为200。
+实验词向量由word2vec\cite{Mikolov}[28]结合最新的中文维基百科语料训练得到，词向量维度为300。实验采取随机梯度下降优化策略，实验尝试过不同的m值，如0.1、0.2、0.3，最终选择0.1。学习率初始值为0.4，每10个epochs下降50$\%$，总共下降4次。剪枝参数max\_grad\_norm设为5，dropout取1.0。实验batch\_size取50，问题负例个数k取20，问题和答案的最大长度设置为50，超出最大长度内容舍弃，双向LSTM隐藏单元长度设为200。
 
 \subsubsection{评价指标}
-本文地理知识库问答实验采用知识库问答任务中常用的评价指标：平均倒数排序（Mean Reciprocal Rank，MRR ）、准确率Accuracy@N【段】。如下为两个指标的定义：
+本文地理知识库问答实验采用知识库问答任务中常用的评价指标：平均倒数排序（Mean Reciprocal Rank，MRR ）、准确率Accuracy@N\cite{Duan}【段】。如下为两个指标的定义：
 
 $$
-MRR = \frac{1}{|Q|}\sum_{i=1}^{|Q|}\frac{1}{rank_i}
+\mathcal{MRR} = \frac{1}{|Q|}\sum_{i=1}^{|Q|}\frac{1}{rank_i}
 \eqno(15)
 $$
 公式（15）中$|Q|$表示评估集中问题总数，$rank_i$表示当前问题的候选答案生成集中正确答案的位置，其中候选答案生成集是按照答案打分降序排序。若候选答案生成集中没有包括正确答案，则$rank_i$的值设为0。
@@ -686,315 +690,44 @@ $$
 由表中实验结果可知，Bi-LSTM相对单向LSTM的MRR、Accuracy@N分别提高了1.2$\%$、2.1$\%$，说明Bi-LSTM相比LSTM能表示问题能力更强。同时基于注意力机制的Bi-LSTM比单纯的Bi-LSTM两个指标分别提升1.3$\%$、0.4$\%$，加入Attention后问答MRR指标提升比较明显，说明本文注意力机制可以更准确的区分比较相似的答案。
 
 \subsubsection{地理问答数据集构建}
-\subsection{结论}
+中文问答数据集NLPCC2016为开放百度百科类的问题，包含地理领域问题很少，并且问句组织形式单一、直接，因此无法有效地训练和测试本文地理问答模型，本文需要构建既包含专业地理知识、又问法多样的问题。 
 
+本文使用百度下拉框关键字推荐API，将10160个核心地理知识三元组（s，p，o）分为（s，p），
+（s），（s，o），（p，o）四种搜索序列，获取百度下拉框推荐的问题列表，同时使用百度搜索API搜索这些搜索序列，获取每个序列搜索所返回的前10个链接的标题，总共得到246,767个搜索结果，自动去掉一些重复、百度文库、百度百科词条标题等无效结果，最终得到136680个搜索结果，然后人工挑选其中可以当作地理问题的结果问题。
 
+人工挑选问题时，还需要从本文地理核心知识库中找出可以回答该问题的实体三元组，无法找到对应三元组的问题将被弃掉。目前已经人工挑选出636个地理问题（举例如下段），目前仍在继续人工标注中。本文将其中200个问题及其答案和NLPCC2016训练集中的10000个训练样例当作实验训练集。其余436个问题作为测试集的一部分。
 
+根据地理核心三元组知识获取的多样化web地理问题举例如表\ref{tab:qa_dataset}：
 
+根据地理知识三元组“（季风气候， 生产优势， 夏季高温多雨、雨热同期）”得到四个不同方式表达的问题：
 
+（1）亚热带季风气候在发展农业生产方面有什么优势
 
+（2）我国的季风气候对农业生产最有利的是?\_作业帮
 
+（3）季风气候的最大优点？
 
+（4）温带季风气候在农业生产方面的显著优势是\_知道。
 
-在给定指称项$m$和指称项对应的候选实体集$E_m=\{e_1,e_2,...,e_n\}$后，计算模型的输入特征:
-
-\begin{enumerate}
-	\renewcommand{\labelenumi}{(\theenumi)}
-	\item {候选实体$e_i$在知识库中的先验概率，$PriorInKB(m,e_i)$，该特征的定义如公式\ref{eq:popinkb}所示。
-		
-		\begin{equation}\label{eq:popinkb}
-		PriorInKB(m,e_i)=\frac{count(e_i)}{\sum_{e_i\in E_m} {count(e_k)}}
-		\end{equation}
-		
-		其中，$count(e)$表示实体$e$在知识库中作为锚文本出现的次数。
-	}
-	\item {指称项上下文与候选实体对应词条摘要的文 本相似度，$ContextSimilarity(m,e_i)$，该特征的定义如公式\ref{eq:contex_similarity}所示。
-		
-		\begin{equation}\label{eq:contex_similarity}
-		ContextSimilarity(m,e_i)=\frac{coocurence(m,e_i)}{length(m)}
-		\end{equation}
-		
-		其中，$coocurence(m,e_i)$表示指称项$m$上下文和候选实体$e_i$对应知识库中摘要文本相同的单词数，$length(m)$表示指称项$m$的上下文长度。
-	}
-	\item {带标注样本集中，候选实体$e_i$的流行度，$PopInCorpus(e_i)$，该特征会随着人工标注的进行而产生变化。该特征的定义如公式\ref{eq:pop_in_corpus}所示。
-		
-		\begin{equation}\label{eq:pop_in_corpus}
-		PopInCorpus(e_i)=\frac{\sum_{anno \in Corpus} {I(anno.e,e_i)}}{sizeof(Corpus)}
-		\end{equation}
-		
-		其中，$anno$表示已标注语料中的一条标注记录，$anno.e$表示标注记录的目标实体。$I(e_i,e_j)$是示值函数，实体$e_i$和实体$e_j$相同则为1，否则为0。$sizeof(Corpus)$表示已标注指称项个数。
-	}
-	\item{带标注样本集中，候选实体$e_i$作为指称项$m$的目标实体的先验概率，$Prior(m,e_i)$，同上，该特征也会随着标注的进行而产生变化。该特征的定义如公式\ref{eq:prior}所示。
-		
-		\begin{equation}\label{eq:prior}
-		Prior(m,e_i)=\frac{\sum_{anno \in Corpus} {I(anno.e,e_i)\times I(anno.m,m)}}{\sum_{anno \in Corpus} {I(anno.m,m)}}
-		\end{equation}
-		
-		其中，$anno.e$的定义同上。$anno.m$表示标注记录$anno$的指称项。
-	}
-	\item 指称项名字和候选实体标题的编辑距离，$EDSimarity(m,e_i)$。该特征的定义如公式\ref{eq:ed_simarity}所示。
-	
-	\begin{equation}\label{eq:ed_simarity}
-	EDSimarity(m,e_i)=
-	\left\{
-	\begin{array}{rcl}
-	1       &      & {|length(m)-length(e_i)|=ED(m,e_i)}\\
-	0    &      & {\text{其它}}
-	\end{array} \right.
-	\end{equation}
-	
-	编辑距离$ED(\cdot,\cdot)$是指两个字符串进行转换时，需要的字符级最少操作次数。编辑距离相似度能够检测指称项和候选实体之间的别名、缩略名等关系。
-\end{enumerate}
-
-\subsection{目标实体预测}
-在使用监督学习模型$C$处理实体链接任务时，首先需要训练模型$C$。训练样本由带标注的指称项集合构成，例如，带标注的指称$m$包含$n$个候选实体，指称$m$的目标实体是$e^*$，任意一个候选实体$e_i$和指称项$m$组成一 个样本对$\left\langle m,e_i\right\rangle $，若$e_i$是目标实体$e^*$，样本对标记为正例，否则标记为反例。用所有带标注的样本对训练得到模型$C$。
-
-训练得到模型$C$后，对于未标注指称$m$及其候选实体集$E_m$，根据上一节的计算方法获得所有候选实体和指称项组成的样本对的特征向量，模型$C$根据输入的特征向量，计算每个候选实体是目标实体的概率$P_C(e_i|m)$。该预测概率的计算方式和模型的选择相关，例如选择支持向量机模型，可以用样本点距离分类超平面的距离估计正确分类的概率\cite{李航2012统计学习方法}；选择人工神经网络模型，可以对输出层每个节点的权值做$softmax$处理，以此获得每个分类标签的分类预测概率\cite{ravuri2016comparative}，在此不再一一例举其它模型的预测概率估计方法。取概率最高的候选实体作为指称项$m$的预测实体，如公式\ref{eq:hat_cancidate}所示。
-
-\begin{equation}\label{eq:hat_cancidate}
-\hat{e}=\argmax_{e_i\in E_m} P_C(e_i|m)
-\end{equation}
-
-然后将该预测实体被正确划分的概率作为指称$m$被正确链接的概率，如公式\ref{eq:predict_prob}所示。
-
-\begin{equation}\label{eq:predict_prob}
-P_C(\hat{e}|m)=\max_{e_i\in E_m}P_C(e_i|m)
-\end{equation}
-
-\section{实体链接的主动学习算法}
-为了减少人工标注的工作量，本文采用基于池的主动学习方法(Pool-based Active Learning)选择实体链接的待标注指称项。主动学习流程图如图\ref{fig:al_overview}所示。
-
-\begin{figure}[!htb]
-	\centering\includegraphics[height=7cm]{resource/al_overview}
-	\caption{主动学习流程概览}
-	\label{fig:al_overview}
-\end{figure}
-
-在每轮迭代训练中，主动学习器能够选出信息量最大的未标注样本集交由人工标注。已有的主动学习\cite{settles2012active}流程如算法\ref{algorithm_AL}所示。在给定未标注训练样本集后， 主动学习进程分为两个阶段，第一阶段的工作是选择初始训练样本集并以此训练初始分类器，第二阶段的工作是选择最佳标注样本并以此迭代训练模型。
-
-\floatname{algorithm}{算法}
-\renewcommand{\algorithmicrequire}{\textbf{输入:}} % Use Input in the format of Algorithm
-\renewcommand{\algorithmicensure}{\textbf{输出:}} % Use Output in the format of Algorithm
-\begin{algorithm}[!htb]
-	\caption{基于主动学习的实体链接任务训练进程}
-	\label{algorithm_AL}
-	\begin{algorithmic}[1] %这个1 表示每一行都显示数字
-		\REQUIRE ~ %算法的输入参数：Input
-		未标注的指称样本集$ \mathcal{U}=\{m^{(u)} \}_{u=1}^U $
-		\ENSURE ~ %算法的输出：Output
-		实体链接分类器$C$
-		\STATE 从未标注训练集$\mathcal{U}$中选择并标注初始训练样本集$\mathcal{L}_0$\label{al_sup_line1}
-		\STATE 利用初始训练样本集$\mathcal{L}_{0}$训练得到弱分类器$C=train(\mathcal{L}_{0})$\label{al_sup_line2}
-		\REPEAT \label{al_sup_line3}
-		\STATE 从$\mathcal{U}$中找出$k$个信息量最大的样本组成样本集$ \mathcal{U}_{selected} = \{m^{(u)} \}_{u=1}^{k} $\label{al_sup_line4}
-		\STATE 对$ \mathcal{U}_{selected}$中的指称进行人工标注得到$ \mathcal{L}_{selected} = \{\left\langle m,e\right\rangle^{(l)} \}_{l=1}^{k} $
-		\STATE $ \mathcal{U} = \mathcal{U} \setminus \mathcal{U}_{selected} $
-		\STATE $ \mathcal{L}_{t+1} = \mathcal{L}_{t} \cup \mathcal{L}_{selected} $
-		\STATE $C=train(\mathcal{L}_{t+1})$
-		\UNTIL {达到预期精度或样本集已全部标注} \label{al_sup_line9}
-		\RETURN $C$
-	\end{algorithmic}
-\end{algorithm}
-
-算法第\ref{al_sup_line1}-\ref{al_sup_line2} 行对应主动学习进程的第一个阶段，已有的做法是在未标注样本集$\mathcal{U}$中随机选择待标注样本$\mathcal{U}_{selected}$，然后对这些未标注样本进行人工标注，通过这种方式得到初始带标注样本集$\mathcal{L}_0$，然后用$\mathcal{L}_0$训练得到初始实体链接模型$C$。由于当初始带标注样本集合较小时，通过随机选择的方式获得的子样本集可能无法很好地代表整个样本集。因此，本文对初始训练样本选择方法做了改进，提出基于指称项流行度的初始样本选择方法。
-
-算法第\ref{al_sup_line3}-\ref{al_sup_line9} 行对应主动学习的第二个阶段，其中对于算法第\ref{al_sup_line4}行 信息量度量方法的选择，已有的做法是将样本分类结果的不确定度大小作为信息量的衡量标准，第$t$轮迭代中选出的样本会被加入到带标注样本集$\mathcal{L}_t$中，然后用$\mathcal{L}_t$重新训练模型。在实体链接任务中，仅将不确定度作为选择待标注样本的依据，可能会导致选择过多的离群样本点，不利于模型的训练。因此，本文对迭代训练样本选择方法做了改进，提出综合分类不确定度和指称项流行度的迭代训练样本选择方法。
-
-\section{改进的初始训练样本选择方法}\label{section:al_init_gen}
-本节首先对改进的初始训练样本选择方法进行了详细说明，然后给出了该方法对应的算法描述。
-
-\subsection{初始训练样本选择方法}
-在主动学习的初始阶段，需要产生一个初始样本集用于训练初始模型。已有的主动学习方法采用随机选择的方式产生初始训练样本集，由于训练样本集相对较小，随机选择的方式很难保证初始样本集的代表性。但是，训练一个性能较好的初始模型对提高主动学习收敛速度非常重要。因此，本文对已有的基于随机选择的初始样本集生成方法做了改进。
-
-为了提高实体链接初始模型的性能，本文提出基于流行度的初始样本选择方法(Sampling by Popularity, SBP)。指称项的流行度按照相同名字的指称项在语料库中出现的频率计算。例如，语料库中包含$n$个指称项，名字为“Jordan”的指称项出现了$m$次，则名字为“Jordan”的所有指称项的流行度为$m/n$。该样本选择方法首先对指称项按照指称项名字分类，计算指称项流行度，然后对指称项流行度高的样本做标注，加入初始训练样本集。该方法的目的是在初始样本选择阶段，尽量选择出现频率较高的指称项，以此保证初始样本集的代表性，从而提高在初始样本集较小的情况下，尽可能提高初始模型的性能。
-
-\subsection{初始训练样本选择算法}
-算法\ref{algorithm_init}是对基于流行度的初始样本选择方法的算法描述。初始训练样本的选择分为两个步骤，第一步是不同指称项流行度的统计；第二步是根据指称项流行度选择初始训练样本。
-
-算法第\ref{al_init_line1}-\ref{al_init_line2}行对未标注样本集按指称项名字进行分类，例如所有指称名字为“Jordan”的训练样本都会被划分到集合$\Psi_{Jordan}$中。然后根据集合中的样本数量计算各个指称项在训练集中的流行度，指称项名字相同的样本具有相同的流行度。
-
-算法第\ref{al_init_line3}-\ref{al_init_line7}行对指称项流行度做排序，并在流行度最高的$k$个样本集中分别随机选择一个或多个\footnote{当指称名字数量小于$k$时，需要在一个类簇中选择多个样本，保证最终获得$k$个样本。}样本，经过人工标注后加入初始训练样本集。这样做的目的在于避免初始训练样本集中的样本指称项名字重复度过高，同时保证尽量选择流行度高的指称项样本，从而提高初始训练样本集的代表性。
-
-\floatname{algorithm}{算法}
-\renewcommand{\algorithmicrequire}{\textbf{输入:}} % Use Input in the format of Algorithm
-\renewcommand{\algorithmicensure}{\textbf{输出:}} % Use Output in the format of Algorithm
-\begin{algorithm}[!htb]
-	\caption{基于流行度的初始样本集选择算法}
-	\label{algorithm_init}
-	\begin{algorithmic}[1] %这个1 表示每一行都显示数字
-		\REQUIRE ~ %算法的输入参数：Input
-		未标注的实体链接样本集$ \mathcal{U}=\{m^{(u)} \}_{u=1}^U $，初始训练集样本个数$k$
-		\ENSURE ~ %算法的输出：Output
-		初始样本集$\mathcal{L}$
-		\STATE 对未标注训练样本按照指称名字$name$分组，指称名字为$name$的样本被分到集合$\Psi_{name}$中\label{al_init_line1}
-		\STATE 计算名字为$name$的指称的流行度$\Phi_{name}=\frac{|(\Psi_{name})|}{U}$\label{al_init_line2}
-		\STATE 对不同指称的流行度排序，取流行度最高的$k$个指称的名字\label{al_init_line3}
-		
-		$\mathcal{S}=\{name_1,name_2,...,name_k\}$\label{al_init_line4}
-		\FOR {each $name$ in $\mathcal{S}$}
-		\STATE 从集合$\Psi_{name}$中随机取一个或多个样本并对其人工标注得到带标注的样本对$L=\left\langle m,e\right\rangle$\label{al_init_line5}
-		\STATE $\mathcal{L}=\mathcal{L} \cup \{L\}$
-		\ENDFOR\label{al_init_line7}
-		\RETURN $\mathcal{L}$
-	\end{algorithmic}
-\end{algorithm}
-
-\section{改进的迭代训练样本选择方法}\label{section:al_iter_train}
-本节首先对改进的迭代训练样本选择方法进行了详细说明，然后给出了该方法对应的算法描述。
-
-\subsection{迭代训练样本选择方法}
-在初始训练集上训练得到初始模型后，需要迭代选择信息量最大的未标注样本做标注，然后对模型做重新训练。在已有的主动学习迭代训练样本选择过程中，通常将不确定度最大的样本作为信息量最大的样本，这些样本会交由人工标注并加入下一轮迭代训练，通过这种方式迭代逼近真实模型。本文采用间隔（Margin）度量未标注样本的不确定度。
-
-如公式\ref{eq:margin_confidence}所示 ，$e^{*1}$和$e^{*2}$分别表示在当前模型$C$中，给定指称项$m$，对应置信度最高的和次高的候选实体，以这两个候选实体的置信度差的绝对值作为指称$m$链接到正确实体的置信度。
-
-\begin{align}\label{eq:margin_confidence}
-\begin{aligned}
-Confidence(m)&=P_C(e^{*1})-P_C(e^{*2})\\
-\text{其中，\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}&\text{\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad}\\
-e^{*1}&=\argmax_{E_i\in E_m}P_C(e_i|m)\\
-e^{*2}&=\argmax_{E_i\in E_m \setminus \{e^{*1}\}} P_C(e_i|m)
-\end{aligned}
-\end{align}
-
-易知，$Confidence(m)$越小，表示模型$C$越难正确地从候选实体$e^{*1}$和候选实体$e^{*2}$中区分出目标实体，因此，指称项$m$被正确链接的置信度越小，指称项被正确链接的不确定度越大。指称项链接的不确定度如公式(\ref{eq:margin_uncertainty})所示。
-
-\begin{equation}\label{eq:margin_uncertainty}
-Uncertainty(m)=1-Confidence(m)\\
-\end{equation}
-
-在本文的实体链接任务中，如果采用仅基于不确定度的样本选择方法来选择待标注样本，则会存在两个缺陷。第一，存在一些不确定度较大，但是在所有样本中处于边缘位置的样本，这些离群样本点不具有代表性，相反还可能会对模型的训练产生负作用，在样本选择过程中，应该尽量避免这类样本点；第二，本文实体链接模型的输入特征向量包含已标注语料中候选实体流行度（$PopInCopus(e_i)$）和已标注语料中候选实体先验概率（$Prior(e_i|m)$）这两个特征维度，这两个特征都是在已标注样本集上通过统计得到的，因此，带标注的样本分布越离散，带标注样本集中包含的指称项和实体越多，那么上述两个特征维度的统计量越具有代表性。从这个角度看基于不确定度的样本选择算法对这两个特征的计算可能会产生负面影响。因此主动学习的样本选择策略需要在不确定度和多样性之间取一个权衡。为了解决这个问题，本文提出综合不确定度和流行度的样本选择方法（Sampling by Uncertainty and Popularity, SUP）。
-
-\subsection{综合不确定度和流行度的样本选择算法}
-接下来给出综合不确定度和流行度的样本选择方法的算法描述。SUP算法是对不确定度和多样性的折衷，如算法\ref{algorithm_iter}所示。
-
-\begin{algorithm}[htb]
-	\caption{综合不确定度和流行度样本集选择算法}
-	\label{algorithm_iter}
-	\begin{algorithmic}[1] %这个1 表示每一行都显示数字
-		\REQUIRE ~ %算法的输入参数：Input
-		未标注的实体链接样本集$ \mathcal{U}=\{m^{(u)} \}_{u=1}^U $\\
-		\quad \quad 选择标注的样本个数$k$
-		\ENSURE ~ %算法的输出：Output
-		本轮选择标注的训练样本集$ \mathcal{L} $\\
-		\STATE $ \mathcal{L} = \{\} $
-		\STATE 用K-means聚类法将未标注训练样本集按照指称的流行度划分为$k$类，$Clusters=\{\Psi_1,\Psi_2,...,\Psi_k\}$\label{al_iter_line2}
-		\FOR {each $\Psi_i$ in $Clusters$}
-		\STATE $m^{*}=\argmax_{m \in \Psi_i} Uncertainty(m)$\label{al_iter_line4}
-		\STATE 对$m^{*}$人工标注，得到$\left\langle m^{*},e\right\rangle$
-		\STATE $\mathcal{L}=\mathcal{L} \cup \{\left\langle m,e\right\rangle\}$
-		\ENDFOR
-		\RETURN $ \mathcal{L} $
-	\end{algorithmic}
-\end{algorithm}
-
-算法第\ref{al_iter_line2}行将所有未标注样本集中的指称项按照指称项流行度进行聚类，完成聚类后，同一个类簇的样本流行度相近。
-
-算法第\ref{al_iter_line4}行从各个流行度的类簇中分别选出不确定度最大的样本交由人工标注，这里不确定度的计算方式依然是模型预测的最优候选实体和次优候选实体置信度的间隔。该样本选择算法能够保证各个指称项流行度区间的样本都有均等机会被选中标注，同时又能保证在每个类簇中被选中标注的样本都是这个类簇中不确定度最大的样本，在兼顾所选样本集多样性的同时保证了不确定度。
-
-\section{实验结果与分析}
-本节介绍主动学习方法在实体链接模型训练中的实验，说明实验环境、实验所用数据集、评价指标以及实验配置，最后给出了实验结果数据，并对实验结果进行了分析。
-
-\subsection{实验环境}\label{section:dev_env}
-硬件环境：
-
-\begin{itemize}
-	\item CPU: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
-	\item Memory: 4$\times$8GB DDR3 1333 ECC
-\end{itemize}
-
-软件环境：
-
-\begin{itemize}
-	\item CentOS Linux release 7.3.1611 (Core)
-	\item IntelliJ IDEA 2016.3
-	\item Java 1.8
-	\item MySQL 5.6
-\end{itemize}
-
-开源工具：
-
-\begin{itemize}
-	\item LibSVM\footnote{用于实现支持向量机。}
-	\item Weka 3.6\footnote{用于配合LibSVM实现支持向量机训练。}
-	\item Stanford NLP\footnote{用于实现英文分词及词干抽取。}
-\end{itemize}
-
-\subsection{实验数据集}\label{section:dataset}
-本文使用的数据集是在\textit{CoNLL'03}的基础上做了实体链接标注的\textit{Aida}数据集。数据集包含 1393 篇文章和28815个可用指称项。本文取20000个指称项作为训练集，其余的指称项作为测试集。
-
-\subsection{评价指标}
-本章研究主动学习在实体链接模型训练中的作用，并验证本文提出的基于流行度的初始样本选择方法以及综合不确定度和流行度的迭代训练样本选择方法对减少人工标注样本工作量的效果。实际上数据集中的指称项都已经标注好对应的目标实体，但是在模型训练过程中，本文不直接使用 Aida 数据集的标注结果，只有通过主动学习方法选择的样本的标注结果才会被使用，以此来模拟人工标注的过程。本章实验分为以下两个方面:
-
-(1) 以随机选择方法为基线方法，评价基于流行度的初始样本选择方法在标注相同数量样本的前 下，对初始模型性能提升的效果。
-
-(2) 以随机选择法为基线方法，评价基于不确定度的样本选择方法以及综合不确定度和流行度的样本选择方法对模型训练收敛速度的提升效果。
-
-本文对各种样本选择方法好坏的评价指标为主动学习过程中，由主动学习器选择的训练样本所训练得到的模型在测试集里的性能表现，性能表现体现在测试集上实体链接的正确率，计算方法如公式\ref{eq:sup_al_p}所示。
-
-\begin{equation}\label{eq:sup_al_p}
-\text{准确率}(P)=\frac{\text{测试集中被正确链接的指称项个数}}{\text{测试集中所有指称项个数}}\times 100\%
-\end{equation}
-
-\subsection{模型选择}
-本章使用监督学习模型处理实体链接任务，并将该任务作为分类问题来处理。在常用的机器学习分类器中，SVM模型\cite{li2016linking}是目前分类效果较好的模型，其可以通过核函数（本文使用径向基函数（Radial Base Function, RBF））将非线性可分的输入空间的特征映射到高维线性可分的空间的特征，以此学习非线性可分模型。此外，样本点距离分类超平面的远近可以作为分类置信度的依据，而主动学习过程中，分类置信度恰好是样本选择策略的考虑因素之一。
-
-综上，本文在实验阶段使用 SVM 模型作为监督学习模型的代表，处理实体链接任务并研究主动学习方法在该任务上发挥的作用。
-
-\subsection{初始训练样本选择方法实验}
-为了验证基于指称项流行度的初始训练样本选择方法对提高初始模型性能的效果，在实验环节，分别通过基于随机选择方法(Random)和基于流行度选择方法(SBP)得到初始样本集，对比在不同初始训练样本集大小的情况下，由初始样本集训练得到的初始模型的性能。
-
-实验中，初始样本集大小的设置从 2000 开始，依次以 2000 递增，最大的初始样本集包含 18000 个训练样本。从图\ref{fig:al_sup_init_result}可以看出，在初始样本集较小的时候，基于指称项流行度的样本选择方法比随机样本选择方法在初始模型的性能上有显著的提升，在初始样本集大小为 2000 的时候，性能提升了 10.1\%，在初始样本集大小为 4000 的时候，性能提升了 5.3\%。当初始样本集大小继续增加时，性能提升值逐渐减小，甚至在一些情况下提升值为负。总体来看，当初始样本集较大时，两种初始训练样本选择方法性能差别不大。
-
-\begin{figure}[!htb]
-	\centering\includegraphics[height=8cm]{resource/surpvised_res1}
-	\caption{初始训练样本选择实验结果}
-	\label{fig:al_sup_init_result}
-\end{figure}
-
-该实验表明，在初始样本集较小的时候，由于样本分布的不均匀特性，随机选择的方法很难选择出能代表整个数据集的样本子集。在实际应用中，用于训练初始模型的初始训练样本集通常较小，使用基于指称项流行度的初始样本选择方法，能有效提升初始模型性能，加快模型在后续训练过程的收敛速度。
-
-\subsection{迭代训练样本选择的实验}
-为了验证主动学习方法中不同的样本选择策略对实体链接模型训练的收敛速度的影响，本文在实验环节，对五种不同组合的样本选择策略进行了比较。五种组合如下所示:
-
-(1) Random，初始训练样本和后续迭代训练样本选择都采用随机选择方法，作为基线方法。
-
-(2) Random+Uncertainty，初始训练样本采用随机选择方法，后续迭代训练样本采用基于不确定度的选择方法。
-
-(3) Random+SUP，初始样本采用随机选择方法，后续迭代训练样本采用综合不确定度和流行度的选择方法。
-
-(4) SBP+Uncertainty，初始样本采用基于流行度的选择方法，后续迭代训练样本采用基于不确定度的选择方法。
-
-(5) SBP+SUP，初始样本采用基于流行度的选择方法，后续迭代训练样本采用综合不确定度和流行度的选择方法。
-
-\begin{figure}[!htb]
-	\centering\includegraphics[height=8cm]{resource/surpvised_res2}
-	\caption{迭代训练样本选择实验结果}
-	\label{fig:al_sup_iter_result}
-\end{figure}
-
-从图\ref{fig:al_sup_iter_result}展示的实验结果可以看出，相比随机选择的基线方法，其它四种基于主动学习的样本选择策略对加快模型训练的收敛速度都有显著的提高。证明主动学习方法在实体链接任务中，对减少人工标注样本的工作量确实是有显著效果的。另外，观察曲线走势，综合不确定度和流行度的样本选择方法要优于基于不确定度的样本选择方法，这也验证了基于不确定度的样本选择方法并不能找到最具信息量的样本集，主动学习样本选择过程中需要兼顾不确定度和多样性。
-
-为了量化各种主动学习样本选择策略的表现，采用基于$deficiency$值\cite{schein2007active}的度量方式进行评价，如公式\ref{eq:deficiency}所示。
-
-\begin{equation}\label{eq:deficiency}
-Def_n(AL,REF)=\frac{\sum_{t=1}^{n}(acc_n(REF)-acc_t(AL))}{\sum_{t=1}^{n}(acc_n(REF)-acc_t(REF))} \\
-\end{equation}
-
-其中，$acc_n(REF)$和$acc_n(AL)$分别表示第$t$轮迭代训练基线方法和主动学习方法训练的模型在测试集上的准确率。主动学习器性能越好，等式分母中$acc_t (AL)$值越大，则等式计算值越小。因此，$Def_n(AL,REF)$越小，主动学习效果越好。
-
-\begin{table}[!htb]
-	\caption{主动学习策略结果评价\label{tab:supervised_result2}}
+\begin{table}[htbp] 
 	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		Random & Random+Uncertainty & Random+SUP & SBP+Uncertainty & SBP+SUP\\
-		\hline
-		1.000 & 0.552 & 0.369 & 0.274 & \textbf{0.190}\\ 
-		\hline
-	\end{tabular}
+	\caption{\label{tab:qa_dataset}地理问题集举例} 
+	\begin{tabular}{lcl}
+		\toprule 
+		知识库三元组	& \textbf{（季风气候， 生产优势， 夏季高温多雨、雨热同期）}\\
+		\midrule 
+		web问题\_1 & 亚热带季风气候在发展农业生产方面有什么优势 \\ 
+		web问题\_2 & 我国的季风气候对农业生产最有利的是?\_作业帮 \\ 
+		web问题\_3 & 季风气候的最大优点？ \\
+		web问题\_4 & 温带季风气候在农业生产方面的显著优势是\_知道 \\
+		\midrule
+		问题答案 & \textbf{夏季高温多雨、雨热同期}\\ 
+		\bottomrule 
+	\end{tabular} 
 \end{table}
 
-表\ref{tab:supervised_result2}是对主动学习效果的定量分析，无论基于随机的初始样本选择还是基于流行度的初始样本选择，在后续迭代训练中采用基于不确定度和流行度的样本选择算法都能比基于不确定度的样本选择算法得到更快的训练收敛速度。并且采用基于流行度的初始训练样本选择配合综合不确定度和流行度的迭代训练样本选择的策略，$deficiency$值是最低的，性能表现最优。
+\subsection{结论}
+
 
 \section{本章小结}
 本章针对实体链接问题，基于主动学习方法，研究了减小人工标注工作量的方法。并且在已有主动学习方法的基础上，针对实体链接任务提出了基于流行度的初始样本选择算法、综合不确定度和流行度的迭代训练样本选择算法。实验结果表明，主动学习方法可以有效地降低实体链接训练集的标注数据，并保持较高的泛化能力。在初始样本集生成阶段，本文提出的选择算法相比随机选择的基线算法初始分类器性能 升了 10.1\%。在主动学习迭代训练阶段，本文 提出的选择算法相比基于不确定度的选择算法$deficiency$值降低了 16.1\%。
