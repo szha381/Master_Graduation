@@ -19,19 +19,19 @@ Pascal Hitzler, Markus Krotszsch, Sebastian Rudolph,\& York Sure
 \newblock 2012.
 \newblock 12--40.
 
-\bibitem{Zettlemoyer}
+\bibitem{Zettlemoyer0}
 Zettlemoyer, L. S., \& Collins, M.
 \newblock Learning
-context-dependent mappings from sentences to logical form.
+context-dependent mappings from sentences to logical form[C].
 \newblock In Proceedings of the Joint Conference of the 47th Annual
 Meeting of the ACL and the 4th International Joint Conference
-on Natural Language Processing of the AFNLP[C],
+on Natural Language Processing of the AFNLP,
 \newblock 2009, 2:
 \newblock 976--984.
 
 \bibitem{Cai}
 Cai, Q., \& Yates, A.
-\newblock Large-scale semantic parsing via schema matching and lexicon extension. In Proceedings of the 51st Annual Meeting of the Association for Computational Linguistics, 2013, 1: 423--433
+\newblock Large-scale semantic parsing via schema matching and lexicon extension[C]. In Proceedings of the 51st Annual Meeting of the Association for Computational Linguistics, 2013, 1: 423--433.
 
 
 \bibitem{BerantCA}
@@ -43,27 +43,28 @@ Berant, J., Chou, A., Frostig, R., \& Liang, P.
 \bibitem{Dyer}
 Dyer, C., Ballesteros, M., Ling, W., Matthews, A.,\& Smith, N. A.
 \newblock Transition-based dependency parsing with stack long short-term memory.
-\newblock arXiv preprint arXiv:1505.08075.
+\newblock arXiv preprint arXiv:1505.08075.2015.
 
 \bibitem{Yao}
 Yao, X., \& Van Durme, B.
 \newblock Information extraction over
-structured data: Question answering with freebase.
+structured data: Question answering with freebase[C].
 In Proceedings of the 52nd Annual Meeting of the Association
-for Computational Linguistics[C], 
+for Computational Linguistics, 
 \newblock 2014, 1:
 \newblock 956--966.
 
 \bibitem{Bordes1}
 Bordes, A., Chopra, S., \& Weston, J.
-\newblock Question answering with subgraph embeddings. In Proceedings of
-EMNLP[C].
-\newblock 2014.615--620
+\newblock Question answering with subgraph embeddings[C]. In Proceedings of
+EMNLP.
+\newblock 2014.
+\newblock 615--620.
 
 \bibitem{Dong}
 Dong, L., Wei, F., Zhou, M., \& Xu, K.
 \newblock Question answering over freebase with multi-column convolutional neural networks[C].
-\newblock In Proceedings of the 53rd Annual Meeting of the Association for Computational Linguistics and the 7th International Joint Conference on Natural Language Processing[C], 
+\newblock In Proceedings of the 53rd Annual Meeting of the Association for Computational Linguistics and the 7th International Joint Conference on Natural Language Processing, 
 \newblock 2015, 1:
 \newblock 260--269.
 
@@ -81,11 +82,11 @@ Computational Linguistics.
 \bibitem{Yih}
 Yih, S. W. T., Chang, M. W., He, X., \& Gao, J.
 \newblock Semantic parsing via staged query graph generation: Question answering with knowledge base[C].In Proceedings of the 53rd Annual Meeting of the Association for Computational Linguistics and the 7th International Joint Conference on Natural Language Processing.
-\newblock 2015. 1321-–1331.
+\newblock 2015. 1321--1331.
 
 \bibitem{Kim}
 Kim, Y.
-\newblock  Convolutional neural networks for sentence classification. arXiv preprint arXiv:1408.5882.
+\newblock Convolutional neural networks for sentence classification. arXiv preprint arXiv:1408.5882.
 \newblock 2014.
 
 \bibitem{Zhang}
@@ -97,19 +98,19 @@ preprint arXiv:1606.00979.
 \bibitem{Corcho}
 Corcho, O., \& Gómez-Pérez, A.
 \newblock A roadmap to ontology specification languages. In International Conference on Knowledge Engineering and Knowledge Management[C].
-\newblock In: Springer, Berlin, Heidelberg. 
+\newblock In Springer, Berlin, Heidelberg. 
 \newblock 2000.
 \newblock 80--96.
 
 \bibitem{xml}
 Bray, T., Paoli, J., Sperberg, C.
-\newblock Extensible Markup Language (XML) 1.0. W3C Recommendation. Feb 1998.
+\newblock Extensible Markup Language (XML) 1.0. W3C Recommendation. Feb, 1998.
 \newblock
  \url{http://www.w3.org/TR/REC-xml}.
 
 \bibitem{rdf}
 Lassila, O., Swick, R.
-\newblock Resource Description Framework (RDF) Model and Syntax Specification. W3C Recommendation. January, 99.
+\newblock Resource Description Framework (RDF) Model and Syntax Specification. W3C Recommendation. January, 1999.
 \newblock
  \url{http://www.w3.org/TR/PR-rdf-syntax}.
 
@@ -122,7 +123,7 @@ Brickley, D., Guha, R.V.
 \bibitem{gao}
 高志强，潘越，马力.
 \newblock 语义Web原理及应用[M].
-\newblock 机械工业出版社.
+\newblock 北京：机械工业出版社.
 \newblock 2009. 62--65.
 
 \bibitem{owl}
@@ -134,11 +135,11 @@ Bao, j., Calvanese D., Bernardo, C. G., et~al.
 
 \bibitem{yue}
 岳丽欣, 刘文云.
-\newblock 国内外领域本体构建方法的比较研究. 情报理论与实践[J].
+\newblock 国内外领域本体构建方法的比较研究[J]. 情报理论与实践.
 \newblock In: Natural Computation (ICNC), 2015 11th International Conference
-  on.
-\newblock 2016.
-\newblock 39(8), 119-125..
+  on,
+\newblock 2016,
+\newblock 39(8), 119--125.
 
 \bibitem{IDEF5}
 \newblock Information Integration for Concurrent Engineering(IICE)[EB/OL].
@@ -149,7 +150,7 @@ Bao, j., Calvanese D., Bernardo, C. G., et~al.
 \bibitem{skelton}
 USCHOLD M., GRUNINGER M.
 \newblock  Ontologies: principles, methods and applications[J].
-\newblock In: International Conference on Computational Learning Theory.
+\newblock In International Conference on Computational Learning Theory.
 \newblock Knowledge Engineering Review, 1996, 11(2):
 \newblock 14--17.
 
@@ -163,7 +164,7 @@ THAM K. D., FOX M. S., GRNINGER M.
 \bibitem{METHONTOLOGY}
 FERN{\'A}NDEZ M., G{\'O}MEZ-P{\'E}REZ, JURISTO N．
 \newblock METHONTOLOGY: from ontological art towards ontological engineering[J].
-\newblock Sprng Symposium on Ontological Engineering of AAAI.
+\newblock Sprng Symposium on Ontological Engineering of AAAI, 
 \newblock 1997, (5):
 \newblock 33--40.
 
@@ -185,7 +186,7 @@ Song, Yang, Wang, Hongning, and He, Xiaodong.
 \newblock 本体构建 [EB/OL]． 
 \newblock 2014.
 \newblock
-\url{http://www.docin.com./p-964406138.html.}.
+ \url{http://www.docin.com./p-964406138.html}.
 
 \bibitem{seven}
 NOY, N. F., MC GUINNESS, D. L. 
@@ -196,8 +197,8 @@ NOY, N. F., MC GUINNESS, D. L.
 \bibitem{Lu}
 Lu, W., Cheng, J., Yang, Q. 
 \newblock Question answering system based on web[C].
-\newblock In: Proceedings of the 2012 fifth international conference on intelligent computation technology and automation. IEEE Computer Society.
-\newblock 2012. 573–-576 
+\newblock In Proceedings of the 2012 fifth international conference on intelligent computation technology and automation. IEEE Computer Society.
+\newblock 2012. 573--576. 
 
 \bibitem{Bertola}
 Bertola, F., \& Patti, V.
@@ -230,38 +231,25 @@ Dragoni, M., da Costa Pereira, C., \& Tettamanzi, A. G.
 Li, F., \& Jagadish, H. V. 
 \newblock NaLIR: an interactive natural language interface for querying relational databases[C].
 \newblock In Proceedings of the 2014 ACM SIGMOD international conference on Management of data. ACM.
-\newblock 2014. 709--712
+\newblock 2014. 709--712.
 
 \bibitem{Zettlemoyer}
 Zettlemoyer, L. S., \& Collins, M.
 \newblock Learning to map sentences to logical form: Structured classification with probabilistic categorial grammars. arXiv preprint arXiv:1207.1420.2012.
 
-\bibitem{Wong}
-Wong, Y. W.  \& Mooney, R. J. 2007.
-\newblock Learning synchronous grammars for semantic parsing with lambda
-calculus[C].
-\newblock In Association for Computational Linguistics (ACL).
-\newblock 2007. 960–-967.
-
 \bibitem{Kwiatkowski}
 Kwiatkowski, J., ettlemoyer, L., Goldwater, S. \& Steedman, M.
 \newblock Inducing probabilistic CCG grammars from logical form with higher-order unification[C].
-\newblock In: In Empirical Methods in Natural Language Processing (EMNLP).
+\newblock In In Empirical Methods in Natural Language Processing (EMNLP).
 \newblock 2010.
-\newblock 1223-–1233
+\newblock 1223-–1233.
 
 \bibitem{BerantCF}
 Berant, J., Chou, A., Frostig, R., \& Liang, P. 
 \newblock Semantic parsing on freebase from question-answer pairs[C].
-\newblock In: In Proceedings of the 2013 Conference on Empirical Methods in Natural Language Processing.
+\newblock In Proceedings of the 2013 Conference on Empirical Methods in Natural Language Processing.
 \newblock 2013.
 \newblock 1533--1544.
-
-\bibitem{Yao}
-Yao, X., \& Van Durme, B.
-\newblock Information extraction over structured data: Question answering with freebase[C].
-\newblock In Proceedings of the 52nd Annual Meeting of the Association for Computational Linguistics, 2014, (1): 
-\newblock 956--966.
 
 \bibitem{Bordes3}
 Bordes, A., Weston, J., \& Usunier, N.
@@ -278,7 +266,7 @@ Fader, A., Soderland, S., \& Etzioni, O.
 
 \bibitem{Bahdanau}
 Bahdanau, D., Cho, K., \& Bengio, Y. 
-\newblock Neural machine translation by jointly learning to align and translate. arXiv preprint arXiv:1409.0473. 2014
+\newblock Neural machine translation by jointly learning to align and translate. arXiv preprint arXiv:1409.0473. 2014.
 
 \bibitem{Luong}
 Luong, M. T., Pham, H., \& Manning, C. D.
@@ -291,7 +279,7 @@ Rush, A. M., Chopra, S., \& Weston, J.
 \bibitem{Liu}
 Zhang, Y., Liu, K., He, S., Ji, G., Liu, Z., Wu, H., \& Zhao, J. 
 \newblock
-  Question answering over knowledge base with neural attention combining global knowledge information. arXiv preprint arXiv:1606.00979. 2016
+  Question answering over knowledge base with neural attention combining global knowledge information. arXiv preprint arXiv:1606.00979. 2016.
 
 \bibitem{Tan}
 Tan, M., Santos, C. D., Xiang, B., \& Zhou, B.
@@ -300,7 +288,7 @@ Tan, M., Santos, C. D., Xiang, B., \& Zhou, B.
 \bibitem{Hu}
 Hu, W., Li, H., Sun, Z., Qian, X., Xue, L., Cao, E., \& Qu, Y. 
 \newblock Clinga: bringing Chinese physical and human geography in Linked Open Data[C].
-\newblock In International Semantic Web Conference.Springer, Cham.
+\newblock In International Semantic Web Conference.Springer. Cham.
 \newblock 2016.
 \newblock 104--112.
 

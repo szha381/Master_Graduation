@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  5 MAY 2018 22:24
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  6 MAY 2018 22:33
 entering extended mode
 **./sample_masters.tex
 (sample_masters.tex
@@ -1718,17 +1718,7 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \@lastruleclass=\count307
 \@thisrulewidth=\dimen276
 )
-(sample_masters.aux
-
-Package natbib Warning: Citation `Zettlemoyer' multiply defined.
-
-
-Package natbib Warning: Citation `Wong' multiply defined.
-
-
-Package natbib Warning: Citation `Yao' multiply defined.
-
-)
+(sample_masters.aux)
 \openout1 = `sample_masters.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
@@ -1757,8 +1747,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
-
-ABD: EverySelectfont initializing macros
+ ABD: EverySelectfont initializing macros
 LaTeX Info: Redefining \selectfont on input line 5.
 .................................................
 . fontspec info: "setup-math"
@@ -2181,16 +2170,16 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [1
 
 
-]) [2
+] [2
 
 
-] (sample_masters.toc [3
+]) [3] (sample_masters.toc [4
 
 ])
 \tf@toc=\write5
 \openout5 = `sample_masters.toc'.
 
- [4] (sample_masters.nls) [5
+ [5] (sample_masters.nls) [6
 
 
 ]
@@ -2219,7 +2208,11 @@ Underfull \vbox (badness 5345) has occurred while \output is active []
 File: resource/onto_method_compare.pdf Graphic file (type pdf)
 <use resource/onto_method_compare.pdf>
 
-[8] [9] [10] [11] [12]) (chapters/4.监督学习_主动学习.tex [13] [14]
+[8] [9] [10] [11] [12]) (chapters/4.监督学习_主动学习.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13]
+[14]
 第三章
 [15
 
@@ -2289,6 +2282,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 351--353
 
  []
 
+
+Overfull \hbox (37.2697pt too wide) in paragraph at lines 356--358
+\TU/SimSun(1)/m/n/12.045 有 顺 序 过 程 和 循 环 过 程。|  本 文 将 过 程 定 义 为 一 个 大 类 \TU/Tim
+esNewRoman(0)/m/n/12.045 gso:Process\TU/SimSun(1)/m/n/12.045 ，|  顺 序 过 程 \TU/Ti
+mesNewRoman(0)/m/n/12.045 gso:SequentialProcess
+ []
+
 [24] [25]
 File: resource/clinga.png Graphic file (type bmp)
 <resource/clinga.png>
@@ -2315,16 +2315,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 593--595
  []
 
 [31]
+! Extra }, or forgotten $.
+l.601 ... 时间 t 时刻， 令答案端的 Bi-LSTM 输出向量为$\textbf{h}}
+                                                  _{a}(t)$ ，问题词向量为$\textbf{o...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
 File: resource/qa_attention_1.pdf Graphic file (type pdf)
 <use resource/qa_attention_1.pdf>
- [32] [33] [34]) [35] (chapters/6.总结与展望.tex [36]
+[32] [33] [34] [35]) (chapters/6.总结与展望.tex [36]
 第四章
 ) [37
 
-] [38
+] [38] [39
 
 
-] (sample_masters.bbl [39
+] (sample_masters.bbl [40
 
 
 ]
@@ -2356,33 +2365,24 @@ File: resource/qa_attention_1.pdf Graphic file (type pdf)
 . <->"FangSong/OT:script=hani;language=DFLT;"
 . - 'small caps'  (m/sc) with NFSS spec.: 
 .................................................
- [40] [41]
-Underfull \hbox (badness 6559) in paragraph at lines 236--238
+ [41] [42]
+Underfull \hbox (badness 6559) in paragraph at lines 237--239
 []\TU/TimesNewRoman(0)/m/n/12.045 Zettlemoyer, L. S., & Collins, M.  Learning t
 o map sentences to logical
  []
 
-[42])
-
-Package natbib Warning: There were multiply defined citations.
-
-[43] [44
+[43]) [44] [45
 
 
 ]
 File: figures/back-cover.png Graphic file (type bmp)
 <figures/back-cover.png>
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 81.
- [45
+ [46
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 81.
- (sample_masters.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-)
+ (sample_masters.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 81.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 81.
 
@@ -2392,12 +2392,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 81.
  ) 
 Here is how much of TeX's memory you used:
- 31989 strings out of 427836
- 631105 string characters out of 3151724
- 668349 words of memory out of 3000000
- 35575 multiletter control sequences out of 15000+200000
+ 32007 strings out of 427836
+ 632078 string characters out of 3151724
+ 668313 words of memory out of 3000000
+ 35593 multiletter control sequences out of 15000+200000
  549979 words of font info for 144 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
- 63i,18n,70p,10476b,683s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,18n,70p,10476b,691s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on sample_masters.pdf (58 pages).
+Output written on sample_masters.pdf (60 pages).
