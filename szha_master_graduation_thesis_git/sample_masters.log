@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  5 MAY 2018 00:25
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  5 MAY 2018 22:24
 entering extended mode
 **./sample_masters.tex
 (sample_masters.tex
@@ -2293,8 +2293,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 351--353
 File: resource/clinga.png Graphic file (type bmp)
 <resource/clinga.png>
  [26] [27]
-File: resource/qa_overview.jpg Graphic file (type bmp)
-<resource/qa_overview.jpg>
+File: resource/qa_overview_1.pdf Graphic file (type pdf)
+<use resource/qa_overview_1.pdf>
  [28] [29]
 Underfull \hbox (badness 10000) in paragraph at lines 532--534
 
@@ -2307,24 +2307,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 576--578
 
  []
 
-File: resource/qa_bi_lstm.jpg Graphic file (type bmp)
-<resource/qa_bi_lstm.jpg>
+File: resource/qa_bi_lstm_1.pdf Graphic file (type pdf)
+<use resource/qa_bi_lstm_1.pdf>
 
 Underfull \hbox (badness 10000) in paragraph at lines 593--595
 
  []
 
 [31]
-File: resource/qa_attention.jpg Graphic file (type bmp)
-<resource/qa_attention.jpg>
+File: resource/qa_attention_1.pdf Graphic file (type pdf)
+<use resource/qa_attention_1.pdf>
  [32] [33] [34]) [35] (chapters/6.总结与展望.tex [36]
 第四章
-[37
+) [37
 
-]) [38] [39
+] [38
 
 
-] (sample_masters.bbl [40
+] (sample_masters.bbl [39
 
 
 ]
@@ -2356,48 +2356,48 @@ File: resource/qa_attention.jpg Graphic file (type bmp)
 . <->"FangSong/OT:script=hani;language=DFLT;"
 . - 'small caps'  (m/sc) with NFSS spec.: 
 .................................................
- [41] [42]
+ [40] [41]
 Underfull \hbox (badness 6559) in paragraph at lines 236--238
 []\TU/TimesNewRoman(0)/m/n/12.045 Zettlemoyer, L. S., & Collins, M.  Learning t
 o map sentences to logical
  []
 
-[43])
+[42])
 
 Package natbib Warning: There were multiply defined citations.
 
-[44] [45
+[43] [44
 
 
 ]
 File: figures/back-cover.png Graphic file (type bmp)
 <figures/back-cover.png>
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 79.
- [46
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 81.
+ [45
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 79.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 81.
  (sample_masters.aux
 
 Package natbib Warning: Citation(s) may have changed.
 (natbib)                Rerun to get citations correct.
 
 )
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 79.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 79.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 81.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 81.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 79.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 81.
  ) 
 Here is how much of TeX's memory you used:
- 32029 strings out of 427836
- 631790 string characters out of 3151724
- 669845 words of memory out of 3000000
- 35614 multiletter control sequences out of 15000+200000
+ 31989 strings out of 427836
+ 631105 string characters out of 3151724
+ 668349 words of memory out of 3000000
+ 35575 multiletter control sequences out of 15000+200000
  549979 words of font info for 144 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  63i,18n,70p,10476b,683s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on sample_masters.pdf (59 pages).
+Output written on sample_masters.pdf (58 pages).

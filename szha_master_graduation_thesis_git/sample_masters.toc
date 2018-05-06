@@ -39,15 +39,15 @@
 \contentsline {subsubsection}{模型训练}{32}{subsubsection*.24}
 \contentsline {subsubsection}{最终答案选取策略}{33}{subsubsection*.25}
 \contentsline {subsection}{\numberline {3.4.2}地理问答实验}{33}{subsection.3.4.2}
-\contentsline {subsubsection}{参数设置}{34}{subsubsection*.26}
-\contentsline {subsubsection}{评价指标}{34}{subsubsection*.27}
-\contentsline {subsubsection}{实验结果}{34}{subsubsection*.28}
-\contentsline {subsubsection}{实验分析}{34}{subsubsection*.30}
-\contentsline {subsubsection}{地理问答数据集构建}{35}{subsubsection*.31}
-\contentsline {subsection}{\numberline {3.4.3}结论}{35}{subsection.3.4.3}
-\contentsline {section}{\numberline {3.5}本章小结}{35}{section.3.5}
+\contentsline {subsubsection}{实验环境}{34}{subsubsection*.26}
+\contentsline {subsubsection}{参数设置}{34}{subsubsection*.27}
+\contentsline {subsubsection}{评价指标}{34}{subsubsection*.28}
+\contentsline {subsubsection}{实验结果}{34}{subsubsection*.29}
+\contentsline {subsubsection}{实验分析}{35}{subsubsection*.31}
+\contentsline {subsubsection}{地理问答数据集构建}{35}{subsubsection*.32}
+\contentsline {section}{\numberline {3.5}本章小结}{36}{section.3.5}
 \contentsline {chapter}{\numberline {第四章\hspace {.3em}}总结与展望}{37}{chapter.4}
 \contentsline {section}{\numberline {4.1}总结}{37}{section.4.1}
 \contentsline {section}{\numberline {4.2}未来展望}{37}{section.4.2}
-\contentsline {chapter}{致 谢}{39}{section*.33}
-\contentsline {chapter}{参考文献}{40}{section*.35}
+\contentsline {chapter}{致 谢}{38}{section*.34}
+\contentsline {chapter}{参考文献}{39}{section*.36}

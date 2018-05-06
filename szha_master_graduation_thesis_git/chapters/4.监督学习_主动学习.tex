@@ -496,7 +496,7 @@ Clinga 与 CGeoOnt 的 Schema 定义存在一定差异，本文需要将这两�
 总结本文知识库问答任务分为如下四步进行：
 
 \begin{figure}[!htb]
-	\centering\includegraphics[height=7cm]{resource/qa_overview}
+	\centering\includegraphics[height=7cm]{resource/qa_overview_1}
 	\caption{基于注意力机制的地理知识库问答流程}
 	\label{fig:qa_overview}
 \end{figure}
@@ -585,7 +585,7 @@ h_t = (\overrightarrow{h_t}, \overleftarrow{h_t})
 $$
 因此，本文基于 LSTM 的问答模型可以表示为图\ref{fig:qa_bi_lstm}问答模型所示。 
 \begin{figure}[!htb]
-	\centering\includegraphics[height=8cm]{resource/qa_bi_lstm}
+	\centering\includegraphics[height=8cm]{resource/qa_bi_lstm_1}
 	\caption{基于Bi-LSTM的问题、答案表示模型}
 	\label{fig:qa_bi_lstm}
 \end{figure}
@@ -616,7 +616,7 @@ $$
 其中，$\textbf{W}_{am}$、$\textbf{W}_{qm}$为注意力机制参数矩阵，$\textbf{w}_{sm}$为注意力机制参数向量。从直观上看， 运用注意力机制表示答案相当于一定程度上将答案中与问题关键词相似的词增加权重，给无关词减少权重，使更易于区分正确答案和错误答案。
 
 \begin{figure}[!htb]
-	\centering\includegraphics[height=8cm]{resource/qa_attention}
+	\centering\includegraphics[height=8cm]{resource/qa_attention_1}
 	\caption{基于Attention机制的问题、答案表示模型}
 	\label{fig:qa_attention}
 \end{figure}
@@ -651,7 +651,16 @@ $$
 $$
 
 \subsection{地理问答实验}
-为了评估实验模型，本文使用863项目组构建的基础知识库，同时为了解决目前中文地理领域问题缺乏的问题，本文又构建了较大规模的地理问题测试集，详细在本章数据集小结讲述。先介绍实验相关设置，然后介绍实验结果以及实验分析，最后介绍地理数据集的生成过程。
+为了评估实验模型，本文使用863项目组构建的基础知识库，同时为了解决目前中文地理领域问题缺乏的问题，本文又构建了较大规模的地理问题测试集，详细在本章数据集小结讲述。先介绍实验环境、参数设置，然后介绍实验结果以及实验分析，最后介绍地理数据集的生成过程。
+
+\subsubsection{实验环境}
+整个实验是在微软云服务器（Microsoft  Azure）上进行，具体硬件、软件环境如下所示：
+
+硬件环境：
+CPU: Intel(R) Xeon(R) CPU E5-2600 0 @ 2.20GHz
+Memory: 14GB
+
+
 \subsubsection{参数设置}
 实验词向量由word2vec\cite{Mikolov}[28]结合最新的中文维基百科语料训练得到，词向量维度为300。实验采取随机梯度下降优化策略，实验尝试过不同的m值，如0.1、0.2、0.3，最终选择0.1。学习率初始值为0.4，每10个epochs下降50$\%$，总共下降4次。剪枝参数max\_grad\_norm设为5，dropout取1.0。实验batch\_size取50，问题负例个数k取20，问题和答案的最大长度设置为50，超出最大长度内容舍弃，双向LSTM隐藏单元长度设为200。
 
@@ -659,7 +668,7 @@ $$
 本文地理知识库问答实验采用知识库问答任务中常用的评价指标：平均倒数排序（Mean Reciprocal Rank，MRR ）、准确率Accuracy@N\cite{Duan}【段】。如下为两个指标的定义：
 
 $$
-\mathcal{MRR} = \frac{1}{|Q|}\sum_{i=1}^{|Q|}\frac{1}{rank_i}
+MRR = \frac{1}{|Q|}\sum_{i=1}^{|Q|}\frac{1}{rank_i}
 \eqno(15)
 $$
 公式（15）中$|Q|$表示评估集中问题总数，$rank_i$表示当前问题的候选答案生成集中正确答案的位置，其中候选答案生成集是按照答案打分降序排序。若候选答案生成集中没有包括正确答案，则$rank_i$的值设为0。
@@ -726,8 +735,8 @@ $$
 	\end{tabular} 
 \end{table}
 
-\subsection{结论}
+%\subsection{结论}
 
 
 \section{本章小结}
-本章针对实体链接问题，基于主动学习方法，研究了减小人工标注工作量的方法。并且在已有主动学习方法的基础上，针对实体链接任务提出了基于流行度的初始样本选择算法、综合不确定度和流行度的迭代训练样本选择算法。实验结果表明，主动学习方法可以有效地降低实体链接训练集的标注数据，并保持较高的泛化能力。在初始样本集生成阶段，本文提出的选择算法相比随机选择的基线算法初始分类器性能 升了 10.1\%。在主动学习迭代训练阶段，本文 提出的选择算法相比基于不确定度的选择算法$deficiency$值降低了 16.1\%。
+本章介绍了基于本体的地理知识问答的具体实现过程。主要包括对本文两个大任务——地理本体知识库构建和基于地理知识库的问答的实现过程进行详细阐述。本章先介绍本文的任务以及本文的系统结构图；再介绍地理本体知识库的构建过程，包括如何构建地理本体CGeoOnt，如何将基于百度百科构建的本体Clinga与CGeoOnt进行融合得到总的地理本体知识库和如何存储和检索本文地理本体知识库；然后介绍基于地理本体知识库的问答模型及模型的训练方法，包括介绍基于LSTM表示地理问题和答案的问答模型、基于Bi-LSTM表示地理问题和答案的模型和基于Atten的Bi-LSTM表示地理答案的问答模型；最后介绍地理问答实验，包括介绍地理问答实验的实验环境、实验参数设置、评价指标、实验结果及分析和地理问答数据集的构建过程。
