@@ -1,7 +1,10 @@
-\nomenclatureentry{aEL@[{EL}]\begingroup Entity Linking\nomeqref {1.0}|nompageref}{3}
+\nomenclatureentry{aCGeoOnt@[{CGeoOnt}]\begingroup Chinese Geographical Ontology\nomeqref {1.0}|nompageref}{3}
+\nomenclatureentry{aClinga@[{Clinga}]\begingroup Chinese Linked Geographical Dataset\nomeqref {1.0}|nompageref}{3}
+\nomenclatureentry{aKB@[{KB}]\begingroup Knowledge Base\nomeqref {1.0}|nompageref}{3}
+\nomenclatureentry{aKBQA@[{KBQA}]\begingroup Knowledge Base Question Answering\nomeqref {1.0}|nompageref}{3}
+\nomenclatureentry{aRNN@[{RNN}]\begingroup Recurrent Neural Network\nomeqref {1.0}|nompageref}{3}
+\nomenclatureentry{aLSTM@[{LSTM}]\begingroup Long And Short Term Memory\nomeqref {1.0}|nompageref}{3}
+\nomenclatureentry{aCNNs@[{CNNs}]\begingroup Convolutional Neural Networks\nomeqref {1.0}|nompageref}{3}
 \nomenclatureentry{aNER@[{NER}]\begingroup Named Entity Recognition\nomeqref {1.0}|nompageref}{3}
-\nomenclatureentry{aAL@[{AL}]\begingroup Active Learning\nomeqref {1.0}|nompageref}{3}
-\nomenclatureentry{aSBP@[{SBP}]\begingroup Sampling by Popularity\nomeqref {1.0}|nompageref}{3}
-\nomenclatureentry{aSUP@[{SUP}]\begingroup Sampling by Uncertainty and Popularity\nomeqref {1.0}|nompageref}{3}
-\nomenclatureentry{aRW@[{RW}]\begingroup Random Walk\nomeqref {1.0}|nompageref}{3}
-\nomenclatureentry{aEP@[{EP}]\begingroup Evidence Propagation\nomeqref {1.0}|nompageref}{3}
+\nomenclatureentry{aPOS@[{POS}]\begingroup Part Of Speech\nomeqref {1.0}|nompageref}{3}
+\nomenclatureentry{aBOW@[{BOW}]\begingroup Bag Of Words\nomeqref {1.0}|nompageref}{3}

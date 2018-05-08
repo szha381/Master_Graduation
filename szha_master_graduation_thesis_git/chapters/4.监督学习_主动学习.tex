@@ -21,7 +21,7 @@
 \section{系统结构图}
 针对基于本体的地理知识问答的两大任务，本文设计了如下图\ref{fig:graduation}所示的系统总结构图。该系统结构图由两大模块组成，地理本体知识库构建模块、基于注意力机制的地理知识库问答模块。第二个模块包括两个子模块：地理问题输入、处理模块和答案查询模块
 
-地理本体知识库构建模块包括三个任务，第一是根据高中地理相关知识源人工构建地理本体CGeoOnt，第二将本体CGeoOnt和基于百度百科自动构建的地理本体Clinga融合成更大的本体且进行本体存储与检索，最后一个任务是根据融合而成的地理本体构建本体词汇表和本体同义词词汇表，本文统称为为本体词典。
+地理本体知识库构建模块包括三个任务，第一是根据高中地理相关知识源人工构建地理本体CGeoOnt，第二是将本体CGeoOnt和基于百度百科自动构建的地理本体Clinga融合成更大的本体且进行本体存储与检索，第三个任务是根据融合而成的地理本体构建本体词汇表和本体同义词词汇表，本文统称为为本体词典。
 
 基于注意力机制的地理知识库问答模块的子模块——地理问题输入、处理模块包括两个任务，第一是根据地理核心知识考点，获取跟知识点相关的真实地理问题集，第二是对问题进行分析，包括问题分词、命名实体识别、词性标注和问题中包含的本体主题词识别，最终目的是生成候选答案实体供候选答案检索。
 
@@ -97,7 +97,7 @@
 	}
 	\item {术语间多使用gso:relatedTo来表达它们有一定的关联性。
 	}
-	\item {为避免处理的复杂性，三元组中不使用空白节点（ blank node ）。
+	\item {为避免处理的复杂性，三元组中不使用空白结点（ blank node ）。
 	}
 \end{itemize}
 
@@ -366,7 +366,7 @@ gso:StepOfProcess\quad rdf:type\quad owl:Class\quad .（过程的步骤类）
 \\
 再申明条件、步骤属性:
 
-gso:condition4Step\quad rdf:type\quad owl:DatatypeProperty\quad .\quad （步骤条件，值为字符串）
+gso:condition4Step\quad rdf:type\quad owl:DatatypeProperty\quad .\quad （步骤条件，取值为字符串）
 
 gso:condition4Step\quad rdfs:domain\quad gso:StepOfProcess\quad .
 
@@ -411,7 +411,7 @@ gsr:R\_冷锋过境步骤\_2\quad gso:stepDesc\quad "暖气团在抬升过程中
 
 gsr:R\_冷锋过境步骤\_3\quad gso:stepNum\quad "3"$^{\land\land}$xs:positiveInteger\quad ;
 
-gsr:R\_冷锋过境步骤\_3\quad gso:condition4Step\quad "暖空气中含大量水汽。"$^{\land\land}$xs:string\quad ;
+gsr:R\_冷锋过境步骤\_3\quad gso:condition4Step\quad "暖空气含大量水汽。"$^{\land\land}$xs:string\quad ;
 
 gsr:R\_冷锋过境步骤\_3\quad gso:stepDesc\quad "如果暖空气中含有大量的水汽，那么可能会带来雨雪天气。"$^{\land\land}$xs:string\quad .
 
@@ -468,9 +468,9 @@ gsr:R\_冷锋过境中天气变化的步骤\_3\quad gso:stepDesc\quad "过境后
 	\label{fig:clinga}
 \end{figure}
 
-图\ref{fig:clinga}仅仅为Clinga本体结构的一个摘要，有向图的根结点为总大类地理，然后箭头被指向的是其两个子类自然地理（physical geography）和人文地理（human geography），然后依次为这两个子类的子类，依此类推，实际图中的类共有130个，其中的35个叶子类为GeoNames\footnote{http://www.geonames.org/}中没有的类，更具体的情况请参加Hu等人的工作。
+图\ref{fig:clinga}仅仅为Clinga本体结构的一个摘要，有向图的根结点为总大类地理，然后箭头被指向的是其两个子类自然地理（physical geography）和人文地理（human geography），然后依次为这两个子类的子类，依此类推。实际图中的类共有130个，其中的35个叶子类为GeoNames\footnote{http://www.geonames.org/}中没有的类，更具体的情况请参加Hu等人的工作。
 
-\subsubsection{地理本体融合方法}
+\subsubsection{3.3.2.2 地理本体融合方法}
 Clinga 与 CGeoOnt 的 Schema 定义存在一定差异，本文需要将这两个本体进行融合得到一个更综合的地理本体知识库。本文构建的CGeoOnt 包含类和属性3,000 余个，相关 RDF 三元组 25,000 余条，概念类的定义粒度相比Clinga来说比较细。由于CGeoOnt 本体相对量较小，本文采取将本体CGeoOnt的Schema映射到Clinga的Schema上，具体操作流程如下：
 
 （ 1） Clinga 中实体只保留其在百度百科 infobox 域中信息三元组，去掉其 section 域构成的三元组。
@@ -483,7 +483,7 @@ Clinga 与 CGeoOnt 的 Schema 定义存在一定差异，本文需要将这两�
 
 \subsection{地理本体存储与检索}
 
-本文采用对象关系数据库OpenLink Virtuoso\footnote{https://virtuoso.openlinksw.com/}存储标注好的地理本体知识（三元组），由于OpenLink Virtuoso是一个可伸缩的高性能、兼容性强的对象关系数据库引擎，可以提供复杂的SQL、XML、RDF数据库管理功能，著名的开放域知识库freebase也采用此数据库存储，本文运用其存储RDF数据的功能，同时还使用SPARQL\footnote{https://www.w3.org/TR/rdf-sparql-query/}语句很方便的检索本体知识库中的概念和概念关系三元组信息数据。
+本文采用对象关系数据库OpenLink Virtuoso\footnote{https://virtuoso.openlinksw.com/}存储标注好的地理本体知识三元组，由于OpenLink Virtuoso是一个可伸缩的高性能、兼容性强的对象关系数据库引擎，可以提供复杂的SQL、XML、RDF数据库管理功能，著名的开放域知识库freebase也采用此数据库存储，本文运用其存储RDF数据的功能，同时还使用SPARQL\footnote{https://www.w3.org/TR/rdf-sparql-query/}语句很方便的检索本体知识库中的概念和概念关系三元组信息数据。
 
 \subsection{地理本体词典生成}
 本文需要根据构建的地理知识库生成地理概念词典，这些概念包含知识库中的实体和类及两者的同义词。生成的地理本体词典主要用于判断某个命名实体是否属于本文地理知识库的范畴，以便提供相关候选实体的知识库信息，同时也便于查询同一个实体的不同别名。
@@ -529,7 +529,7 @@ Clinga 与 CGeoOnt 的 Schema 定义存在一定差异，本文需要将这两�
 
 
 \subsubsection{3.4.1.2 地理问题、候选答案表示}
-本节讲述如何将地理问题和候选答案这样的文本序列表示成词向量（word embedding）形式。本文表示地理和候选答案的基础模型为循环神经网络（ Recurrent Neural Networks，RNN)，本节介绍使用RNN的变种LSTM模型来表示地理问题和答案，本文先介绍RNN表示序列数据的原理，后依次介绍使用基于基本的LSTM表示问题、答案，基于Bi-LSTM来表示问题答案和基于Attention的Bi-LSTM表示答案。
+本节讲述如何将地理问题和候选答案这样的文本序列表示成词向量（word embedding）形式。本文表示地理和候选答案的基础模型为循环神经网络（ Recurrent Neural Network，RNN)，本节介绍使用RNN的变种LSTM模型来表示地理问题和答案，本文先介绍RNN表示序列数据的原理，后依次介绍使用基于基本的LSTM表示问题、答案，基于Bi-LSTM来表示问题答案和基于Attention的Bi-LSTM表示答案。
 \\
 
 $\P$ RNN表示序列数据原理
@@ -590,7 +590,7 @@ $$
 	\label{fig:qa_bi_lstm}
 \end{figure}
 
- 首先生成问题、答案词序列的初始词向量, 然后输入到 Bi-LSTM 网络进入训练，得到问题和答案的最终向量表示， 最后词向量做 max pooling 后通过余弦相似性计算问题、答案向量矩阵的相似性。实验设置问题、答案的 Bi-LSTM 网 络共享参数， Feng[24]等人的研究表明两个网络共享 参数较两个网络拥有各自不同参数性能更优。
+ 首先生成问题、答案词序列的初始词向量, 然后输入到 Bi-LSTM 网络进入训练，得到问题和答案的最终向量表示， 最后词向量做 max pooling 后通过余弦相似性计算问题、答案向量矩阵的相似性。实验设置问题、答案的 Bi-LSTM 网 络共享参数， Feng\cite{Feng}等人的研究表明两个网络共享 参数较两个网络拥有各自不同参数性能更优。
  \\
  
  $\P$基于注意力机制的答案表示
@@ -598,7 +598,7 @@ $$
 与上述模型单独对问题和答案进行表示不同，此节使用一种基本的注意力机制模型，答案中每个词的向量生成均依赖问题，通过动态地将答案中更多的有效信息与问题相应关键信息对齐，可以更好的表示答案与问题之间的依赖关系。 此该注意力机制已在许多自
 然语言处理任务上取得不错效果，如机器翻译、事实型问答、句子摘要等。
 
-图3.6为本文基于注意力机制的答案表示模型，模型使用词级别的注意力，如图中描述，在答案端Bi-LSTM 网络输出进入 max pooling 层之前，每个输出会乘以一个基于句子的 Attention 值。 时间 t 时刻， 令答案端的 Bi-LSTM 输出向量为$\textbf{h}}_{a}(t)$ ，问题词向量为$\textbf{o}_q$，答案中每个词向量$\tilde{\textbf{h}}_{a}(t)$更新如下：
+图3.6为本文基于注意力机制的答案表示模型，模型使用词级别的注意力，如图中描述，在答案端Bi-LSTM 网络输出进入 max pooling 层之前，每个输出会乘以一个基于句子的 Attention 值。 时间 t 时刻， 令答案端的 Bi-LSTM 输出向量为$\textbf{h}_{a}(t)$ ，问题词向量为$\textbf{o}_q$，答案中每个词向量$\tilde{\textbf{h}}_{a}(t)$更新如下：
 $$
 \textbf{m}_{a,q}(t) = \tanh(\textbf{W}_{am}\textbf{h}_{a}(t) + \textbf{W}_{qm}\textbf{o}_q)
 \eqno(8)
@@ -640,7 +640,7 @@ $$
 
 
 \subsubsection{3.4.1.4 最终答案选取策略}
-在测试阶段，问答模型给所有候选答案打分排序，然后选择出得分最高答案三元组$S_{max}$，考虑到一个问题的正确答案可能不止一种，因此，本文设置答案阈值，此阈值取损失函数中的m，将得分与最高分相差不超过m的三元组也视作最终答案。如下：$C_q$为问题q的所有候选答案集合，$\widehat{A_q}$为最终答案集合，$\hat{a}$为候选答案。
+在测试阶段，问答模型给所有候选答案打分排序，然后选择出得分最高答案三元组$S_{max}$，考虑到一个问题的正确答案可能不止一种，因此，本文设置答案阈值，此阈值取损失函数中的m，将得分与最高分相差不超过m的三元组也视作最终答案。如下：$C_q$为问题q的所有候选答案集合，$\widehat{A}_q$为最终答案集合，$\hat{a}$为候选答案。
 $$
 \mathcal{S}_{max} = \arg\max_{a \in C_q}{S(q,a)}
 \eqno(13)
@@ -657,15 +657,28 @@ $$
 整个实验是在微软云服务器（Microsoft  Azure）上进行，具体硬件、软件环境如下所示：
 
 硬件环境：
-CPU: Intel(R) Xeon(R) CPU E5-2600 0 @ 2.20GHz
+
+CPU: 4 $\times$ Intel(R) Xeon(R) CPU E5-2600 0 @ 2.20GHz
+
 Memory: 14GB
 
+软件环境：
+
+系统：Ubuntu 16.04.4 LTS
+
+编程语言：Python3.6.5 |Anconda
+
+深度学习框架：Tensorflow 1.6.0
+
+Python编辑器：VIM -Vi IMproved 7.4 \& Jupyter Notebook
+
+知识库存储数据库：Virtuoso 7.2.4 Released
 
 \subsubsection{3.4.2.2 参数设置}
 实验词向量由word2vec\cite{Mikolov}结合最新的中文维基百科语料训练得到，词向量维度为300。实验采取随机梯度下降优化策略，实验尝试过不同的m值，如0.1、0.2、0.3，最终选择0.1。学习率初始值为0.4，每10个epochs下降50$\%$，总共下降4次。剪枝参数max\_grad\_norm设为5，dropout取1.0。实验batch\_size取50，问题负例个数k取20，问题和答案的最大长度设置为50，超出最大长度内容舍弃，双向LSTM隐藏单元长度设为200。
 
 \subsubsection{3.4.2.3 评价指标}
-本文地理知识库问答实验采用知识库问答任务中常用的评价指标：平均倒数排序（Mean Reciprocal Rank，MRR ）、准确率Accuracy@N\cite{Duan}【段】。如下为两个指标的定义：
+本文地理知识库问答实验采用知识库问答任务中常用的评价指标：平均倒数排序（Mean Reciprocal Rank，MRR ）、准确率Accuracy@N\cite{Duan}。如下为两个指标的定义：
 
 $$
 MRR = \frac{1}{|Q|}\sum_{i=1}^{|Q|}\frac{1}{rank_i}
@@ -707,7 +720,7 @@ $$
 人工挑选问题时，还需要从本文地理核心知识库中找出可以回答该问题的实体三元组，无法找到知识库中对应三元组的问题将被丢弃。目前已经人工挑选出636个地理问题（举例如下段），目前仍在继续人工标注中。本文将其中200个问题及其答案和NLPCC2016训练集中的10000个训练样例当作实验训练集。其余436个地理问题作为测试集的一部分。
 
 根据地理核心三元组知识获取的多样化web地理问题举例如表\ref{tab:qa_dataset}：
-\\
+
 表\ref{tab:qa_dataset}列举了地理知识三元组“（季风气候， 生产优势， 夏季高温多雨、雨热同期）”得到四个不同方式表达的问题（1）—（4），以及根据三元组得出问题的最终答案为“夏季高温多雨、雨热同期”。
 
 （1）亚热带季风气候在发展农业生产方面有什么优势

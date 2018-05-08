@@ -14,9 +14,8 @@ Cheng, G., Zhu, W., Wang, Z., Chen, J., \& Qu, Y.
 \newblock 2479--2485.
 
 \bibitem{Hitzler}
-Hitzler, P., Krotzsch, M., \& Rudolph, S. 
+Pascal Hitzler, Markus Krotszsch, Sebastian Rudolph,\& York Sure
 \newblock Foundations Of Semantic Web Technologies[M].
-\newblock CRC press.
 \newblock 2012.
 \newblock 12--40.
 
@@ -107,7 +106,7 @@ Corcho, O., \& Gómez-Pérez, A.
 Bray, T., Paoli, J., Sperberg, C.
 \newblock Extensible Markup Language (XML) 1.0. W3C Recommendation. Feb, 1998.
 \newblock
-\url{http://www.w3.org/TR/REC-xml}.
+ \url{http://www.w3.org/TR/REC-xml}.
 
 \bibitem{rdf}
 Lassila, O., Swick, R.
@@ -128,19 +127,21 @@ Bao, j., Calvanese D., Bernardo, C. G., et~al.
 \newblock OWL 2 Web Ontology Language Document Overview (Second Edition).
 \newblock 2012.
 \newblock
-\url{https://www.w3.org/TR/owl2-overview/}.
+ \url{https://www.w3.org/TR/owl2-overview/}.
 
 \bibitem{yue}
 岳丽欣, 刘文云.
 \newblock 国内外领域本体构建方法的比较研究[J]. 情报理论与实践.
-\newblock In Natural Computation (ICNC),11th International Conference on, 2016,
+\newblock In Natural Computation (ICNC), 2015 11th International Conference
+  on,
+\newblock 2016,
 \newblock 39(8), 119--125.
 
 \bibitem{IDEF5}
 \newblock Information Integration for Concurrent Engineering(IICE)[EB/OL].
 \newblock 2015.
 \newblock
-\url{http://www.kbsi.com/projects/iice?highlight=WyJpZGVmNSJd}.
+ \url{http://www.kbsi.com/projects/iice?highlight=WyJpZGVmNSJd}.
 
 \bibitem{skelton}
 USCHOLD M., GRUNINGER M.
@@ -164,7 +165,7 @@ FERN{\'A}NDEZ M., G{\'O}MEZ-P{\'E}REZ, JURISTO N．
 \newblock 33--40.
 
 \bibitem{KACTUSK}
-Song, Y., Wang, H., \& He, X.
+Song, Yang, Wang, Hongning, and He, Xiaodong.
 \newblock The KACTUS booklet version 1. 0. esprit project 814 [EB/OL].
 \newblock 2015.
 \newblock
@@ -181,13 +182,13 @@ Song, Y., Wang, H., \& He, X.
 \newblock 本体构建 [EB/OL].
 \newblock 2014.
 \newblock
-\url{http://www.docin.com./p-964406138.html}.
+ \url{http://www.docin.com./p-964406138.html}.
 
 \bibitem{seven}
 NOY, N. F., MC GUINNESS, D. L. 
 \newblock Ontology development 101: a guide to creating your first ontology[J].
 \newblock Knowledge Systems Laboratory, 2001, 
-\newblock 32(1). 525--575.
+\newblock 32(1).
 
 \bibitem{Lu}
 Lu, W., Cheng, J., Yang, Q. 
@@ -274,7 +275,7 @@ Rush, A. M., Chopra, S., \& Weston, J.
 \bibitem{Liu}
 Zhang, Y., Liu, K., He, S., Ji, G., Liu, Z., Wu, H., \& Zhao, J. 
 \newblock
-Question answering over knowledge base with neural attention combining global knowledge information. arXiv preprint arXiv:1606.00979. 2016.
+  Question answering over knowledge base with neural attention combining global knowledge information. arXiv preprint arXiv:1606.00979. 2016.
 
 \bibitem{Tan}
 Tan, M., Santos, C. D., Xiang, B., \& Zhou, B.

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  6 MAY 2018 22:33
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  8 MAY 2018 21:33
 entering extended mode
 **./sample_masters.tex
 (sample_masters.tex
@@ -2201,25 +2201,17 @@ Overfull \hbox (21.145pt too wide) in paragraph at lines 26--27
 imesNewRoman(0)/m/n/12.045 (Datatype-
  []
 
-[5] [6]
-Underfull \vbox (badness 5345) has occurred while \output is active []
-
- [7]
+[5] [6] [7]
 File: resource/onto_method_compare.pdf Graphic file (type pdf)
 <use resource/onto_method_compare.pdf>
-
-[8] [9] [10] [11] [12]) (chapters/4.监督学习_主动学习.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [13]
-[14]
+ [8] [9] [10] [11] [12]) (chapters/4.监督学习_主动学习.tex [13]
 第三章
-[15
+[14
 
 ]
 File: resource/graduation.pdf Graphic file (type pdf)
 <use resource/graduation.pdf>
- [16] [17] [18]
+ [15] [16] [17]
 Overfull \hbox (7.26993pt too wide) in paragraph at lines 109--110
 []\TU/SimSun(1)/m/n/12.045 类 的 构 建 需 要 声 明 其 类 型 是 \TU/TimesNewRoman(0)/m/n/12.
 045 OWL \TU/SimSun(1)/m/n/12.045 中 的 类，|  并 且 需 要 定 义 其 唯 一 的 名 称 \TU/TimesNewR
@@ -2237,7 +2229,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 144--145
 
  []
 
-[19]
+[18]
 Underfull \hbox (badness 10000) in paragraph at lines 166--167
 
  []
@@ -2247,7 +2239,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 196--198
 
  []
 
-[20]
+[19]
 Underfull \hbox (badness 10000) in paragraph at lines 213--215
 
  []
@@ -2257,7 +2249,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 240--242
 
  []
 
-[21]
+[20]
 Underfull \hbox (badness 10000) in paragraph at lines 251--253
 
  []
@@ -2272,12 +2264,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 282--284
 
  []
 
-[22]
+[21]
 Underfull \hbox (badness 10000) in paragraph at lines 305--307
 
  []
 
-[23]
+[22]
 Underfull \hbox (badness 10000) in paragraph at lines 351--353
 
  []
@@ -2289,20 +2281,20 @@ esNewRoman(0)/m/n/12.045 gso:Process\TU/SimSun(1)/m/n/12.045 ，|  顺 序 过 �
 mesNewRoman(0)/m/n/12.045 gso:SequentialProcess
  []
 
-[24] [25]
+[23] [24]
 File: resource/clinga.png Graphic file (type bmp)
 <resource/clinga.png>
- [26] [27]
+ [25] [26]
 File: resource/qa_overview_1.pdf Graphic file (type pdf)
 <use resource/qa_overview_1.pdf>
- [28] [29]
+ [27] [28]
 Underfull \hbox (badness 10000) in paragraph at lines 532--534
 
  []
 
 File: resource/rnn_structure.png Graphic file (type bmp)
 <resource/rnn_structure.png>
-[30]
+[29]
 Underfull \hbox (badness 10000) in paragraph at lines 576--578
 
  []
@@ -2314,26 +2306,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 593--595
 
  []
 
-[31]
-! Extra }, or forgotten $.
-l.601 ... 时间 t 时刻， 令答案端的 Bi-LSTM 输出向量为$\textbf{h}}
-                                                  _{a}(t)$ ，问题词向量为$\textbf{o...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
+[30]
 File: resource/qa_attention_1.pdf Graphic file (type pdf)
 <use resource/qa_attention_1.pdf>
-[32] [33] [34] [35]) (chapters/6.总结与展望.tex [36]
+ [31] [32] [33] [34]) (chapters/6.总结与展望.tex [35]
 第四章
-) [37
+[36
 
-] [38] [39
+]) [37] [38
 
 
-] (sample_masters.bbl [40
+] (sample_masters.bbl [39
 
 
 ]
@@ -2365,39 +2348,39 @@ File: resource/qa_attention_1.pdf Graphic file (type pdf)
 . <->"FangSong/OT:script=hani;language=DFLT;"
 . - 'small caps'  (m/sc) with NFSS spec.: 
 .................................................
- [41] [42]
-Underfull \hbox (badness 6559) in paragraph at lines 237--239
+ [40] [41]
+Underfull \hbox (badness 6559) in paragraph at lines 232--234
 []\TU/TimesNewRoman(0)/m/n/12.045 Zettlemoyer, L. S., & Collins, M.  Learning t
 o map sentences to logical
  []
 
-[43]) [44] [45
+[42]) [43] [44
 
 
 ]
 File: figures/back-cover.png Graphic file (type bmp)
 <figures/back-cover.png>
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 81.
- [46
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 84.
+ [45
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 81.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 84.
  (sample_masters.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 81.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 81.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 84.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 84.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 81.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 84.
  ) 
 Here is how much of TeX's memory you used:
- 32007 strings out of 427836
- 632078 string characters out of 3151724
- 668313 words of memory out of 3000000
- 35593 multiletter control sequences out of 15000+200000
+ 31986 strings out of 427836
+ 630607 string characters out of 3151724
+ 669331 words of memory out of 3000000
+ 35572 multiletter control sequences out of 15000+200000
  549979 words of font info for 144 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
- 63i,18n,70p,10476b,691s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,18n,70p,10476b,685s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on sample_masters.pdf (60 pages).
+Output written on sample_masters.pdf (59 pages).
