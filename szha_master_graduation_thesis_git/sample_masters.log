@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  8 MAY 2018 21:33
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  14 MAY 2018 00:19
 entering extended mode
 **./sample_masters.tex
 (sample_masters.tex
@@ -2272,13 +2272,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 305--307
 [22]
 Underfull \hbox (badness 10000) in paragraph at lines 351--353
 
- []
-
-
-Overfull \hbox (37.2697pt too wide) in paragraph at lines 356--358
-\TU/SimSun(1)/m/n/12.045 有 顺 序 过 程 和 循 环 过 程。|  本 文 将 过 程 定 义 为 一 个 大 类 \TU/Tim
-esNewRoman(0)/m/n/12.045 gso:Process\TU/SimSun(1)/m/n/12.045 ，|  顺 序 过 程 \TU/Ti
-mesNewRoman(0)/m/n/12.045 gso:SequentialProcess
  []
 
 [23] [24]
