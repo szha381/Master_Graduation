@@ -615,6 +615,11 @@ $$
 
 其中，$\textbf{W}_{am}$、$\textbf{W}_{qm}$为注意力机制参数矩阵，$\textbf{w}_{sm}$为注意力机制参数向量。从直观上看， 运用注意力机制表示答案相当于一定程度上将答案中与问题相对应关键词增加权重，给无关词减少权重，使更易于区分正确答案和错误答案。
 
+时间 t 时刻， 令答案端的 Bi-LSTM 输出向量为$\textbf{h}_{a}(t)$，问题词向量为$\textbf{o}_q$，答案中每个词向量$\tilde{\textbf{h}}_{a}(t)$更新如下：
+ 
+其中，$\textbf{W}_{am}$、$\textbf{W}_{qm}$为注意力机制参数矩阵，$\textbf{w}_{sm}$为注意力机制参数向量，$s_{a,q}(t)$为归一化后的注意力值。从直观上看， 运用注意力机制表示答案相当于一定程度上增加答案中与问题相对应关键词权重，减少无关词权重，使正确答案和错误答案更易区分。
+
+
 \begin{figure}[!htb]
 	\centering\includegraphics[height=8cm]{resource/qa_attention_1}
 	\caption{基于Attention机制的问题、答案表示模型}
