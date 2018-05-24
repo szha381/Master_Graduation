@@ -1,306 +1,138 @@
 \chapter{相关研究}
-本章主要介绍实体链接任务、主动学习方法的研究现状。全章总共分为三节，第一节介绍实体链接任务的基本概念、特征描述以及常用的监督学习和无监督学习的处理方法。第二节介绍主动学习的基本概念、常用方法，以及在其它机器学习任务中的应用。最后一节总结本章的主要内容。
+本章介绍本文相关研究工作，主要包括本体和问答的研究现状。首先介绍本体相关内容，包括本体核心构成要素：个体、类、属性、关系和本体描述语言；然后介绍本体构建方法研究和知识库问答的主流方法，包括基于语义解析的方法和基于信息检索的方法；最后介绍本文的工作与已有工作不同之处。
 
-\section{实体链接任务}
-\subsection{任务描述}
-实体链接任务，即在给定包含实体集$E$的知识库和包含指称项集合$M$的文本的前提下，将文本中的每一个指称项$m\in M$链接到知识库中的对应实体$e\in E$。这里所提到的指称项$m$是指文本中的一段字符串序列，称之为命名实体，通常是人名、地名、机构名。一些研究者也将实体链接任务称为命名实体消歧（Named Entity Disambiguation, NED）。按照所处理的语言种类区分，实体链接任务还可分为单语种的实体链接以及跨语种的实体链接\cite{CLELBBTM}，本文主要研究英文实体链接任务。
+\section{本体构成要素}
+从计算机科学角度看，本体是对相关领域知识的一种高度结构化、层次化的抽象建模，这种建模表示包含一系列计算机可以处理的形式化定义\cite{Hitzler}。运用本体可以很好地表示出领域中核心概念的语义信息和概念之间的相互关系。通过4个核心要素个体(Individuals)、类(Classes)、属性(Properties)及关系(Relationships)，本体能够将领域知识以一种类似现实世界的组织方式形式化地表示出来，并且从某种程度上，既符合人的直观对领域知识层次分类的理解，又适合计算机存储、检索和推理。因此，本体是一种很好的结构化知识库建模方式。
 
-通常，实体链接任务首先需要经过命名实体识别阶段，在该阶段，文本中的人名、地名、机构名等命名实体会被命名实体识别器识别出来，并划分出字符边界。命名实体识别经过几十年的研究，已经有不少成熟的研究成果\cite{RWNERST,NEROEHRTCDA,RHENERCCBEL}。
+\subsection{个体(individuals)}
+个体，又叫实例(instances)，是本体中最基本、最底层的组成单元。本体大多数描述都是企图更准确、更详细的描述出个体的信息特征。常见的人、动物、汽车、天体、星球等中的具体对象都可以看做个体，如地球、月球、太阳都是个体，就算是抽象的数字、单词等也可以视作个体。本体的一个很重要任务就是对本体领域中的个体进行层次化的分类，使得不同个体可以很好的进行区分或者是使其可以建立某种关系。
 
-在工程实现中，也可借助各种开源的命名实体识别工具包，例如Stanford NER\footnote{http://nlp.stanford.edu/ner/}、OpenNLP\footnote{http://opennlp.apache.org/}、LingPipe\footnote{http://alias-i.com/lingpipe/}等。由于命名实体识别并非本文重点，这里不再赘述。
+\subsection{类(classes)}
+类，又叫类型(type)、类别(sort)、种类(kind)或者类目(category)，常常指某个个体的上层延伸或者内涵。类是一些特征相似的个体构成的一个集合，或者是由一些子类构成的大类集合。如下为类的举例：
+
+（1）人：人包括黄种人、白种人等类型，具体的张三、李四是人的个体。
+
+（2）动物：动物包括无脊椎动物和脊椎动物两大类。
+
+（3）汽车：汽车表示所有具体品牌汽车的类别。
+
+（4）天体：天体包括地球、月球、彗星、流星等宇宙空间的物质。
+
+（5）行星：行星包括地球、金星、木星、水星、火星、土星、天王星、海王星等。
+
+通常情况下，一个个体可以属于不同的类别，这样使表达更灵活、表达力更强。同时，一个类可以包含其它类或者被其它类包含，这样构成了类的层次关系。一个类A被另一类B包含称为：A \textit{is subClassOf} B，通过这个关系可以得到很重要的性质，即B类具有的性质A类也同样具有。同样，一个类可以被多个类包含，也就是说一个类可以有多个父类。正是类别的上述层次关系，使知识不仅可以表示其自身的特征，还可以表示其与其它知识的关系，而且这种关系是非常接近人类的概念思维，所以知识建模很直观、易于理解。
+
+\subsection{属性(Properties)}
+属性用于表示个体间的关系(ObjectProperty)或者个体与其数据值之间的关系(DatatypeProperty)。例如人相关的属性\textit{hasWife}、\textit{hasHeight}和\textit{hasAge}，\textit{hasWife}表示两个人（两个具体的人是两个个体）之间是夫妻关系，\textit{hasHeight}和\textit{hasAge}表示一个人的身高和年龄，身高、年龄值为数值类型。同样，属性与类结构类似，具有子属性层次结构。
+
+属性的另外一个重要特点是：属性含有定义域(domain)、值域(range)的限制(restriction)。运用属性的这一限制，可以对属性两边的个体做相关的类别推理。如根据申明两个个体是\textit{hasWife}关系，可以推导出这两个个体的类别都是人，且更进一步该关系左边的个体类别为男人，右边的个体类别为女人。
+
+\subsection{关系(Relationships)}
+关系用来表示对象之间是以怎样的方式相联系在一起的。以汽车系列举例：“福特探险者是福特野马的下一代”，此例子体现出“福特探险者”和“福特野马”这两个对象存在着“下一代”的关系，这一事实可以表示为：
+
+\begin{center}
+	“福特探险者 \textit{is defined as a successor of} 福特野马”
+\end{center}
+
+此关系表达出“福特探险者系列”取代了“福特野马系列”这一事实，显然这种关系是存在着方向的。同样可以用此关系的反向关系，即“上一代”来表示上面的事实——“福特野马是福特探险者的上一代”。关系的总集合就构成了领域本体的丰富语义信息，因此关系的表达能力大小很大程度决定着本体对领域的抽象建模能力。如下介绍两种重要的关系：
+
+（1）包含关系（subsumption relation）
+
+包含关系主要有\textit{is-a-superclass-of}、\textit{is-a-subclass-of}和\textit{is-a-subtype-of}，分别表示父类关系、子类关系和子类型关系。这些关系都是表达一种上下位的关系，特别是其中的\textit{is-a-subclass-of}关系，它体现出一种很强的分类学思想，可以直观地对领域概念进行分类，并且表示出这些类别的层次关系。
+
+（2）总分学关系（mereology relation）
+
+总分学关系指的是一种部分(\textit{part-of})与整体的关系，表示一个对象是另一个复合对象的一部分。还是以“福特探险者”系列为例，“方向盘 \textit{is-a-part-of} 福特探险者”，表示方向盘是福特探险者汽车的一个部件。
+
+除了包含关系和总分学关系以外，本体中还有一些其它的关系，这些关系不一定表示层次关系，其往往是该本体领域中的特定业务关系。这种领域的特定关系被用来表达领域独特的事实知识，构成了自身领域本体的特色，因此不同领域本体表示往往差别比较明显。
+
+\section{本体描述语言}
+使用本体描述语言可以很好的对领域本体进行层次化的表示。常见的本体描述语言有：Ontolingua、OCML、OKBC、FLogic、LOOM、DAML、SHOE, OIL、XOL、XML、RDF、RDFS、OWL\cite{Corcho}。其中，由W3C推荐的XML、RDF、RDFS以及OWL使用最为广泛。
+
+XML(Extensible Markup Language)\cite{xml}是一种标记语言，通过其标记可以对结构化文档进行分层的语法表示，并且易于机器处理和人类阅读。然而，XML标记缺乏对文档的含义进行约束，标记内部也缺乏结构化定义，因此很难充分描述出本体中的四个常见核心要素。RDF(Resource Description Framework)\cite{rdf}是一种描述对象（资源）以及对象之间关系的图数据模型，其兼容XML语法，并且含有简单的语义。RDFS(RDF Schema)\cite{rdfs}是扩展的RDF词汇表，这里的词汇表指定义为个体、类、属性和关系的术语名称。RDFS通过扩展了RDF中没有的属性和类层次结构语义，也即通过定义子属性（subPropertyOf）、子类（subClassOf）、属性定义域约束、属性值域约束来增强描述资源的表达能力。尽管RDFS相对RDF的描述资源能力更强，RDFS仍然是一种相对简单的本体语言，其描述资源能力依然很有限\cite{gao}。例如：RDFS无法描述类的不相交关系，如类“男人”和“女人”是不相交的，但其只能描述“男人”和“女人”同属于“人”；同时，RDFS也无法描述类的布尔组合（并集、交集、补集）关系，如“人”无法定义成“男人”和“女人”的并集等。为弥补RDFS表达能力的不足，W3C又推出了表达能力更强且具备强推理能力的本体语言——OWL(Web Ontology Language)\cite{owl}，OWL定义了逻辑类的关系表示，即提供了针对逻辑与、或、非的领域关系表示，可以有效的表示类的并集、交集、补集运算，因而可以表达更复杂的本体知识。
+
+OWL的一个很重要设计思想是在知识表达能力和推理效率之间找到一个平衡。因此，在其不同的表达能力和推理效率设计中,为满足不同用户对本体建模需求，又诞生了三个子语言，即OWL Lite、OWL DL(Description Logic)和OWL Full。这三个子语言描述能力依次增强，推理复杂度逐渐提高。OWL Lite更关注本体表达的简洁性，其表达能力相对其它两种语言较弱，但其推理最高效，因此OWL Lite更适合于对表达能力要求不是太强的领域；OWL DL比OWL Lite表达能力更强，与OWL Full比具有计算完备性（所有结论均可计算）和可判定性（有限时间内所有计算均可终止），同时OWL DL支持有效的推理，因此在既对本体语言表达能力要求高，又保证推理可判定性时，可以选择此语言；OWL Full的表达能力最强，正因其表达更灵活、约束较少，也使其推理不可判定，但OWL Full有完全兼容RDF的优点，这也是前两种语言不具备的，因此在以兼容RDF为主要建模目标的场景，OWL Full语言是较好的选择。
+
+\section{本体构建方法研究}
+目前，本体构建方法\cite{yue}主要有两种：第一种是在领域专家的指导下，使用本体描述语言表示领域本体；第二种是从结构化、半结构或者无结构数据抽取本体要素，形成领域本体。第一种本体构建方法往往采用纯人工方法，由于人的主观性，不同领域专家构建出来的本体常常相差很大且构建效率低。但从局部来看，专家构建的本体知识质量很高，专家站在领域高度对知识进行了专业化的总结、提炼，知识表达更准确、合理。所以，在对知识表示专业程度要求很高、知识数量较小的领域（如高考地理解题），此方法可以达到很好的效果。第二种本体构建方法是为了缓解第一种方法中的人为主观性和低效性而提出的，其使用自动或者半自动的方法构建本体，既节省时间又提高了知识表示的一致性。该方法很大程度依赖于自动、半自动技术的能力，构建出来的本体往往噪音较多、抽象程度不高（知识没有经过深度提炼、总结）。因此，在一些对知识准确度要求很高的场景，如地理高考解题本体构建等，此方法不是很适合，但是在一些对噪音容忍度比较高的场景，如通用领域的本体构建，此方法运用很广且效率很高。
+
+由于本文构建用于辅助解答高考地理多选题的本体，其知识要求精炼、准确、少噪音且知识量不大（只包含核心地理高考考点），因此需要地理领域相关专业人士人员构建，保证质量。本文也只详述人工本体构建的研究现状，对于自动和半自动本体构建方式的研究现状，本文不加以叙述。
+
+国内外常见人工本体构建方法有：IDEF5法\cite{IDEF5}、骨架法\cite{skelton}、TOVE法\cite{TOVE}、METHONTOLOGY法\cite{METHONTOLOGY}、KACTUSK工程法\cite{KACTUSK,KACTUSK2}、SENSUS法\cite{SENSUS}以及七步法\cite{seven}等。IDEF5法、骨架法及TOVE法常用于企业领域本体构建。IDEF5法使用图表以及很细化的说明形式来获取企业业务存在的概念、属性及关系，从而形成本体；骨架法是一种流程图导向的本体构建方法，其描述的是一种本体构建的方法框架；TOVE法是通过本体建立企业知识的逻辑（一阶逻辑）模型。其它四种方法用于构建领域知识本体。METHONTOLOGY法是在构建化学元素周期表本体基础上发展而形成的通用本体构建方法，此方法偏向软件工程的思想，本体的构建也引入了管理、开发和维护三个很具软件工程特征的阶段；KACTUS法是对应用驱动的本体开发方法，侧重对已有本体的复用和扩充方法；SENSUS法提供一种自顶向下的层级结构本体构建方法，偏向操作性指导。七步法是基于本体工具protege\footnote{https://protege.stanford.edu/}的构建方法，主要分七个步骤构建本体，比较偏向实用性、操作性。具体七种本体构建方法比较如表2.1所示。
+
+\begin{center}
+	\begin{small}
+	表2.1：七种本体构建方法比较
+	\end{small}
+\end{center}
 
 \begin{figure}[!htb]
-	\centering\includegraphics[height=5cm]{resource/el_example}
-	\caption{实体链接任务的一个例子，文本中粗体标志的就是指称项。}
-	\label{fig:el_example}
+	\centering\includegraphics[height=7cm]{resource/onto_method_compare}
+	\label{fig:onto_method_compare}
 \end{figure}
 
-图\ref{fig:el_example}展示了实体链接任务的一个例子。图中左侧是包含指称项“Michael Jordan”的文本，图中右侧是指称项“Michael Jordan”在知识库中可能指向的具体实体，例如NBA球星\textit{Michael J. Jordan}、伯克利机器学习教授\textit{Michael I. Jordan}、足球运动员\textit{Michael W. Jordan}、菌类学家\textit{Michael Jordan}等。实体链接系统需要借助指称项上下文与候选实体在知识库中文本的相似度等特征，将指称项链接到其对应的目标实体。在该例子中，目标实体就是NBA球星\textit{Michael J. Jordan}。
+分析以上七种人工本体构建方法可知，这些构建方法都缺乏对本体进化的考虑，本体只立足当下情况，没有考虑后期本体的更新，也使本体知识不能与时俱进。同时，这些方法人工参与力度很大，使用的技术较简单，构建时并没有统一的标准规范对其指导，构建人员均需从自身领域特点出发进行扩展与缩减。因此，本体构建方法相差还是比较大，这也表明统一的本体构建规范、评价标准还不成熟。
 
-一般来说，实体链接系统分为以下两个模块：
-\begin{itemize}
-	\item {候选实体生成模块
-	
-在这个模块中，实体链接系统会为文本中包含的每个指称项$m \in M$生成出它在知识库中可能指向的候选实体集$E_m$。经过多年的研究，研究者已经提出了大量候选实体生成方法。
-}
-	\item {候选实体排序模块
-	
-	该模块是实体链接系统中最重要的模块。在大多数情况下，指称项$m$都会对应多个候选实体$e\in E_m$。实体链接系统需要从指称项$m$的候选实体集$E_m$中选出可能性最大的目标实体$e^*$。处理候选实体排序的方法很多，可以划分为有监督学习方法和无监督学习方法。
-}
-\end{itemize}
+\section{问答方法研究}
+问答是人工智能领域中的一个热门的研究问题，它综合运用了各种自然语言处理技术。对于用户提出的某一个问题，问答系统往往可以给出简短、精准的答案组织形式，而非一系列的相关网页文档供用户参考，省去了用户额外从大量的相关网页文档中寻找所需确切信息的时间\cite{Lu} \cite{Bertola}。同时，问答技术集成了定位、抽取以及表示出针对用户提出的自然语言问题答案的丰富功能，因此受到广泛的关注\cite{Abacha}\cite{Pavli}。
 
-\subsection{候选实体生成}\label{section:candidate_generate}
-候选实体生成的方法很多，Hachey等人\cite{EELWW}认为能否生成包含目标实体的候选实体集对实体链接的成功与否至关重要。目前在实体链接领域中，使用最广泛的候选实体生成方法是基于词典的候选实体生成方法。
+问答一般分为两类：开放域的问答和封闭域的问答。开放域的问答又叫无结构数据的问答，一般是从开放的网页或者文档中抽取所需的问题信息。封闭域的问答又叫受限域的问答或结构化数据的问答，其往往需要预先定义的知识源，例如领域本体或关系数据库管理系统\cite{Dalmas}\cite{Dragoni}。 查询数据库的方式有两种，第一种为结构化查询，如SQL，另一种为自然语言查询，即用户用自然语言组织其问题，而不需要一些专业术语的限制\cite{Jagadish}。结构化查询虽其功能强大，但不易使用，对缺乏训练的普通用户不友好。相反，自然语言查询方式对用户更友好，用户可以轻松组织自然语言进行复杂的问题查询。
 
-基于词典的候选实体生成方法被多种实体链接系统\cite{CELWTGBM,ELFEEKB}所采纳。以Wikipedia为例，该方法抽取了知识库中实体页（Entity pages）、重定向页（Redirect pages）、消歧页（Disambiguation pages）、文本超链接（Hyperlinks in articles）等结构化信息，通过这些信息构建了离线形式的词典$D$，该词典$D$包含了指称项和指称项可能指向的候选实体。这里的指称项是知识库中实体的多种表述，可以是实体的标题名、缩写名、别名、拼写名等。
+对于知识问答而言，其强调如何根据给定问题作出精准回复，其答案要求不能包含无效的信息。因此，知识问答的知识源常常选取高度结构化、包含丰富语义信息的数据，如本体等。建立于高度结构化数据之上的问答也叫做知识库问题，本文将详述知识库问答的主流研究方向和方法。
 
-实质上，词典$D$即键值对$\left\langle key,value\right\rangle $的集合，其中$key$列是指称项$k$，$value$列是指称项$k$对应的候选实体集$k.value$。本文可以借助Wikipedia知识库中的以下特征抽取得到词典$D$：
+目前，知识库问答(knowledge base question answering，KBQA)主要有两个主流的研究方法：基于语义解析、基于信息检索。分别如下介绍：
 
-\begin{itemize}
-	\item {实体页（Entity page）
-		
-		知识库中每一个实体都包含一个描述该实体的实体页，通常，这个实体页的标题就是该实体被最常用来表述的名字，例如实体页标题“Michael Jordan”就可以用来表示前NBA公牛队球员\textit{Michael Jordan}这个实体。在这个例子里，标题$k=“Michael\, Jordan”$被添加到词典$D$的$key$这一列，对应的实体$k.value=“Michael\, Jordan”$被添加到词典$D$的$value$这一列。
-		}
-	\item {重定向页（Redirect page）
-		
-		在很多情况下，不同的表述可能指向同一个实体，对于这类情况，知识库会采用重定向的方式来处理。例如，对于标题为“Michael Jeffrey Jordan”的实体页，会重定向到标题为“Michael Jordan”的实体页。在此例中，标题$k=“Michael\text{\ }Jeffrey\text{\ }Jordan”$被添加到词典$D$的$key$这一列，对应的实体$k.value=“Michael\, Jordan”$被添加到词典$D$的$value$这一列。
-	}
-	\item {消歧页（Disambiguation page）
-		
-		在知识库中，不同的实体可以使用相同的表述。消歧页用来展示某个实体表述可以指向的实体集。例如，“Michael Jordan”这个实体表述，在消歧页“Michael Jordan（disambiguation）”中，包含13个指向不同人物的实体，有NBA球员、足球运动员、机器学习教授、爱尔兰政治家等。在这个例子里，标题$k=“Michael\, Jeffrey\, Jordan”$被添加到词典$D$的$key$这一列，对应的13个实体$k.value$被添加到词典$D$的$value$这一列。
-	}
-	\item {文本超链接（Hyperlinks in articles）
-		
-		知识库的文本中一般都会包含很多指向其它实体页的超链接，这些超链接的锚文本通常是所链接到的实体的标题或者别名。这类锚文本可以作为目标实体的一种指称项表述。例如，在“Chicago Bulls”这个实体对应词条的文本中，包含这样一段文本，“For his efforts, \textbf{Jordan} was named NBA Most Valuable Player.”，加粗的文本“Jordan”有指向实体页“Michael Jordan”的超链接。在这个例子里，标题$k=“Jordan”$被添加到词典$D$的$key$这一列，对应的实体$k.value=“Michael\, Jordan”$被添加到词典$D$的$value$这一列。
-	}
-\end{itemize}
+\subsection{基于语义解析的KBQA}
+基于语义解析的方法一般先构建一个语义解析器，然后运用该语义解析器将自然语言问句转换为特定类型的逻辑表达式，如带类型的 lambda 表达式(typed lambda calculus)、 lambda依存组合语义。以问题“姚明的老婆出生在哪里？”为例，问题经过构建的语义解析器解析过后，可以表示为如下lambda 表达式：
+\begin{center}
+$\lambda x.$配偶(姚明, y)\space$\wedge$ 出生地(y, x)
+\end{center}
 
-\begin{table}[!htb]
-	\caption{候选实体词典的例子\label{tab:candidate_dict_example}}
-	\begin{center}
-		\begin{tabular}{|c|c|}
-			\hline
-			$k$(Name) & $k.value$(Entity) \\ \hline
-			\multirow{6}{*}{Michael Jordan} &  \textit{Michael Jordan}\\
-			& \textit{Michael Jordan (footballer)} \\
-			& \textit{Mike Jordan (racing driver) } \\
-			& \textit{Michael I. Jordan} \\
-			& \textit{Michael Jordan (Irish politician)} \\
-			& ... ... \\
-			\hline
-		\end{tabular}
-	\end{center}
-\end{table}
+在此lambda表达式中，$\lambda$.x表示该表达式的变量x，关系配偶(姚明, y)表示姚明的配偶（也即问题中的老婆）y，关系出生地(y, x)表示y的出生地是x，$\wedge$表示上述两个关系同时满足，整个句子表达的含义也就是“姚明的配偶的出生地”，即为题中问题“姚明的老婆出生在哪里？”的一种较正式表达。
 
-通过以上的几种方式，可以构建出候选实体词典$D$。在后续阶段，只要给出指称项$m$，实体链接系统就能通过查找词典的方式得到$m$对应的候选实体集$E_m$。表\ref{tab:candidate_dict_example}是候选实体词典中指称项为“Michael Jordan”的一个例子，根据$k$列的指称项，可以在词典$k.value$列中查到“Michael Jordan”对应的所有可能指向的候选实体。一般来说，为了提高实体链接系统的性能，需要尽可能保证目标实体被包含在候选实体集中。
+传统的语义解析器需要有人工标注的逻辑表达形式作为监督知识，并且它们是在特定领域（受限域）进行相关操作，逻辑谓词的数量也较少\cite{Zettlemoyer}\cite{Wong}\cite{Kwiatkowski}。Zettlemoyer和Collins在研究将美国地理领域问题（Geo880\footnote{http://www.cs.utexas.edu/users/ml/geo.html}中问题）表示成lambda表达式时，使用人工标注的问题和对应逻辑表达式作为训练数据，去学习语义解析器，而且研究中定义的领域谓词也很有限，如类型、大小、多少、边境、城市、州、河流等。
 
-\subsection{候选实体排序}\label{section:candidate_rank}
-对于给定的指称项$m$，通过基于词典的候选实体生成方法获得候选实体集$E_m$后，候选实体集$E_m$一般包含多个候选实体，即$|E_m|>1$，例如“Michael Jordan”这个指称项对应的候选实体集就包含\textit{Michael Jordan}、\textit{Michael Jordan (footballer)}、\textit{Mike Jordan (racing driver) }等多个候选实体。Shen等人\cite{ELKBITS}通过调研发现，TAC-KBP2010数据集中平均每个指称项指向12.9个候选实体，TAC-KBP2011数据集中平均每个指称项指向13.1个候选实体。实体链接系统需要对$E_m$中的候选实体做排序，将排序最靠前的实体作为最佳预测实体。候选实体排序模块是实体链接系统中的重要模块。研究者对候选实体排序方法在监督学习方法和无监督学习方法中均有做相关工作。
+由于获取人工标注的逻辑表达式进行有监督的训练语义解析器代价太大，并且人工标注的量始终有限，因此有相关研究尝试在不需要人工标注的逻辑表达式的前提下，学习一个语义解析器。Berant\cite{BerantCF}等人训练了一个适应freebase的语义解析器，该研究主要分两步进行：第一步是构建较完备的词汇表，第二步是桥接（Bridging）操作。构建词汇表也就是将自然语言与知识库实体或实体关系进行单点映射，也可称作对齐（alignment），自然语言实体到知识库实体的匹配较简单，可以使用一些简单的字符串匹配方式，如“Obama was also born in Honolulu.”中Obama映射到Barack Obama，但是要将例句中的自然语言短语“was also born in”映射到相应的知识库实体关系PlaceOfBirth， 则较难通过字符串匹配的方式建立映射。此处作者使用一种远程监督的思想，作者使用开放信息抽取软件ReVerbopen IE system\footnote{http://reverb.cs.washington.edu/}从ClueWeb12\footnote{http://lemurproject.org/clueweb12/}数据集上抽取15,000,000个三元组构成一个数据集，然后将短语对齐到知识库关系。完成词汇表的构建后，仍然有些轻动词（light verb），如go，where，do难以映射到知识库，比如“Which college did Obama go to?” 中的“go to”无法映射到知识库关系，因此作者使用“桥接”操作，从知识库中找出一个中间二元关系（本例中为Education）来将当前实体和关系连接起来。该研究在free917\footnote{https://github.com/pks/rebol/tree/master/data/free917}上取得了较好效果。
 
-\setcounter{secnumdepth}{3}
-\subsubsection{二分类法}
-二分类法（Binary Classification Methods）是处理实体链接任务中候选实体排序问题的一种简单高效的有监督学习方法。在给定一个指称项$m$和其对应候选实体集中的某一个候选实体$e_i\in E_m$的样本对$\left\langle m,e_i\right\rangle $后，候选实体排序模块的工作是判断$e_i$是否为$m$的目标实体。如果$e_i$是$m$的目标实体，则将样本对$\left\langle m,e_i\right\rangle $划分为正例，否则将其划分为反例。
+使用有监督的数据训练语义解析器在知识库数量较小时质量很高，但是很难适应大型知识库，如freebase等。Cai\cite{Cai}等人将直接根据标注的数据训练语义解析器的过程简化为三个子过程，以减小在遇到未见过测试数据时的失败率。这三个子过程分别是标准的监督学习算法、模式匹配（schema matching）和模式学习（pattern learning）。该研究应用现有的监督训练算法对有标签数据集进行语义解析，使用结构匹配技术查询自然语言词汇与本体知识库中符号的相关联性，使用模式学习技术将新的（自然语言词，本体词汇）对合并到训练的语义解析器中。此研究优点是将一个问题分解为了三个子问题，使之可以运用每个子问题领域的成熟技术。同时，三个子过程联合确定问题的逻辑表达式，比单纯的使用有监督的问题到逻辑表达式对训练，而得到的语义解析器可靠性更强。该研究在free917数据集比单纯的有监督学习语义解析器的算法F值高出0.42\%。
 
-对于给定的样本对$\left\langle m,e_i\right\rangle $，需要通过特征提取算法提取特征向量，然后将该向量作为模型的输入，模型的输出为样本的分类类型，即正例和反例。在基于二分类法的候选实体排序模型的训练阶段，需要提供足够的带标注的样本对$\left\langle m,e_i\right\rangle $作为训练集，如果$e_i$就是目标实体，则标注为正例，否则标注为反例。当完成模型训练以后，给定未标注的样本对$\left\langle m,e_i\right\rangle $，提取特征输入训练好的模型，模型返回分类结果，根据输出结果是正例还是反例判断$e_i$是否是$m$的目标实体。
+之前的研究在生成语义解析器时都很少运用到知识库的相关结构图信息，因此，问题中的词表达方式和知识库中术语的表达方式仍然相差很大，相互映射也比较困难。为了解决上述问题，并且充分利用知识库的结构信息，Yih\cite{Yih}等人提出了一个紧密结合知识库的语义解析器。作者定义了一个类似知识库子图的查询图（query graph），该图可以直接映射到一种$\lambda$演算，因此作者把问句的语义解析过程转化为查询图生成过程，并且转化为按阶段状态（stage state）和动作（action）的搜索问题，其中每个阶段状态是查询图表示中的候选解析，每个操作都定义了一种扩展关系图的方法。作者将动作分为三步，第一是识别问题中的主题实体，第二是寻找答案与主题实体之间的主要关系，第三是使用附加的、描述答案需要有的属性约束，或者是答案与问题中其它实体的关系来扩展查询关系图。这种方式通过将问句表达部分靠近知识库中的某些实体和关系，使得只需要关注最可能成为正确查询图的区域，使搜索空间大大缩小，搜索效率也大大提高。该研究在WebQuestions\footnote{https://nlp.stanford.edu/software/sempre/}上也超过了之前的方法，并取得较高的F值52.5\%。
 
-二分类法的模型有很多种选择。Xiaohua等人\cite{ELFT}、Jinlan等人\cite{ELNDUSCM}、Yahui等人\cite{FNEDLSBKB}使用支持向量机模型（Support Vector Machine, SVM）来处理二分类的实体链接问题。支持向量机是一种特征空间上的间隔最大化的分类器。另外，支持向量机的核函数（Kernel Function）能够将非线性可分的输入映射到高维线性可分的特征空间。大量研究表明，支持向量机特别适合处理二分类问题。其它可用于处理二分类问题的模型还包括朴素贝叶斯模型（Naive Bayes）、逻辑斯谛回归模型（Logistic Regression）、K-近邻模型（K-Nearest Neighbors）等。
+\subsection{基于信息检索的KBQA}
+基于信息检索的方法一般根据问题中的关键信息去知识库查询一批候选答案，然后运用排序打分技术对候选答案进行打分，选出得分最高的候选答案。具体的操作如下：
 
-\subsubsection{排序学习法}
-排序学习法（Learning to Rank Methods）也是一种用于处理实体链接任务的监督学习方法，该方法最早被用来解决信息检索领域中的网页排序（Page Rank）问题。相比于二分类法，排序法克服了二分类法训练样本集正例、反例数量不平衡的问题，另外，当某个指称项的多个候选实体样本对都被判断为正例时，需要通过其它方法从这些候选实体中选出最有可能是目标实体的实体。与二分类法不同，排序学习法会对给定指称项对应的所有候选实体进行评分，然后根据评分对候选实体进行排序，最后选择评分最高的候选实体作为预测的目标实体。排序学习法主要可以分为三种方法，分别是基于数据点的方法（Pointwise）、基于数据对的方法（Pairwise）和基于列表的方法（Listwise）。
+（1）识别问题中的主题实体，即问题考察的核心实体。
 
-\begin{itemize}
-	\item {基于数据点的方法
-		
-		David等人\cite{SRUR}将基于数据点的方法用于网页排序任务。在实体链接任务中，基于数据点的方法会以候选实体为粒度，对指称项$m$和其中一项候选实体$e_i\in E_m$的链接置信度进行计算。模型的输入是单个候选实体样本对$\left\langle m,e_i\right\rangle $，模型的输出可以是回归值，也可以是分类值。例如，对于$\left\langle m,e_i\right\rangle $，如果输出的是回归值评分，则选出$e_i\in E_m$中评分最高的候选实体作为预测目标实体。
-		
-		\begin{table}[!htb]
-			\caption{Pointwise模型的例子\label{tab:piontwise}}
-			\begin{center}
-				\begin{tabular}{|c|c|c|}
-					\hline
-					\multirow{2}{*}{} & \multicolumn{2}{c|}{基于数据点的方法} \\ \cline{2-3}
-					& 回归 & 分类 \\ \hline
-					输入空间 & \multicolumn{2}{c|}{$\left\langle m,e_i\right\rangle $} \\ \hline
-					输出空间 & 实数 & 分类 \\ \hline
-					Hypothesis Space & \multicolumn{2}{c|}{评分函数 $f(\left\langle m,e_i\right\rangle)$} \\ \hline
-					\multirow{2}{*}{损失函数} & 回归损失 & 分类损失 \\ \cline{2-3}
-					& \multicolumn{2}{c|}{$L(f;\left\langle m,e_i\right\rangle,y_j)$} \\ \hline
-				\end{tabular}
-			\end{center}
-		\end{table}
-	
-	如表\ref{tab:piontwise}所示，对于回归值来说，无论是线性回归还是逻辑斯蒂回归，最后的输出都是一个实数，并可以对每个候选实体对应的实数进行排序。对于分类值来说，可以得出无序的实体类别及其置信度，即该实体是不是目标实体，以及是目标实体的置信度。
-	}
-	\item {基于数据对的方法
-		
-		与基于数据点的方法不同，基于数据对的方法以指称项的候选实体对为粒度，对指称项$m$及其候选实体对$e_i\in E_m$和$e_j\in E_m$的链接置信度进行计算。模型的输入是由指称项和两个候选实体构成的三元组$\left\langle m,e_i,e_j\right\rangle $。模型的输出是一个二分类标签。例如，当候选实体$e_i$比候选实体$e_j$更接近目标实体时，模型输出为1，反之则模型输出为-1。基于数据对的方法包括RankBoost\cite{AMIRSBOR}、RankSVM\cite{ESLRES}、RankNet\cite{ADRFPS}。
-		
-		%\begin{figure}[!htb]
-		%	\centering\includegraphics[height=9cm]{resource/pairwise}
-		%	\caption{基于支持向量机的pairwise模型示意图}
-		%	\label{fig:pairwise_example}
-		%\end{figure}
-	}
-	\item {基于列表的方法
-		
-		基于列表的方法不再单独考虑某一个候选实体或者某一对候选实体，而是同时考虑一组候选实体，主要通过直接优化候选实体的评价方法和定义损失函数两种方法实现。基于列表的方法的主要模型包括：AdaRank\cite{xu2007adarank}、SVM-MAP\cite{yue2007support}、ListNet\cite{LTRFPATLA}、LambdaMART\cite{burges2010ranknet}等。
-		
-		Cao等人\cite{LTRFPATLA}提出ListNet来描述Listwise的损失函数，该损失函数的定义是模型计算所得的候选实体排序和真实候选实体排序之间的差异程度，训练过程中通过算法将该差异最小化。训练完毕得到模型后，将候选实体排序问题转化为概率分布问题，用“交叉熵”来衡量计算得到的候选实体与真实排序的差异，通过最小化该差异来完成排序任务。
-	}
-\end{itemize}
+（2）根据问题主题实体，从知识库中查询该实体以及其相关联的实体子图，子图的边作为候选答案集合。
 
-\subsubsection{基于图的协同推断}
-Han等人\cite{CELWTGBM}提出的基于图的协同推断方法（Collective Graph-Based Methods）是一种用于处理实体链接任务的无监督学习方法。该方法不仅考虑到了单个指称项和候选实体的上下文相似度，并将其作为局部相似度，还基于同一文档内不同指称项指向的实体具有关联性这一特点，借助知识库中实体的链接关系，综合考虑了实体之间的语义关联度，并将其作为全局相似度。在这两种相似度的基础上，构造用有向图表示的推理图，并基于图的协同推断方法处理候选实体排序问题。
+（3）使用规则或者模板等，人工或者自动、半自动地构建问题的特征向量，然后根据问题特征向量对候选答案进行筛选。或者直接对问题和候选答案进行分布式的表示，即对问题、答案进行向量建模，然后根据问题、答案的向量相似性来筛选最终答案。
 
-构造出推理图后，可以通过协同推断算法，利用图模型中的随机行走（Random Walk）算法\cite{tong2006fast}来确定同一文档中的各个指称项对应的最佳候选实体。Han等人\cite{CELWTGBM}的实验表明，综合考虑了全局相似度这一特征后，在IITB数据集\footnote{http://www.cse.iitb.ac.in/~soumen/doc/}上实验得到的F1值是73\%，实体链接系统性能得到了显著提升。
+Yao和Van\cite{Yao}首先将信息检索方法运用到知识库freebase\footnote{https://developer.google.com/freebase}问答上，其使用了信息抽取的技术。该研究首先使用Standford CoreNLP\footnote{http://nlp.stanford.edu/}构造出问题的语法依存树（dependency tree），然后识别问题中的问题词（如what、who、when等）、问题焦点词（常暗示着答案的类型词，如name、place等）以及通过命名实体识别来确定主题词，通过词性标注获取问题的中心动词。再然后，根据主题词找出知识库中对应的主题词的子图，包含跟主题词相关联的实体结点边，所有实体结点的边构成问题候选答案三元组集合。最后，选取候选答案实体结点的关系、结点属性构成候选答案的特征向量，并使用问题和答案特征向量构建一个逻辑回归分类器。总体说来，此方法也运用到一些语言学知识，但总体还是较符合人的直觉。
 
-\subsection{评测资源}
-评测资源主要由知识库和文本语料构成。本节将介绍目前可用的实体链接任务相关评测资源。
+为解决问题、答案抽取特征向量时对语言学知识和人工规则的依赖，一些研究尝试使用语义向量来对问题、答案进行分布式表示（Distributed Embedding）。Bordes\cite{Bordes3}等人率先使用基于神经网络的方法在开源知识库 ReVerb\cite{Fader}上进行问答任务。Bordes等人将问题和知识库三元组都表示成低维向量，并且使用余弦相似度来计算出与问题最相近的答案。问题和答案的表示使用词袋法(Bag Of Words，BOW),使用成对的训练(pairwise training)方法，即一个正例随机选取多个知识库中的事实反例进行训练。Bordes\cite{Bordes1}等人意识到仅仅使用自身的答案三元组表示答案向量过于简单，因此引入答案结点的子图，选取与结点距离一跳1-hop\footnote{直接与结点相连的结点，即与结点路径长度为1的结点}和两跳2-hop\footnote{与结点路径长度为2的结点}的结点，将子图结点的关系以及结点本身信息都加入到答案结点，从而更综合的表示答案结点，此处向量的表示仍采用BOW方法，该结合子图表示的方法也一定程度上提升了问答性能。
 
-（1）目前在实体链接任务中常用的知识库主要如下：
-\begin{itemize}
-	\item 维基百科\footnote{http://www.wikipedia.org}。该知识库是由非营利组织维基媒体基金会负责营运。2015年11月英文版维基百科包含400万个实体，包括832000个人物、639,000个地点、209,000个机构等。
-	\item Knowledge Graph\footnote{https://www.google.com/intl/es419/insidesearch/features/search/knowledge.html}。该知识库当前最新版本大约包含5.7亿个实体。
-	\item TAC会议的KBP任务发布的基于维基百科的知识库，大约包含818741个实体。
-\end{itemize}
+注意到Bordes等人BOW方法表示问题、答案的缺陷，BOW方法忽略问题中信息的先后顺序，对于复杂问题表达能力不够，并且Bordes等人的模型没有考虑对问句类型进行分析。Dong\cite{Dong}等人试图通过从问题的不同方面来表示问题、答案向量，他们考虑从三个方面理解问题，即问题的答案路径（answer path）、问题的答案上下文（answer context）和问题的答案类型（answer type）。问题的答案路径指答案结点和问题主题实体之间的关系集合；问题的答案上下文指与答案路径直接相连的实体集合和关系集合；问题的答案类型指答案的数据类型或者结点类别，如答案为时间类型或类别人等。Dong等人使用三个不同参数的CNNs（Convolutional Neural Networks）分别表示问题的这三个方面向量，同时也表示答案的这三个方面向量，最后用问题和答案这三个方面对应向量的内积操作和表示问题和答案的相似度，用来选择最为相似的候选答案。
 
-（2）目前在实体链接任务中常用的评测语料库主要如下：
-\begin{itemize}
-	\item AIDA\cite{hoffart2013discovering}。该数据集的语料来自英文新闻文本，并在CoNLL'03\cite{tjong2003introduction}的基础上做了实体链接标注。数据集包含 1393 篇文章，34956 个指称项目，但是 6141 个指称项对应的实体无法与维基百科词条对应，因此可用指称项个数为28815个。
-	\item TAC-KBP2010\cite{ji2010overview}发布的实体链接语料库。该语料主要来源于英文新闻以及Web文本，主要包含人物指称项1877个，机构指称项3960个，地理政治指称项1817个。
-\end{itemize}
+上述方法都是在试图根据问题或者答案的相关方面来更加综合的表示问题或者答案。从实质上来说，问题的表示和答案的表示都是单独进行，也就是说问题的表示没有参照当前的候选答案信息，候选答案的表示也没有参照当前的问题信息。
 
-\section{主动学习}
-监督学习模型被广泛用于分类问题，但是所有基于监督学习的分类模型都需要使用带标注的样本集对模型进行训练。对未标注的样本进行人工标注费时费力，并且训练样本可能存在重复，因此没有必要对这类样本做重复标注。主动学习能够根据学习进程，选择最佳学习样本交由人工标注。主动学习的样本选择过程主要分为两个阶段，分别是初始训练样本选择阶段和迭代训练样本选择阶段。
+随着深度学习技术的进一步发展，在神经机器翻译领域（neural machine translation, NMT），一种注意力（Attention）机制被证明在机器翻译任务上面有不错的性能提升。如Bahdanau\cite{Bahdanau}等人将Attention运用到传统的基于编码-解码（encoder-decoder）簇的机器翻译中，传统的解码器在生成翻译词的时候是将源句子表示成固定长度向量，该研究猜想将源句子表示成固定长度可能是性能提升的瓶颈，因此提出了注意力机制，在预测翻译目标词的时候，通过注意力模型自动地搜索与目标词相关的源句子中的部分词。在英语到法语的翻译任务中，该研究取得了较好的性能。
 
-%\begin{figure}[!htb]
-%	\centering\includegraphics[height=7cm]{resource/al_overview}
-%	\caption{主动学习流程概览}
-%	\label{fig:al_overview}
-%\end{figure}
+Luong\cite{Luong}等人更进一步研究了两种类别的注意力机制（全局注意力、局部注意力）在机器翻译任务上的效果。该研究使用全局注意力每次都关注整个源句子词，使用局部注意力每次只关注源句子中的部分词，该研究也证实了这两种注意力机制对英语到德语的翻译均有效，最终该研究使用两种注意力的集成模型，在WMT'15\footnote{http://www.statmt.org/wmt15/translation-task.html}英语到德语的翻译任务上，取得了较好的性能效果。
 
-第一阶段，主动学习器构造一个规模较小的初始带标注的样本集，用于训练一个初始模型。第二阶段，在模型迭代训练过程中，主动学习器能主动选择包含信息量大的未标注样本交由专家标注，然后将这些带标注的样本加入到训练集， 从而在保证模型泛化能力的同时，减小人工标注的工作量。
+除了机器翻译任务，注意力机制也被运用到句子级别的摘要（sentence-level summarization）任务上,并取得了一定的性能提升。Rush\cite{Rush}等人将局部注意力机制运用到句子摘要任务中，在生成每个摘要词的时候对齐源句子中的部分关键词，在DUC-2004\footnote{https://duc.nist.gov/duc2004/tasks.html}任务上,也取得了高于baseline的性能提升。
 
-\subsection{基于不确定度的样本选择策略}\label{sec:al_single}
-基于不确定度的主动学习算法采用了不确定度采样（Uncertainty Sampling）的方式选择待标注样本。该采样方式由Lewis等人\cite{lewis1994heterogeneous}于1994年提出，基于最大化人工标注效率的原则，尽量选择因置信度较小而更可能被错误分类的样本点，交由人工标注，以此加快模型的训练速度。
+受到注意力机制的启发，有研究将注意力机制运用到知识库问答中，通过注意力机制动态的根据答案向量表示问题向量或者根据问题向量表示答案向量，避免了之前工作中独立表示问题向量和答案向量的缺陷。liu\cite{Liu}等人根据问题每个词对答案的注意力分配来综合表示问题。该研究首先将答案向量表示成四部分，即答案实体（answer entity）、答案关系（answer relation）、答案类型（answer type）和答案上下文（answer context，该论文中为与答案实体直接相连的实体集合），然后问题中每个词的表示根据答案四个方面的综合注意力权重求和，最后使用问题相对答案四个方面的表示向量与答案的四个方面向量求内积和得到问题、答案的相似度，并根据设定的答案相似度边距（margin）来确定最终答案。该文献中为解决未登陆词(out of vocabulary， OOV)问题，加入全局的知识库作为训练的知识源。该研究在freebase知识库问题任务中取得了同类基于信息检索的方法中较好的性能。Tan\cite{Tan}等人将注意力机制运用到深度学习模型中回答非事实型问题。该研究先是通过基本框架双向循环神经网络模型来表示问题、答案的分布式词向量，然后在答案的表示时，使用注意力机制来根据问题的内容生成答案向量，最后根据问题、答案的余弦值计算两者的相似度。在TREC-QA\footnote{https://trec.nist.gov/data/qa.html}和InsuranceQA\footnote{https://github.com/shuzi/insuranceQA}任务上，此研究模型的实验效果超过了一些baseline模型。
 
-以基于SVM的二分类问题为例，样本点$x_i$到分类超平面的距离可由公式\ref{eq:svm_dis}计算：
+通过以上对基于语义解析的KBQA和基于信息检索的KBQA的方法分析可知，虽然基于语义解析的方法具有一定的有效性，但它们很大程度上受限于外部资源的质量，而且需要大量的特征工程工作，再者引入大量语言学知识会大大增加系统复杂度。而基于信息检索的方法更简单，不需要使用大量的人工特征和语言学特征，实现也更灵活，在开放域知识库Freebase上的问答研究实验也表明，该方法可以达到与基于语义解析方法相近的F值\cite{Dong,Bordes2}，因此基于信息检索的KBQA运用比较广泛。
 
-\begin{equation}\label{eq:svm_dis}
-f(x_i)=\sum_{j=1}^{n}\alpha_j y_j K(x_j,x_i)+b
-\end{equation}
+\section{本文与已有工作不同}
+本文两个主要任务为构建地理本体CGeoOnt、根据构建的地理知识库构建问答系统，本节分别从这两个任务阐述本文与已有工作的不同。
 
-公式\ref{eq:svm_dis}中$K(x_j,x_i)$是SVM的核函数，代表样本点$x_i$和样本点$x_j$的相似度。根据样本点到分类超平面的距离，可以预测样本分类的置信度。离分类超平面越近，分类置信度越低，越容易被主动学习器选中。反之，则分类置信度越高，越不容易被主动学习器选中。
+对于构建地理本体CGeoOnt任务，本文参照高考地理考题的考察方式组织，一些术语的名字组织也并不是仅仅根据地理教材中的名称，更不是凭主观想象，而是从更方便解题角度组织。再者，地理本体CGeoOnt中含有很多特殊元素，如静态属性，专门为类添加的属性描述，类的静态属性性质默认施加到类的实例上。还有地理中的过程表示，地理中的大量现象形成很复杂，很多是带有条件、过程性的，本文针对地理过程也定义了一下特殊的词汇描述，这也是一般的本体构建中没有的。正是因为地理知识组织的复杂性，本文的一些本体元素组织往往超过了一般本体语言的语法定义，本文也针对做了扩充（如添加静态属性），因此本文也不太适合用一般的本体构建工具，如protege等，本文需要开发自己独特的本体解析工具。
 
-%\floatname{algorithm}{算法}
-%\renewcommand{\algorithmicrequire}{\textbf{输入:}} % Use Input in the format of Algorithm
-%\renewcommand{\algorithmicensure}{\textbf{输出:}} % Use Output in the format of Algorithm
-%\begin{algorithm}[!htb]
-%	\caption{基于池的主动学习算法}
-%	\label{algorithm_pool_based_al}
-%	\begin{algorithmic}[1] %这个1 表示每一行都显示数字
-%		\REQUIRE ~ %算法的输入参数：Input
-%		未标注的样本集$ \mathcal{U}=\{m^{(u)} \}_{u=1}^U $
-%		\ENSURE ~ %算法的输出：Output
-%		监督学习分类器$\theta$
-%		\STATE 从未标注训练集$\mathcal{U}$中选择并标注初始训练样本集$\mathcal{L}_0$\label{al_al_line1}
-%		\STATE 利用初始训练样本集$\mathcal{L}_{0}$训练得到弱分类器$\theta=train(\mathcal{L}_{0})$\label{al_al_line2}
-%		\REPEAT \label{al_al_line3}
-%		\STATE 从$\mathcal{U}$中找出$k$个不确定度最大的样本组成样本集$ \mathcal{U}_{selected} = \{m^{(u)} \}_{u=1}^{k} $\label{al_al_line4}
-%		\STATE 对$ \mathcal{U}_{selected}$中的样本进行人工标注得到$ \mathcal{L}_{selected} = \{\left\langle m,e\right\rangle^{(l)} \}_{l=1}^{k} $
-%		\STATE $ \mathcal{U} = \mathcal{U} \setminus \mathcal{U}_{selected} $
-%		\STATE $ \mathcal{L}_{t+1} = \mathcal{L}_{t} \cup \mathcal{L}_{selected} $
-%		\STATE $\theta=train(\mathcal{L}_{t+1})$
-%		\UNTIL {达到预期精度或样本集已全部标注} \label{al_al_line9}
-%	\end{algorithmic}
-%\end{algorithm}
+对于基于地理知识库的问答任务，从本文收集的web地理问题分析可知，地理问题表达形式多样，一个地理三元组知识往往可以成为多个问题的答案，如“亚热带季风气候在发展农业生产方面有什么优势” 和“温带季风气候在农业生产方面的显著优势是\_百度知道”，这两个问题都可以用“季风气候$\space$生产优势$\space$夏季高温多雨，雨热同期。”这个三元组知识作为答案。虽然，两个问题问法不同，但相对答案而言它们等效。这也说明，在我们做问答时，单独的表示问题和答案向量是不充分的，至少是不能表示问题和答案之间的关系。因此，本文在表示地理问题、答案时，充分考虑到了两者的内在关联。再者，本文地理问题本身表达方式偏口语化严重，其更具挑战，且问题中无关信息很多，对答案和问题的表示要求更高。
 
-基于池的主动学习方法\cite{muslea2006active}在目前研究中使用最为广泛。该方法的关键步骤是，在待标注样本选择的过程中设计算法对未标注样本的信息量进行定量分析。对于二分类问题来说，距离分类超平面最近的样本点就是分类置信度最接近0的样本点，这些样本点的分类不确定度相对较高。但是对于分类标签个数大于2的多分类问题来说，仅根据分类置信度是否接近0已无法区分样本的不确定度。对于多分类问题来说，不确定度的度量方式主要有三种。
-
-（1）置信度。基于置信度的不确定度度量方式是用于度量不确定度最基本的方式。对于某一个样本点，其对应的所有可能的分类标签都会被赋予相应的置信度，将其中置信度最大的标签作为预测最佳标签，并将此标签的置信度作为该样本被正确分类的置信度。
-
-\begin{align}\label{eq:al_least_confident}
-\begin{aligned}
-x_{LC}^*&=\argmin_x P_\theta(\hat{y}|x)\\
-&=\argmax_x 1-P_\theta(\hat{y}|x)
-\end{aligned}
-\end{align}
-
-在公式\ref{eq:al_least_confident}中，$y^*=\argmax_y P_\theta (y|x)$，即在当前分类器$\theta$下，样本$x$的最佳预测分类标签。基于该度量方式，最佳预测分类标签的置信度越低，则分类的不确定度越高，这些样本点更应该被选择出来进行人工标注。该度量方式可由0-1损失（0-1 loss）来解释。该度量方式的缺点是只考虑了最佳分类标签的置信度，而丢弃了其他分类标签的置信度的分布情况。
-
-（2）间隔。基于间隔的不确定度度量方式以最佳预测分类标签置信度和次佳预测分类标签置信度的差值作为考量因素。
-
-\begin{align}\label{eq:al_margin}
-\begin{aligned}
-x_M^*&=\argmin_x [P_\theta(y^{*1}|x)-P_\theta(y^{*2}|x)]\\
-&=\argmax_x [P_\theta(y^{*2}|x)-P_\theta(y^{*1}|x)]
-\end{aligned}
-\end{align}
-
-在公式\ref{eq:al_margin}中，$y^{*1}$和$y^{*2}$分别是在当前分类器$\theta$下，样本$x$的最佳预测分类标签和次佳预测分类标签。该度量方式通过同时考虑两个分类标签的置信度，在一定程度上克服了前一种度量方式的缺点。基于该度量方式，间隔越大的样本点，分类器越容易从最佳的两个分类标签中区分出最佳预测样本点，这种样本的分类置信度就较高。因此，主动学习器应该选择间隔较小的样本点，这些样本点的分类置信度较低，对模型的训练更有帮助。
-
-（3）熵值。在主动学习方法中，目前使用较广泛的不确定度度量方式是熵值度量法，熵是用来描述模型对样本点分类时，分类结果混乱程度的一项指标。熵值的计算方法如公式\ref{eq:al_entropy}所示。
-
-\begin{align}\label{eq:al_entropy}
-\begin{aligned}
-x_M^*&=\argmax_x H_\theta (Y|x)\\
-&=\argmax_x -\sum_{y}P_\theta(y|x)\log P_\theta(y|x)
-\end{aligned}
-\end{align}
-
-通过公式\ref{eq:al_entropy}，可以看出，基于熵值的不确定度度量方式考虑了样本点$x$对应的所有可能的分类标签的分类置信度，从而使该方法可以描述样本分类结果的整体分布情况。对基于熵值的不确定度度量方式可以由对数损失（Logarithmic Loss）来解释。熵值越大的样本点，分类标签置信度的分布越混乱，样本点的分类不确定度越大。反之，分类标签置信度的分布越集中。极端情况，某一分类标签的置信度为1，其他分类标签的置信度均为0，则熵值为0，这时候分类不确定度是最低的。因此，主动学习器应该选择熵值较大的样本点对模型进行重训练。
-
-\subsection{基于委员会的主动学习算法}
-与基于单个模型的主动学习算法不同，Seung等人\cite{freund1997selective}提出的基于委员会的主动学习算法会选择一定数量的分类模型，组成分类委员会。在待标注样本选择过程中，委员会中的各个模型分别对样本点进行分类。各委员会模型分类预测结果最不一致的样本点就是分类不确定度最高的样本点，主动学习器需要选择这些样本点进行人工标注并将其加入训练集对委员会中的所有模型进行重训练。
-
-%\floatname{algorithm}{算法}
-%\renewcommand{\algorithmicrequire}{\textbf{输入:}} % Use Input in the format of Algorithm
-%\renewcommand{\algorithmicensure}{\textbf{输出:}} % Use Output in the format of Algorithm
-%\begin{algorithm}[!htb]
-%	\caption{基于委员会的主动学习算法}
-%	\label{algorithm_committee_al}
-%	\begin{algorithmic}[1] %这个1 表示每一行都显示数字
-%		\REQUIRE ~ %算法的输入参数：Input
-%		未标注的样本集$ \mathcal{U}=\{m^{(u)} \}_{u=1}^U $
-%		\ENSURE ~ %算法的输出：Output
-%		监督学习分类器集合$\mathcal{C}=\{\theta_1,\theta_2,...,\theta_n\}$
-%		\STATE 从未标注训练集$\mathcal{U}$中选择并标注初始训练样本集$\mathcal{L}_0$
-%		\STATE 利用初始训练样本集$\mathcal{L}_{0}$训练得到弱分类器集合$\mathcal{C}=train(\mathcal{L}_{0})$
-%		\REPEAT
-%		\STATE 从$\mathcal{U}$中找出$k$个委员会分歧度最大的样本组成样本集$ \mathcal{U}_{selected} = \{m^{(u)} \}_{u=1}^{k} $
-%		\STATE 对$ \mathcal{U}_{selected}$中的样本进行人工标注得到$ \mathcal{L}_{selected} = \{\left\langle m,e\right\rangle^{(l)} \}_{l=1}^{k} $
-%		\STATE $ \mathcal{U} = \mathcal{U} \setminus \mathcal{U}_{selected} $
-%		\STATE $ \mathcal{L}_{t+1} = \mathcal{L}_{t} \cup \mathcal{L}_{selected} $
-%		\STATE $\mathcal{C}=train(\mathcal{L}_{t+1})$
-%		\UNTIL {达到预期精度或样本集已全部标注}
-%	\end{algorithmic}
-%\end{algorithm}
-
-与基于单个模型的主动学习算法相比，基于委员会的主动学习算法的不同之处在于它包含多个分类器模型，并且在选择待标注样本时，选择的依据是委员会对某一个样本点分类的分歧度，分歧度越大的样本点，分类置信度越低，越应该被主动学习器选择。委员会分歧度的度量方式主要有以下两种。
-
-（1）投票熵（Vote Entropy）。投票熵的定义如下：
-
-\begin{align}\label{eq:vote_entropy}
-\begin{aligned}
-x_{VE}^*&=\argmax_x -\sum_{y}\frac{vote_\mathcal{C}(y,x)}{|\mathcal{C}|}\log{\frac{vote_\mathcal{C}(y,x)}{|\mathcal{C}|}}\\
-\end{aligned}
-\end{align}
-
-公式\ref{eq:vote_entropy}中，$y$表示所有可能的样本分类标签。$vote_\mathcal{C}(y,x)=\sum_{\theta \in \mathcal{C}}1_{\{h_\theta(x)=y\}}$，即预测分类标签为$y$的分类器个数，$|\mathcal{C}|$是委员会中分类器的个数。在此基础上，研究者们提出了软投票熵的定义：
-
-\begin{align}\label{eq:soft_vote_entropy}
-\begin{aligned}
-x_{SVE}^*&=\argmax_x -\sum_{y}P_\mathcal{C}(y|x)\log P_\mathcal{C}(y|x)\\
-\end{aligned}
-\end{align}
-
-公式\ref{eq:soft_vote_entropy}中，$P_\mathcal{C}(y|x)=\frac{1}{|\mathcal{C}|}\sum_{\theta \in \mathcal{C}}P_\theta (y|x)$。软投票熵考虑了委员会中每个分类器的分类置信度。
-
-（2）KL散度（Kullback-Leibler Divergence）。KL散度的定义如下：
-
-\begin{align}\label{eq:kl_divergence}
-\begin{aligned}
-x_{KL}^*&=\argmax_x \frac{1}{|\mathcal{C}|}\sum_{\theta \in \mathcal{C}}KL(P_\theta(Y|x)||P_\mathcal{C}(Y|x)) \\
-\end{aligned}
-\end{align}
-
-\begin{align}
-\begin{aligned}
-KL(P_\theta(Y|x)||P_\mathcal{C}(Y|x)) &=\sum_{y}P_\theta (y|x)\log \frac{P_\theta(y|x)}{P_\mathcal{C}(y|x)} \\
-\end{aligned}
-\end{align}
-
-\subsection{主动学习在其它机器学习任务中的应用}
-在其它基于监督学习的自然语言处理任务中， 主动学习被广泛用来解决减少数据标注工作量的问题。 Chen 等人\cite{chen2015study}将主动学习用于基于 SVM 的命名实体 识别(Named Entity Recognition)任务，在保证模型性能的前提下，相比基线方 法降低了 42\%的标注量。Cormack 等人\cite{cormack2016scalability}针对文本分类(Text Classification)任务，对主动学习在不同监 督学习模型上的效果做了相关研究。实验结果表明 在不同的监督学习模型上，文本分类需要的训练样本数量都有所减少。
-
-与已有的主动学习方法不同，Alonsod等人\cite{alonso2015active}为了避免主动学习过程中选择到离群点，提出了一种基于概率的样本选择方法。该方法并非在每轮迭代都选择不确定度最高的样本， 而是根据当前样本分类结果的不确定度，对样本赋 予不同的被选择的概率。不确定度越高，样本被选 中的概率越大，反之，被选中的概率越低。该方法在词义标注(Word Sense Annotation)任务中取得了明显的效果。
-
-在语料库辅助标注任务中，Ayache等人\cite{ayache2008video}为了给TRECVID 2007提供视频语料，开发了基于Web的标注工具。由于时间和人力资源有限，Ayache等人利用主动学习方法，通过算法选择信息量较大的样本进行标注，并通过已标注样本影响未标注样本的预测结果，提高人工标注效率。实验表明，通过主动学习方法，仅需要人工标注30\%的语料，得到的银标准语料对模型训练任务就能达到和金标准语料相同的性能。
-
-\subsection{已有方法和本文工作的联系与区别}
-主动学习在多种机器学习任务中已有较多的研究成果，但目前在实体链接任务中还没有关于用主动学方法降低训练样本数量的研究。因此，本文将主动学习方法用于实体链接任务，来降低人工标注工作量。同时，针对实体链接任务的特点，本文对样本选择方法做了改进。最后本文通过实验证明，与非主动学习的标注方法相比，基于主动学习方法的实体链接方法极大地降低了人工标注工作量，并且，经过改进的主动学习策略能显著提升主动学习器的性能。
-
-另外，主动学习方法目前主要应用于监督学习模型的训练，然而对于银标准语料的辅助构建，主动学习应用较少。在实体链接任务中，考虑到成本有限，应尽可能提高标注语料的质量。因此，本文借助主动学习方法对实体链接语料库辅助标注做了相应研究。
+最后，目前中文地理问答数据集缺乏，为了验证实验的有效性，本文还需构建客观、真实、多样化的web地理问题、答案对数据集。
 
 \section{本章小结}
-本章介绍了实体链接任务的相关研究。首先简单介绍了实体链接任务的概念，并对目前用于处理实体链接任务的模型和方法进行了相关介绍。然后介绍了已有的几种主动学习方法，并对主动学习方法在其它机器学习任务中的应用进行了相关介绍。最后将已有方法和本文的工作做了对比与分析，给出了联系与区别。
+本章介绍了基于本体的地理知识问答的相关研究现状。具体包括本体构建的研究现状和知识库问答的研究现状。本章首先介绍本体的四个基本元素个体、类、属性、关系和常见的本体描述语言；然后介绍本体构建的主流方法，主要是介绍八种常见的人工本体构建方法的优缺点和适合范围；再然后介绍知识库问答的两个主流方法——基于语义解析的KBQA问答和基于信息检索的KBQA的操作流程以及各方向的研究方法优缺点；最后介绍本文工作与已有工作的不同之处。

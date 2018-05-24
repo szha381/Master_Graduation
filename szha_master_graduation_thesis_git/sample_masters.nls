@@ -2,16 +2,22 @@
 
  \nomgroup{A}
 
-  \item [{AL}]\begingroup Active Learning\nomeqref {1.0}\nompageref{3}
-  \item [{EL}]\begingroup Entity Linking\nomeqref {1.0}\nompageref{3}
-  \item [{EP}]\begingroup Evidence Propagation\nomeqref {1.0}
+  \item [{BOW}]\begingroup Bag Of Words\nomeqref {1.0}\nompageref{3}
+  \item [{CGeoOnt}]\begingroup Chinese Geographical Ontology\nomeqref {1.0}
+		\nompageref{3}
+  \item [{Clinga}]\begingroup Chinese Linked Geographical Dataset\nomeqref {1.0}
+		\nompageref{3}
+  \item [{CNNs}]\begingroup Convolutional Neural Networks\nomeqref {1.0}
+		\nompageref{3}
+  \item [{KB}]\begingroup Knowledge Base\nomeqref {1.0}\nompageref{3}
+  \item [{KBQA}]\begingroup Knowledge Base Question Answering\nomeqref {1.0}
+		\nompageref{3}
+  \item [{LSTM}]\begingroup Long And Short Term Memory\nomeqref {1.0}
 		\nompageref{3}
   \item [{NER}]\begingroup Named Entity Recognition\nomeqref {1.0}
 		\nompageref{3}
-  \item [{RW}]\begingroup Random Walk\nomeqref {1.0}\nompageref{3}
-  \item [{SBP}]\begingroup Sampling by Popularity\nomeqref {1.0}
-		\nompageref{3}
-  \item [{SUP}]\begingroup Sampling by Uncertainty and Popularity\nomeqref {1.0}
+  \item [{POS}]\begingroup Part Of Speech\nomeqref {1.0}\nompageref{3}
+  \item [{RNN}]\begingroup Recurrent Neural Network\nomeqref {1.0}
 		\nompageref{3}
 
 \end{thenomenclature}
