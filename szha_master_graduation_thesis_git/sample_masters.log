@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  23 MAY 2018 10:33
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.4.2)  25 MAY 2018 14:14
 entering extended mode
 **./sample_masters.tex
 (sample_masters.tex
@@ -2179,7 +2179,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 \tf@toc=\write5
 \openout5 = `sample_masters.toc'.
 
- [5] (sample_masters.nls) [6
+ [5] [6] (sample_masters.nls) [7
 
 
 ]
@@ -2190,9 +2190,16 @@ File: resource/ex_multi_choice_ques.pdf Graphic file (type pdf)
 [1
 
 
-] [2]) (chapters/3.相关研究.tex [3]
+] [2]
+Overfull \hbox (1.78654pt too wide) in paragraph at lines 41--42
+[]|\TU/SimSun(1)/m/n/12.045 （四）|  第 四 章 介 绍 地 理 本 体 知 识 库 的 构 建 过 程。| $$ 首 先 介 
+绍 如 何 构 建 地 理 本 体 \TU/TimesNewRoman(0)/m/n/12.045 CGeoOnt\TU/SimSun(1)/m/n/12.0
+45 ；|
+ []
+
+[3]) (chapters/3.相关研究.tex [4]
 第二章
-[4
+[5
 
 ]
 Overfull \hbox (21.145pt too wide) in paragraph at lines 26--27
@@ -2201,18 +2208,24 @@ Overfull \hbox (21.145pt too wide) in paragraph at lines 26--27
 imesNewRoman(0)/m/n/12.045 (Datatype-
  []
 
-[5] [6] [7]
+[6] [7] [8]
 File: resource/onto_method_compare.pdf Graphic file (type pdf)
 <use resource/onto_method_compare.pdf>
- [8] [9] [10] [11] [12]) (chapters/4.监督学习_主动学习.tex [13]
+ [9] [10] [11] [12] [13]) (chapters/4.监督学习_主动学习.tex [14]
 第三章
-[14
-
-]
 File: resource/graduation.pdf Graphic file (type pdf)
 <use resource/graduation.pdf>
- [15] [16] [17]
-Overfull \hbox (7.26993pt too wide) in paragraph at lines 109--110
+[15
+
+] [16]
+File: resource/qa_overview_1.pdf Graphic file (type pdf)
+<use resource/qa_overview_1.pdf>
+ [17] [18]) (chapters/5.本体知识库构建.tex [19]
+第四章
+[20
+
+] [21]
+Overfull \hbox (7.26993pt too wide) in paragraph at lines 75--76
 []\TU/SimSun(1)/m/n/12.045 类 的 构 建 需 要 声 明 其 类 型 是 \TU/TimesNewRoman(0)/m/n/12.
 045 OWL \TU/SimSun(1)/m/n/12.045 中 的 类，|  并 且 需 要 定 义 其 唯 一 的 名 称 \TU/TimesNewR
 oman(0)/m/n/12.045 skos:prefLabel\TU/SimSun(1)/m/n/12.045 ，|
@@ -2220,96 +2233,83 @@ oman(0)/m/n/12.045 skos:prefLabel\TU/SimSun(1)/m/n/12.045 ，|
 
 Missing character: There is no ̈ in font cmmi12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--125
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
-
- []
-
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 166--167
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 196--198
-
- []
-
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 213--215
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 240--242
-
- []
-
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 251--253
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 264--266
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 282--284
-
- []
-
-[21]
-Underfull \hbox (badness 10000) in paragraph at lines 305--307
+Underfull \hbox (badness 10000) in paragraph at lines 89--91
 
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 351--353
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
 
  []
 
-[23] [24]
+
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
+
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 162--164
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--181
+
+ []
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 206--208
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--219
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--232
+
+ []
+
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 248--250
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 271--273
+
+ []
+
+[26]
+Underfull \hbox (badness 10000) in paragraph at lines 317--319
+
+ []
+
+[27] [28] [29]
 File: resource/clinga.png Graphic file (type bmp)
 <resource/clinga.png>
- [25] [26]
-File: resource/qa_overview_1.pdf Graphic file (type pdf)
-<use resource/qa_overview_1.pdf>
- [27] [28]
-Underfull \hbox (badness 10000) in paragraph at lines 532--534
-
- []
-
+ [30]) (chapters/6.基于注意力机制的地理知识库问答.tex [31] [32]
+第五章
 File: resource/rnn_structure.png Graphic file (type bmp)
 <resource/rnn_structure.png>
-[29]
-Underfull \hbox (badness 10000) in paragraph at lines 576--578
+[33
 
- []
-
+]
 File: resource/qa_bi_lstm_1.pdf Graphic file (type pdf)
 <use resource/qa_bi_lstm_1.pdf>
-
-Underfull \hbox (badness 10000) in paragraph at lines 593--595
-
- []
-
-[30]
+ [34]
 File: resource/qa_attention_1.pdf Graphic file (type pdf)
 <use resource/qa_attention_1.pdf>
- [31] [32] [33] [34]) (chapters/6.总结与展望.tex [35]
-第四章
-[36
+ [35] [36] [37] [38]) (chapters/7.总结与展望.tex [39]
+第六章
+[40
 
-]) [37] [38
+]) [41] [42
 
 
-] (sample_masters.bbl [39
+] (sample_masters.bbl [43
 
 
 ]
@@ -2341,39 +2341,39 @@ File: resource/qa_attention_1.pdf Graphic file (type pdf)
 . <->"FangSong/OT:script=hani;language=DFLT;"
 . - 'small caps'  (m/sc) with NFSS spec.: 
 .................................................
- [40] [41]
+ [44] [45]
 Underfull \hbox (badness 6559) in paragraph at lines 232--234
 []\TU/TimesNewRoman(0)/m/n/12.045 Zettlemoyer, L. S., & Collins, M.  Learning t
 o map sentences to logical
  []
 
-[42]) [43] [44
+[46]) [47] [48
 
 
 ]
 File: figures/back-cover.png Graphic file (type bmp)
 <figures/back-cover.png>
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 84.
- [45
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 86.
+ [49
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 84.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 86.
  (sample_masters.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 84.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 84.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 86.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 86.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 84.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 86.
  ) 
 Here is how much of TeX's memory you used:
- 31986 strings out of 427836
- 630607 string characters out of 3151724
- 669331 words of memory out of 3000000
- 35572 multiletter control sequences out of 15000+200000
- 549979 words of font info for 144 fonts, out of 3000000 for 9000
+ 32020 strings out of 427836
+ 631270 string characters out of 3151724
+ 669326 words of memory out of 3000000
+ 35597 multiletter control sequences out of 15000+200000
+ 554934 words of font info for 163 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  63i,18n,70p,10476b,685s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on sample_masters.pdf (59 pages).
+Output written on sample_masters.pdf (64 pages).

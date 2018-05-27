@@ -1,0 +1,459 @@
+\chapter{地理本体知识库构建}
+
+地理本体知识库构建内容分四个部分来介绍，先介绍地理本体CGeoOnt(chinese geographic ontology)的构建，然后介绍本体Clinga(chinese linked geographical dataset)与本体CGeoOnt融合，再然后介绍本体的存储与检索，最后介绍本体词典生成方法。
+
+\section{地理本体CGeoOnt构建}\label{section:CGeoOnt_build}
+本文本体构建方法借鉴了斯坦福七步法的流程，但是与斯坦福的七步法有一些区别，如本文没有可以复用的本体，并且七步法需一次性列出本体的重要术语，其可操作性不强。因此，根据地理领域的特点，本文主要分四个步骤进行本体构建工作,分别如下：
+
+（1）地理知识源选取。选取本体构建所需要的资料，文本或者图表形式。
+
+（2）地理知识体系定义。确定本体构建的三元组知识组织顺序。
+
+（3）地理本体构建规范定义。约定本体构建的知识组织规范。
+
+（4）地理本体基本元素定义。定义类、属性、关系，创建实例。
+
+\subsection{地理知识源选取}
+地理本体构建知识源来自教育部高中地理教材以及部分的高考地理试题。地理教材包括人教版高中地理必修一自然地理、必修二人文地理、必修三区域可持续发展、区域地理、选修三旅游地理、选修五自然灾害与防治、选修六环境保护这七本教材和一本高中地理知识清单。高中地理知识清单是专家对上述七本高中地理教材中核心考点的精确提炼，以及对每本书知识点的解题方法讲解。高考试题选取的是北京市近10年（2007--2016年）的地理高考题，选取高考题作为知识源的目的是：标注人员可以根据高考题快速把握高考地理考点以及弄清考点所需要的辅助知识，因此能够有针对性地去教材中寻找需要标注的核心知识，避免标注大量对于解题无用的地理知识，大大提高了地理核心知识库构建的效率。本文地理资源均为电子资源，且格式为HTML的网页形式，里面包含文字叙述、图和表格。
+
+\subsection{地理知识体系定义}
+地理知识体系的定义根据《高中地理知识清单（第3次修订）》
+中的组织结构进行，该高中地理知识清单包括了整个高中地理教科书中知识的组织顺序，如高中地理教材的组织先从必修地理开始介绍，包括必修自然地理、必修人文地理、必修区域可持续发展。然后是介绍选修地理部分，包括选修旅游地理、选修自然灾害与防治和选修环境保护。对于每一本教材中的知识体系根据书中每个章节的相关主题、相关知识点和相关方法三个方面来组织，这样的好处是使知识库的知识都能够找到其知识的出处，便于后续分析知识之间的关系和知识溯源，保留知识的完整性。如在标注概念类“天体”的知识三元组时，需要标注出“天体”在书中所属的“相关主题”是“宇宙中的地球”，以及“天体”涉及的“相关知识点”是“地球的宇宙环境”和跟“天体”相关联的“相关方法”是“天体类型的判断方法”。
+
+\subsection{地理本体构建规范}
+地理本体构建规范主要为保证最终本体的构建形式一致，因为本体构建需要多个专业人员参与，不同人的标注主观性很大，必须经过统一的规范约束。首先，本文地理知识需要较强的表达能力且还需具备很强的推理能力，因此本文约定本体描述语言使用OWL，构建符合RDFS和OWL DL级别规范。其次，由于本文地理本体构建有较多本领域的特殊定义，有些定义需要突破OWL DL的规范，因此本文构建工作不使用当前存在的本体构建工具，如protege等，本文直接以RDF三元组的语法形式Turtle\footnote{https://www.w3.org/TR/turtle/}来表示每条本体知识三元组。最后，本文规定个体、类、属性等的命名说明规范，统一本体的最终表现形式。
+
+为简化三元组的表示，本文定义了本文地理本体术语的命名空间，包括自定义的三个地理本体元素——个体、属性及类的命名空间gsr、gss、gso，以及包括七个常见的本体元素命名空间：rdf、rdfs、owl、skos、xs、op和fn。以上命名空间如下所示：
+
+% 用s表示正常的字符宽度，l代表稍微窄的字符宽度
+
+@prefix gsr:\hphantom{sss}<http://ws.nju.edu.cn/geoscholar/resource>.
+
+@prefix gss:\hphantom{sss}<http://ws.nju.edu.cn/geoscholar/staticOntology>.
+
+@prefix gso:\hphantom{ssl}<http://ws.nju.edu.cn/geoscholar/ontology>.
+
+@prefix rdf:\hphantom{sss}<http://www.w3.org/1999/02/22-rdf-syntax-ns>.
+
+@prefix rdfs:\hphantom{ss}<http://www.w3.org/2000/01/rdf-schema>.
+
+@prefix owl:\hphantom{ss}<http://www.w3.org/2002/07/owl>.
+
+@prefix skos:\hphantom{ll}<http://www.w3.org/2004/02/skos/core>.
+
+@prefix xs:\hphantom{sssl}<http://www.w3.org/2001/XMLSchema>.
+
+@prefix op:\hphantom{ssll}<http://www.w3.org/2002/08/xquery-operators>.
+
+@prefix fn:\hphantom{sssl}<http://www.w3.org/2005/xpath-functions>.\linebreak[3]
+\\
+以下为其他约定，核心思想为使本体不同元素有区分度，同时见其英文名可知其中文义：
+\begin{itemize}
+	\item {个体：以“R\_”开头，如gsr:R\_太阳。
+	}
+	\item {类：以“C\_”开头，如gso:C\_天体。
+	}
+	\item{属性（静态属性）：以“P\_”开头，两个属性owl:ObjectProperty、owl:DatatypeProperty分别以“P\_o\_”和“P\_d\_”开头。如gso:P\_o\_公转对象，gso:P\_d\_高度。
+	}
+	\item{个体须声明类别owl:Class、属性必须确定是对象属性owl:ObjectProperty还是数据类型属性owl:DatatypeProperty。
+	}
+	\item{每个术语有且仅有一个skos:prefLabel，但是可以有多个skos:altLabel用于别名。
+	}
+	\item {每个术语有必要时使用skos:definition给出其定义，使用rdfs:comment对其重要方面进行评论。
+	}
+	\item {术语间多使用gso:relatedTo来表达它们有一定的关联性。
+	}
+	\item {为避免处理的复杂性，三元组中不使用空白结点（ blank node ）。
+	}
+\end{itemize}
+
+\subsection{地理本体基本元素定义}
+本文地理本体构建遵循自下而上的构建原则，按照书本知识的组织顺序构建本体，不一次性的定义其领域所有术语，而采取根据每章、每节中的考点知识构建，考点知识的确定参照近10年的北京市地理高考题以及书中重点强调的考点。下面分别介绍类、属性、个体和本文特殊地理元素的具体构建。
+
+（1）类的构建
+
+类的构建需要声明其类型是OWL中的类，并且需要定义其唯一的名称skos:prefLabel，而且该类若有别名则需定义别名skos:altLabel，该类的父类若存在则需要定义出。类相关的定义或者评论可以通过skos:definition和skos:comment定义出，若该类所对应的课文章节主题和知识点为重要考点，也应该定义出。如下举例为本文对概念类“行星”的三元组知识表示，知识三元组中的主语、谓语、宾语之间以空格表示：
+
+gso:C\_行星\quad rdf:type\quad owl:Class\quad .
+
+gso:C\_行星\quad skos:prefLabel\quad "行星"$^{\land\land}$xs:string\quad .
+
+gso:C\_行星\quad rdfs:subClassOf\quad gso:C\_天体\quad .
+
+gso:C\_行星\quad skos:definition\quad "在椭圆轨道上，环绕恒星运行、近似球状的天体，其质量比恒呈小，本身是不发光的\"$^{\land\land}$xs:string\quad .
+
+gso:C\_行星\quad gsb:relatedToKPoint\quad gsb:M\_太阳对地球的影响\quad .
+
+gso:C\_行星\quad gsb:relatedToKPoint\quad gsb:M\_宇宙中的地球\quad .
+
+gso:C\_行星\quad gsb:relatedToTopic\quad gsb:M\_行星地球 .
+\\
+
+（2）属性的构建 
+
+本文属性包括普通的属性和本文特殊定义的属性，此节只讲述普通属性的构建，特殊定义的属性见第四小节“地理特殊定义元素”介绍。本文普通属性的构建需明确区分是对象属性owl:ObjectProperty还是数据类型属性owl:DatatypeProperty，属性的性质（如对称性、传递性等）需要定义出来，便于根据属性进行相关推理。同时，对于对象属性，本文需定义属性的定义域rdfs:domain和值域rdfs:range，不好区分情形下使用总类owl:Thing描述；对于数据类型属性，数据类型的单位必须定义，如下分别为对象属性“垂直”和数据属性“宽度值”的举例表示：
+
+对象属性：垂直
+
+gso:P\_o\_垂直\quad rdf:type\quad owl:ObjectProperty\quad .（对象属性）
+
+gso:P\_o\_垂直\quad skos:prefLabel\quad "垂直"$^{\land\land}$xs:string\quad .（属性名称）
+
+gso:P\_o\_垂直\quad rdfs:domain\quad owl:Thing\quad .\quad （定义域为所有对象）
+
+gso:P\_o\_垂直\quad rdfs:range\quad owl:Thing\quad .\quad （值域为所有对象）
+
+gso:P\_o\_垂直\quad a\quad owl:SymmetricProperty\quad .\quad \quad （对称性）
+
+gsr:R\_水平气压梯度力\quad gso:P\_o\_垂直\quad gsr:R\_等压线\quad .（属性连接的两个对象）
+
+gso:P\_o\_垂直\quad gsb:relatedToKPoint\quad gsb:M\_大气的水平运动-风\quad .（属性涉及到的考点知识）\\
+
+数据属性：宽度值
+
+gso:P\_d\_宽度值\quad rdf:type\quad owl:DatatypeProperty\quad .（数据属性）
+
+gso:P\_d\_宽度值\quad skos:prefLabel\quad "宽度值"$^{\land\land}$xs:string\quad .（属性名称）
+
+gso:P\_d\_宽度值\quad gso:physicalQuantity\quad "宽度"$^{\land\land}$xs:string\quad .（属性单位名称）
+
+gso:P\_d\_宽度值\quad gso:unit\quad "米"$^{\land\land}$xs:string\quad .（属性单位类型）
+
+gso:P\_d\_宽度值\quad rdfs:domain\quad owl:Thing\quad .（定义域为所有对象）
+
+gso:P\_d\_宽度值\quad rdfs:range\quad xs:double\quad .（值域为双精度数值）
+
+gso:P\_d\_宽度值\quad rdfs:comment\quad "描述某物a的宽度为某个值"$^{\land\land}$xs:string\quad .（属性的一般性评论）
+
+gsr:R\_南极附近海上最大的冰山\quad gso:P\_d\_宽度值\quad \quad "97000.0"$^{\land\land}$xs:double\quad .（属性描述的个体知识）
+
+gso:P\_d\_宽度值\quad gsb:relatedToKPoint\quad gsb:M\_水资源与人类社会\quad .（属性相关的知识考点）
+
+gso:P\_d\_宽度值\quad gsb:relatedToTopic\quad gsb:M\_水资源的合理利用\quad .（属性相关的知识考点章节）  \\
+
+（3）个体的构建
+
+个体的构建只包含标注章节中包含高考地理考点的专业术语，其它非考点术语忽略不予标注。本文个体构建遵循的重要原则是每个个体须申明其类别，而且其类别允许为多个，这一点也符合现实世界的表示。如下为个体“地球”的知识表示：
+
+gsr:R\_地球\quad skos:prefLabel\quad "地球"$^{\land\land}$xs:string\quad .\quad （个体名称）
+
+gsr:R\_地球\quad rdf:type\quad gso:C\_行星\quad .（个体的类别，此处地球有三个标签类别）
+
+gsr:R\_地球\quad rdf:type\quad gso:C\_物体\quad .（个体的类别）
+
+gsr:R\_地球\quad rdf:type\quad gso:Location\quad .（个体的类别）
+
+gsr:R\_地球\quad gso:P\_d\_性质\quad "适合生物生存的大气条件"$^{\land\land}$xs:string\quad .（个体数据-字符串属性,描述的事实是：地球拥有适合生物生存的大气条件的性质）
+
+gsr:R\_地球\quad gso:P\_d\_轨道偏心率\quad "0"$^{\land\land}$xs:string\quad .（个体数据-字符串属性）
+
+gsr:R\_地球\quad gso:P\_d\_计时方法\quad "分区计时"$^{\land\land}$xs:string\quad .（个体数据-字符串属性）
+
+gsr:R\_地球\quad gso:P\_d\_时区数量\quad "24"$^{\land\land}$xs:integer\quad .（个体数据-整型属性）
+
+gsr:R\_地球\quad gso:P\_d\_平均密度\quad "5"$^{\land\land}$xs:string\quad .（个体数据-字符串属性）
+
+gsr:R\_地球\quad gso:P\_o\_公转对象\quad gsr:R\_太阳\quad .（个体的对象属性）
+
+gsr:R\_地球\quad gso:P\_o\_天然卫星\quad gsr:R\_月球\quad .（个体的对象属性）
+
+gsr:R\_地球\quad gso:P\_o\_拥有\quad gsr:R\_液态水\quad .（个体的对象属性）
+
+gsr:R\_地球\quad gso:P\_o\_南部\quad gsr:R\_南半球\quad .（个体的对象属性）
+\\
+
+（4）地理本体特色元素
+
+$\Box$静态属性
+
+静态属性，本文前缀表示为gss，是为增强地理知识的表达能力而设定的，需与普通属性gso相区别。静态属性严格上并不满足OWL的属性规范，因为OWL的属性连接的可以是两个个体或者一个个体和一个数据类型数据，而本文的静态属性描述的是类的属性特征。静态属性重要的特性是：静态属性所描述的类所包含的所有个体均具有该静态属性特征，这一点类似于个体继承类的特征。由于静态属性是对一类个体的描述，本文可以允许其不申明定义域rdfs:domain和值域rdfs:range，但是该静态属性仍然区分是对象属性owl:ObjectProperty还是数据类型属性owl:DatatypeProperty，如下对类“暖流”定义了一个静态属性“作用”。
+
+gss:P\_d\_作用\quad rdf:type \quad owl:DatatypeProperty\quad .（gss申明静态数据类型属性）
+
+gso:C\_暖流\quad gss:P\_d\_作用\quad "对沿岸气候增温增湿"$^{\land\land}$xs:string\quad .
+
+gsr:R\_北大西洋暖流\quad rdf:type\quad gso:C\_暖流.（申明暖流的个体-北大西洋暖流）
+\\
+则表明：北大西洋暖流同样具有暖流的静态属性特性，也即：
+
+gsr:R\_北大西洋暖流\quad gso:P\_d\_作用\quad "对沿岸气候增温增湿"$^{\land\land}$xs:string\quad .
+\\
+
+$\Box$封闭集
+
+封闭集用符号gso:isClosed表示，包括类和属性的封闭集。类的封闭集表示某个类的实例可以全部列举出，属性的封闭集表示某个个体在该属性上取值是封闭的，即包含有限的取值且可以穷举出来。
+
+$\bullet$类封闭集知识举例：地球的极点包括南极点、北极点
+
+gsr:R\_北极点\quad a\quad gso:C\_地球极点\quad .
+
+gsr:R\_南极点\quad a\quad gso:C\_地球极点\quad .
+
+gso:C\_地球极点\quad gso:isClosed\quad "true"$^{\land\land}$xs:boolean\quad .
+
+地球极点类在封闭集gso:isClosed属性上取值为true，说明地球极点的取值实例个体已经完整了，只有南极点和北极点。
+
+$\bullet$属性封闭集知识举例：太阳大气层由里到外可分为光球、色球、日冕三层。
+
+gsr:R\_太阳大气层\quad gso:P\_o\_包含\quad gsr:R\_光球\quad ;
+
+gsr:R\_太阳大气层\quad gso:P\_o\_包含\quad gsr:R\_色球\quad ;
+
+gsr:R\_太阳大气层\quad gso:P\_o\_包含\quad gsr:R\_日冕\quad .
+
+gso:P\_o\_包含\quad gso:isClosedAt\quad gsr:R\_太阳大气层\quad.
+
+该知识表示“包含”属性在个体“太阳大气层”上处于封闭状态，说明太阳大气层只包括光球、色球和日冕三层。
+\\
+
+$\Box$地理数值类型
+
+常见的数值类型属性的取值都较为明确，如使用整型xs:integer，双精度浮点型xs:double来表示。然而，在地理学科中，大多数出现的数值都不是精确值，往往是某种程度上的近似值。下面介绍本文几种类型的近似值处理介绍：
+
+$\bullet$约取值
+
+约取值的主要描述特征为“某某约为多少”，此种情况本文视作精确值处理，如知识：太阳表面的温度大约为6000K，直接取6000K作为温度数值,表示如下：
+
+gsr:R\_太阳\quad gso:P\_d\_表面温度\quad "6000"$^{\land\land}$xs:decimal .
+\\
+
+$\bullet$表示“几”
+
+对于地理知识源中包含“几”的数值描述，本文使用两种方法进行标注：第一种是查阅相关的权威资料，明确其具体的值；第二种是在无法通过其它辅助资料查询到相关精确数值时，使用范围1—9加上单位的范围值表示。如下两种举例：
+
+地理知识：色球厚度约为几千千米，实际上通过查阅维基百科可以发现，“色球厚度大约是2,000公里”，因此可以表示如下：
+
+gsr:R\_色球\quad gso:P\_d\_厚度\quad “2e6”$^{\land\land}$xs:double\quad .
+
+如果无法查阅其他资料得到准确值，则采取范围区间值来表示，如下：
+
+gsr:R\_色球\quad gso:P\_d\_厚度\quad "(1e6, 9e6)"$^{\land\land}$ xs:impreciseInterval\quad .
+\\
+
+$\bullet$范围值
+
+本文标注过程中主要遇到三种范围值的表述，第一种为取值唯一，但不精确，第二种为条件缺省时导致的取值不确定，第三种为无法精确到确定的取值区间。
+
+第一种范围值使用不精确的区间值xs:impreciseInterval表示，以圆周率举例，圆周率的值为3.1415926—3.1415927范围之间。或者如地理知识：崇明岛全岛的面积为1200多平方千米，可以表示如下：
+
+gsr:R\_崇明岛\quad gso:P\_d\_面积值\quad "(1.201e9, 1.299e9)"$^{\land\land}$xs:impreciseInterval\quad .
+
+第二种范围值使用不明确的区间值xs:unclearInterval表示，如日地距离的取值，（时间不同时，日地距离亦不同），某省某刻的温度（具体的地点不同时，温度也不同）。这样的例子当补充了具体的条件，如具体时间、具体地点后就有可能转换为精确值。本文把此种复杂的条件限制使用最低到最高的区间值来表示，如下表示地球大气上界的高度在不同时间的范围值：
+
+gsr:R\_地球大气上界\quad gso:P\_d\_高度\quad "(2e6,  3e6)"$^{\land\land}$xs:unclearInterval\quad .
+
+第三种使用不能被精确为确定值的区间xs:scopeInterval表示，如没有最大值的开区间，以地理知识为例：亚热带季风气候年降水量在800mm以上，范围值只有下界值，没有上界值，此种形式本文使用开区间表示，如下：
+
+
+gsr:R\_亚热带季风气候\quad gso:P\_d\_年降水量\quad "[0.8, )"$^{\land\land}$xs:scopeInterval\quad .
+\\
+
+$\bullet$地理区域表示
+
+地理区域主要指存在于空间中且可以准确定位的空间位置。地理中常常考察地理地点之间的位置关系（接壤、方向、包含等），因此对于地理重要地点的位置表示，需要准确细致的刻画。本文将空间所有事物定义为一个大类，记作gso:SpatialThing，将可以空间定位的地点定义为空间事物类的子类，记作gso:Location。如下先介绍空间位置关系，后介绍利用空间关系来表示空间位置。
+
+空间关系：
+
+空间关系用于描述两个可定位地点位置的相对方位关系，从某种程度上来看，它也是一种对象属性，表达两个空间位置的关系。本文定义的位置关系都符合地理领域的方位表达方式，本文以常见的方位关系“位于”、“中部”来举例说明。“位于”表示一个位置在另一个位置上，属于一种包含关系。“中部”表示对一个位置的方向约束，如中国中部等。如下为具体的地理知识表示：“基拉韦厄火山位于北太平洋中部的夏威夷群岛上”，本文需要准确表示出“位于”关系，北太平洋中部和被太平洋的方位“中部”关系
+
+gsr:R\_基拉韦厄火山\quad rdf:type\quad  gso:Location\quad  .
+
+gsr:R\_夏威夷群岛\quad rdf:type\quad  gso:Location\quad  .
+
+gsr:R\_北太平洋\quad rdf:type\quad  gso:Location\quad  .
+
+gsr:R\_北太平洋中部\quad rdf:type\quad  gso:SpatialThing\quad  .
+
+gsr:R\_基拉韦厄火山\quad  gso:P\_o\_位于\quad  gsr:R\_夏威夷群岛\quad  .
+
+gsr:R\_夏威夷群岛\quad  gso:P\_o\_位于\quad  gsr:R\_北太平洋中部\quad  .
+
+gsr:R\_北太平洋\quad  gso:P\_o\_中部\quad  gsr:R\_北太平洋中部\quad  .
+\\
+
+空间位置：
+
+对于空间位置，尤其是需要通过复杂空间关系来表示的空间位置，先得将其声明为gso:SpatialThing的实例，然后通过空间关系属性（谓词）建立与其它空间位置的关系，最后通过与其它位置构成的关系来整体表示该空间位置。如地理知识：“亚热带季风气候分布地区为我国秦岭-淮河以南、朝鲜半岛南部、日本群岛南部”，该知识中包含的“秦岭-淮河以南”、“朝鲜半岛南部”和“日本群岛南部”这三个带有方向限定的位置，需以本文定义的空间关系“南方”、“南部”并结合具体位置来联合表示。比如“秦岭-淮河以南”需要定义为“秦岭-淮河”的空间关系“南方”，具体表示如下：
+
+gsr:R\_秦岭-淮河\quad rdf:type\quad gso:Location\quad .
+
+gsr:R\_日本群岛\quad rdf:type\quad gso:Location\quad .
+
+gsr:R\_朝鲜半岛\quad rdf:type\quad gso:Location\quad .
+
+gsr:R\_秦岭-淮河以南\quad rdf:type\quad gso:SpatialThing\quad .
+
+gsr:R\_日本群岛南部\quad rdf:type\quad gso:SpatialThing\quad .
+
+gsr:R\_朝鲜半岛南部\quad rdf:type\quad gso:SpatialThing\quad .
+
+gsr:R\_秦岭-淮河\quad gso:P\_o\_南方\quad gsr:R\_秦岭-淮河以南\quad .（空间关系“南方”和空间位置“秦岭-淮河”联合表示出空间位置“秦岭-淮河以南”）
+
+gsr:R\_日本群岛\quad gso:P\_o\_南部\quad gsr:R\_日本群岛南部\quad .
+
+gsr:R\_朝鲜半岛\quad gso:P\_o\_南部\quad gsr:R\_朝鲜半岛南部\quad .
+
+gsr:R\_亚热带季风气候\quad gso:P\_o\_分布地区\quad gsr:R\_秦岭-淮河以南\quad ,\quad 
+
+gsr:R\_亚热带季风气候\quad gso:P\_o\_分布地区\quad gsr:R\_日本群岛南部\quad ,\quad 
+
+gsr:R\_亚热带季风气候\quad gso:P\_o\_分布地区\quad gsr:R\_朝鲜半岛南部\quad .
+\\
+再如“接壤”位置之间的表示，如知识：“亚欧板块和太平洋板块的交界处地震多发
+”，需要表现“亚欧板块”与“太平洋板块”的"相接"也即“接壤”关系。
+
+gsr:R\_亚欧板块\quad rdf:type \quad gso:Location\quad .
+
+gsr:R\_太平洋板块\quad rdf:type \quad gso:Location\quad .
+
+gsr:R\_亚欧板块\quad gso:P\_o\_相接\quad gsr:R\_太平洋板块\quad .
+
+gsr:R\_亚欧板块和太平洋板块的交界处\quad rdf:type \quad gso:SpatialThing\quad ;\quad 
+
+gsr:R\_亚欧板块和太平洋板块交界处\quad gso:P\_o\_相接\quad gsr:R\_亚欧板块\quad ;
+
+gsr:R\_亚欧板块和太平洋板块交界处\quad gso:P\_o\_相接\quad gsr:R\_太平洋板块\quad ;
+
+gsr:R\_亚欧板块和太平洋板块交界处\quad gso:P\_d\_地震发生率\quad "多"$^{\land\land}$xs:string .
+\\
+
+$\bullet$过程表示
+
+本文过程是指地理中一些现象在一系列条件下通过一系列步骤而形成的总称，常常有顺序过程和循环过程。 本文将过程定义为一个大类，记作gso:Process，顺序过程记作gso:SequentialProcess，循环过程记作gso:CircularProcess，分别声明为过程类的两个子类。对于顺序过程或者循环过程，都需要严格的定义其形成所需要的步骤，以及每个步骤上面的步骤条件。具体定义如下：\\
+先声明类:
+
+gso:Process\quad rdf:type\quad owl:Class\quad .\quad （过程类）
+
+gso:CircularProcess\quad rdfs:subClassOf\quad gso:Process\quad .（循环型过程类）
+
+gso:SequentialProcess\quad rdfs:subClassOf\quad gso:Process\quad .\quad （顺序型过程类）
+
+gso:StepOfProcess\quad rdf:type\quad owl:Class\quad .（过程的步骤类）
+\\
+再声明条件、步骤属性:
+
+gso:condition4Step\quad rdf:type\quad owl:DatatypeProperty\quad .\quad （步骤条件，取值为字符串）
+
+gso:condition4Step\quad rdfs:domain\quad gso:StepOfProcess\quad .
+
+gso:stepDesc\quad rdf:type\quad owl:DatatypeProperty\quad .\quad （步骤文字描述，取值为字符串）
+
+gso:stepDesc\quad rdfs:domain\quad gso:StepOfProcess\quad .
+
+gso:stepNum\quad rdf:type\quad owl:DatatypeProperty\quad .\quad （步骤的序号，第几个步骤，取值为正整数）
+
+gso:stepNum\quad rdfs:domain\quad gso:StepOfProcess .
+
+如下复杂地理过程知识的具体表示：“冷锋过境前，会受单一暖气团控制，温暖晴朗。当冷气团主动移向暖气团时，较重的冷气团会插入暖气团下面，使暖气团被迫的抬升。暖气团在抬升的过程中会逐渐的冷却，其中水汽易凝结成云。如果暖空气中含有大量水汽，那么可能会导致雨雪天气。冷锋移动速度较快，常常带来较强的风。冷锋过境后，冷气团替代原来暖气团的位置，气压升高，气温降低，湿度骤降，天气则转好。”
+
+上述叙述的是地理现象“冷锋过境”的形成过程，如下具体表示：\\
+先声明“过程”和“步骤”：
+
+gsr:R\_冷锋过境过程\quad rdf:type\quad \quad gso:SequentialProcess\quad .
+
+gsr:R\_冷锋过境过程\quad gso:numberOfSteps\quad "3"$^{\land\land}$xs:positiveInteger\quad .
+
+gsr:R\_冷锋过境步骤\_1\quad rdf:type\quad \quad gso:StepOfProcess\quad .
+
+gsr:R\_冷锋过境步骤\_2\quad rdf:type\quad \quad gso:StepOfProcess\quad .
+
+gsr:R\_冷锋过境步骤\_3\quad rdf:type\quad \quad gso:StepOfProcess\quad .
+
+gsr:R\_冷锋过境过程\quad gso:includesStep\quad gsr:R\_冷锋过境步骤\_1\quad ,\quad 
+
+gsr:R\_冷锋过境过程\quad gso:includesStep\quad gsr:R\_冷锋过境步骤\_2\quad ,\quad 
+
+gsr:R\_冷锋过境过程\quad gso:includesStep\quad gsr:R\_冷锋过境步骤\_3\quad .
+\\
+再申明“步骤”的文字描述gso:stepDesc和条件gso:condition4Step：
+
+gsr:R\_冷锋过境步骤\_1\quad gso:stepNum\quad "1"$^{\land\land}$xs:positiveInteger\quad ;
+
+gsr:R\_冷锋过境步骤\_1\quad gso:stepDesc\quad "当冷气团主动移向暖气团时，较重的冷气团插入暖气团下面，使暖气团被迫抬升。"$^{\land\land}$xs:string\quad .
+
+gsr:R\_冷锋过境步骤\_2\quad gso:stepNum\quad "2"$^{\land\land}$xs:positiveInteger\quad ;
+
+gsr:R\_冷锋过境步骤\_2\quad gso:stepDesc\quad "暖气团在抬升过程中逐渐冷却，其中水汽容易凝结成云。"$^{\land\land}$xs:string\quad .
+
+gsr:R\_冷锋过境步骤\_3\quad gso:stepNum\quad "3"$^{\land\land}$xs:positiveInteger\quad ;
+
+gsr:R\_冷锋过境步骤\_3\quad gso:condition4Step\quad "暖空气含大量水汽。"$^{\land\land}$xs:string\quad ;
+
+gsr:R\_冷锋过境步骤\_3\quad gso:stepDesc\quad "如果暖空气中含有大量的水汽，那么可能会带来雨雪天气。"$^{\land\land}$xs:string\quad .
+
+此“冷锋过境”过程中实际上也包含了不同时段的“天气变化”，因此“冷锋过境中的天气变化”也需要表示为一个顺序过程，这样在考察“冷锋过境”与天气变化的关系是，可以运用此结构化的知识表示。具体表示如下：
+\\
+申明“冷锋过境中的天气变化”为顺序过程:
+
+gsr:R\_冷锋过境中的天气变化\quad rdf:type \quad gso:SequentialProcess\quad ;
+
+gsr:R\_冷锋过境中的天气变化\quad gso:numberOfSteps\quad "3"$^{\land\land}$xs:positiveInteger\quad .
+
+gsr:R\_冷锋过境中天气变化的步骤\_1\quad rdf:type \quad gso:StepOfProcess\quad .
+
+gsr:R\_冷锋过境中天气变化的步骤\_2\quad rdf:type \quad gso:StepOfProcess\quad .
+
+gsr:R\_冷锋过境中天气变化的步骤\_3\quad rdf:type \quad gso:StepOfProcess\quad .
+
+gsr:R\_冷锋过境过程中的天气变化\quad gso:includesStep\quad gsr:R\_冷锋过境中天气变化的步骤\_1\quad ,\quad 
+
+gsr:R\_冷锋过境过程中的天气变化\quad gso:includesStep\quad gsr:R\_冷锋过境中天气变化的步骤\_2\quad ,\quad 
+
+gsr:R\_冷锋过境过程中的天气变化\quad gso:includesStep\quad gsr:R\_冷锋过境中天气变化的步骤\_3\quad .
+\\
+申明“冷锋过境中的天气变化”的每个步骤的内容和条件:
+
+gsr:R\_冷锋过境中天气变化的步骤\_1\quad gso:stepNum\quad "1"$^{\land\land}$xs:positiveInteger\quad ;
+
+gsr:R\_冷锋过境中天气变化的步骤\_1\quad gso:condition4Step\quad "过境前"$^{\land\land}$xs:string\quad ;
+
+gsr:R\_冷锋过境中天气变化的步骤\_1\quad gso:stepDesc\quad "过境前，单一暖气团控制，温暖晴朗。"$^{\land\land}$xs:string\quad .
+
+gsr:R\_冷锋过境中天气变化的步骤\_2\quad gso:stepNum\quad "2"$^{\land\land}$xs:positiveInteger\quad ;
+
+gsr:R\_冷锋过境中天气变化的步骤\_2\quad gso:condition4Step\quad "过境时"$^{\land\land}$xs:string\quad ;
+
+gsr:R\_冷锋过境中天气变化的步骤\_2\quad gso:stepDesc\quad "过境时，常有阴天、下雨、刮风、降温等天气现象。"$^{\land\land}$xs:string\quad .
+
+gsr:R\_冷锋过境中天气变化的步骤\_3\quad gso:stepNum\quad "3"$^{\land\land}$xs:positiveInteger\quad ;
+
+gsr:R\_冷锋过境中天气变化的步骤\_3\quad gso:condition4Step\quad "过境后"$^{\land\land}$xs:string\quad ;
+
+gsr:R\_冷锋过境中天气变化的步骤\_3\quad gso:stepDesc\quad "过境后，气强和湿度骤降，天气转睛。"$^{\land\land}$xs:string\quad .
+
+\section{地理本体融合}
+本文地理核心知识库由构建的两个本体融合而成。这两个本体分别是本文手工构建的CGeoOnt和863项目组基于百度百科自动构建的本体Clinga。本节先介绍Clinga的相关情况，后介绍两个地理本体的融合方法。
+
+\subsection{本体Clinga}
+
+本体Clinga\footnote{http://ws.nju.edu.cn/clinga/}（Chinese linked geographical dataset）为863项目组Hu\cite{Hu}等人根据百度百科自动抽取构建的中文地理链接数据集。Clinga的本体Schema为Hu等人人工根据地理领域特点定义，他们将地理分为自然地理和人文地理两个大类，然后在这两个大类下再依次细分为多个小类，最后形成Clinga的schema，具体如类层次摘要图\ref{fig:clinga}所示。通过定义好的本体schema对自动抽取到的百度百科概念做分类，只选取满足定义好的本体schema类别的实体，最后将每个百科概念页面结构化成三元组形式，最终得到包含624,391个实体概念、130个类别、73,326,425个三元组的本体。Clinga中知识的组织形式为主、谓、宾，即（ s, p, o）\footnote{s代表subject，p代表predicate，o代表object}三元组。例如（ A69064644，公转对象，A6768329）表示“地球绕着太阳公转”， A6906464和 A6768329 分别对应地球、太阳在知识库中的存储ID，“公转对象”表示地球和太阳的一种属性关系。
+
+\begin{figure}[!htb]
+	\centering\includegraphics[height=5cm]{resource/clinga}
+	\caption{Clinga本体层次结构定义摘要}
+	\label{fig:clinga}
+\end{figure}
+
+图\ref{fig:clinga}仅仅为Clinga本体结构的一个摘要，有向图的根结点为总类别地理，然后箭头被指向的是其两个子类自然地理（physical geography）和人文地理（human geography），然后依次为这两个子类的子类，依此类推。实际图中的类共有130个，其中的35个叶子类为GeoNames\footnote{http://www.geonames.org/}中没有的类，更具体的情况请参加Hu\cite{Hu}等人的工作。
+
+\subsection{地理本体融合方法}
+Clinga 与 CGeoOnt 的 Schema 定义存在一定差异，本文需要将这两个本体进行融合得到一个更大的地理本体知识库。本文构建的CGeoOnt 包含类和属性3,000 余个，相关 RDF 三元组 25,000 余条，概念类的定义粒度相比Clinga而言更细。由于CGeoOnt 本体相对规模较小，本文采取将本体CGeoOnt的Schema映射到Clinga的Schema上，具体操作流程如下：
+
+（ 1） Clinga 中实体只保留其在百度百科 infobox 域中信息三元组，去掉其 section 域构成的三元组。
+
+（ 2） 运用启发式规则，根据 CGeoOnt 中实体的名称将其类别映射到 Clinga 中的类别。如， CGeoOnt中“黄山”会被映射到 Clinga 中的类 “山”。
+
+（ 3） 人工校验（ 2） 中映射结果。
+
+（ 4）得到最终本体知识库三元组 4,850,435 条。
+
+\section{地理本体存储与检索}
+本文采用对象关系数据库OpenLink Virtuoso\footnote{https://virtuoso.openlinksw.com/}存储标注好的地理本体知识三元组，由于OpenLink Virtuoso是一个可伸缩的高性能、兼容性强的对象关系数据库引擎，可以提供复杂的SQL、XML、RDF数据库管理功能，著名的开放域知识库freebase也采用此数据库存储，本文运用其存储RDF数据的功能，同时还使用SPARQL\footnote{https://www.w3.org/TR/rdf-sparql-query/}语句检索本体知识库中的概念和概念关系三元组信息数据。
+
+\section{地理本体词典生成}
+本文需要根据构建的地理知识库生成地理概念词典，这些概念包含知识库中的实体和类及两者的同义词。生成的地理本体词典主要用于判断某个命名实体是否属于本文地理知识库的范畴，以便提供相关候选实体的知识库信息，同时也便于查询同一个实体的不同别名。
+
+地理本体词典生成的主要工作为抽取地理概念的同义词，由于本文的知识库有两部分数据来源，分别是本体Clinga和本体CGeoOnt。Clinga中的概念抽取自百度百科，因此可以通过规则模板来抽取某个概念的同义词，本文统计发现属性名为中文名、英文名、外文名、原名、别名、中文名称、其他名称、别称和又叫，均可以当作概念的同义词。由于百科知识组织的主观性强，有的实体在表示时后面常常跟有括号，如“地球 别名 盖亚(Gaia)”，针对此种情况需要将别名值中带有括号的部分也抽取出来，并作为该概念的同义词，如此处的Gaia也作为地球的同义词。CGeoOnt中的同义词已经被标注人员标注出，只需要抽取概念的skos:altLabel属性值就可以找出该概念的同义词。通过上述方法，本文得到共包含75,1103个概念同义词的本体词典。
+
+\section{本章小结}
+本章介绍了地理本体知识库的构建过程。本章首先介绍如何构建地理本体CGeoOnt；然后介绍如何将基于百度百科构建的本体Clinga与CGeoOnt进行融合得到规模更大的地理本体知识库；最后介绍如何存储、检索本文地理本体知识库以及本文地理本体词典的生成方法。
